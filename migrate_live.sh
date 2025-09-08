@@ -1,0 +1,1 @@
+bunx wrangler d1 migrations apply d1-biovault-website --remote
