@@ -11,8 +11,8 @@
 	"d1_databases": [
 		{
 			"binding": "DB",
-			"database_id": "151f7d9b-365f-41d7-83ed-0bf4eeef5086",
-			"database_name": "d1-biovault-website"
+			"database_name": "d1-biovault-website",
+			"database_id": "35b334f1-0b99-43ad-bd1a-c5d497549618"
 		}
 	],
 	"observability": {
