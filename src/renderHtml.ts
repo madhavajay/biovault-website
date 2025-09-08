@@ -98,7 +98,7 @@ export function renderHtml(message?: string) {
       <body>
         <div class="container">
           <h1>BioVault</h1>
-          <p class="subtitle">Join our waitlist to be the first to know when we launch</p>
+          <p class="subtitle">Join our waitlist to be the first to know when we launch!</p>
           
           ${message ? `
             <div class="message ${message.startsWith('Success') ? 'success' : 'error'}">
