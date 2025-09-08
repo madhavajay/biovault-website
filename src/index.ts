@@ -12,6 +12,11 @@ export default {
       });
     }
 
+    // Redirect GET requests to /api/waitlist back to home
+    if (request.method === "GET" && url.pathname === "/api/waitlist") {
+      return Response.redirect(url.origin + "/", 302);
+    }
+
     // Handle form POST submission (vanilla HTML form)
     if (request.method === "POST" && url.pathname === "/api/waitlist") {
       try {

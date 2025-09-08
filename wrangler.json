@@ -5,7 +5,7 @@
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"compatibility_date": "2025-04-01",
-	"main": "src/index.ts",
+	"main": "dist/index.js",
 	"name": "biovault-website",
 	"upload_source_maps": true,
 	"d1_databases": [
