@@ -1,6 +1,7 @@
 {
   "name": "d1-template",
   "description": "Cloudflare's native serverless SQL database.",
+  "type": "module",
   "private": true,
   "cloudflare": {
     "label": "Worker + D1 Database",
@@ -20,15 +21,21 @@
     "publish": true
   },
   "devDependencies": {
+    "concurrently": "^9.2.1",
+    "esbuild": "^0.25.9",
+    "esbuild-plugin-inline-import": "^1.1.0",
     "typescript": "5.8.3",
     "wrangler": "^4.34.0"
   },
   "scripts": {
+    "build": "node build.js",
+    "build:watch": "node build-dev.js",
     "cf-typegen": "wrangler types",
-    "check": "tsc && wrangler deploy --dry-run",
-    "deploy": "wrangler deploy",
-    "dev": "pnpm seedLocalD1 && wrangler dev",
+    "check": "npm run build && tsc && wrangler deploy --dry-run",
+    "deploy": "npm run build && wrangler deploy",
+    "dev": "npm run build && concurrently \"node build-dev.js\" \"wrangler dev\"",
+    "dev:simple": "npm run build && wrangler dev",
     "predeploy": "wrangler d1 migrations apply DB --remote",
-    "seedLocalD1": "wrangler d1 migrations apply DB --local"
+    "dev-db": "wrangler d1 migrations apply DB --local"
   }
 }
