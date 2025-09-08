@@ -120,7 +120,7 @@ export function renderHtml(message?: string) {
             </div>
           ` : ''}
           
-          <form method="POST" action="/api/waitlist">
+          <form id="waitlist-form" method="POST" action="/api/waitlist">
             <div class="form-group">
               <label for="email">Email Address</label>
               <input 
@@ -133,6 +133,20 @@ export function renderHtml(message?: string) {
             </div>
             <button type="submit">Join Waitlist</button>
           </form>
+          <script>
+            document.addEventListener('DOMContentLoaded', () => {
+              const form = document.getElementById('waitlist-form');
+              form.addEventListener('submit', () => {
+                const email = (document.getElementById('email').value || '').toLowerCase();
+                const domain = email.split('@')[1] || '';
+                gtag('event', 'waitlist_submit_attempt', {
+                  method: 'html_form',
+                  email_domain: domain,
+                  transport_type: 'beacon'
+                });
+              });
+            });
+          </script>
         </div>
       </body>
     </html>
