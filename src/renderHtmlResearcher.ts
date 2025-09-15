@@ -42,9 +42,9 @@ export function renderHtmlResearcher(message?: string) {
         ` : ''}
 
         <!-- Researchers Section -->
-        <div class="section">
-        <h2 class="section-title">For Researchers</h2>
-        <div class="section-content">
+        <div class="top-section">
+        <h2 class="top-section-title">For Researchers</h2>
+        <div class="top-section-content">
             <div class="story-intro">
             <p>
                 Are you a researcher working with sensitive datasets—like whole genome sequences, clinical records, or phenotype data? 

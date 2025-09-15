@@ -164,15 +164,7 @@ body {
   border-radius: 4px;
 }
 
-.main-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 3rem;
-  margin-bottom: 4rem;
-  align-items: stretch;
-}
-
-.section {
+.top-section {
   background: white;
   border-radius: 20px;
   padding: 2.5rem;
@@ -183,6 +175,31 @@ body {
   display: flex;
   flex-direction: column;
   height: 100%;
+}
+
+.top-section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+}
+
+.top-section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #059669;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+
+.section {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(16, 185, 129, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* makes all sections stretch equally */
 }
 
 .section:hover {
@@ -379,11 +396,44 @@ body {
   border-radius: 2px;
 }
 
-.section-content {
+.top-section-content {
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+}
+
+/* Section content should flow naturally */
+.section-content {
+  flex: 1;
+  display: block; /* instead of flex-column */
+}
+
+/* Constrain images inside sections */
+.section-content img {
+  max-width: 50%;   /* keeps images smaller, ~50% column width */
+  margin: 0 auto;   /* centers the image */
+  display: block;
+}
+
+/* Grid fix for equal width columns */
+.main-content {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+  align-items: stretch; /* makes all sections equal height */
+}
+
+/* Responsive stacking */
+@media (max-width: 1024px) {
+  .main-content {
+    grid-template-columns: 1fr;
+  }
+
+  .section-content img {
+    max-width: 70%; /* make images a bit larger on mobile */
+  }
 }
 
 .badges {

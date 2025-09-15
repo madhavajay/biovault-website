@@ -45,12 +45,12 @@ export function renderHtmlParticipant(message?: string) {
         ` : ''}
 
         <!-- Participants Section -->
-        <div class="section">
-        <h2 class="section-title">For Participants</h2>
-        <div class="section-content">
+        <div class="top-section">
+        <h2 class="top-section-title">For Participants</h2>
+        <div class="top-section-content">
             <div class="network-intro" style="display: flex; gap: 2rem; align-items: center;">
             <!-- Left: App Image -->
-            <div style="flex-shrink: 0; width: 50%; max-width: 300px;">
+            <div style="flex-shrink: 0; width: 100%; max-width: 300px;">
                 <img src="${appImage}" alt="BioVault Mobile App" style="width: 100%; height: auto; border-radius: 8px; filter: drop-shadow(0 10px 40px rgba(0, 0, 0, 0.15));" />
             </div>
             <!-- Right: Text -->
@@ -79,7 +79,6 @@ export function renderHtmlParticipant(message?: string) {
         <!-- Network Section -->
         <div class="network">
         <h2 class="network-title">How It Works</h2>
-        <div class="section-content">
             <div class="network-intro" style="display: flex; gap: 2rem; align-items: center;">
                 <div style="flex-shrink: 0; width: 50%;">
                     <img src="${networkImage}" alt="BioVault Network" style="width: 100%; height: auto; border-radius: 8px;" />
@@ -93,7 +92,6 @@ export function renderHtmlParticipant(message?: string) {
                     This technology is already proven in industry for secure distributed computation, and BioVault applies it directly to genomics and biomedical research.
                     </p>
                 </div>
-            </div>
         </div>
         </div>
 
