@@ -54,7 +54,7 @@ export function renderHtmlResearcher(message?: string) {
 
             <ol class="story-steps">
                 <li>
-                <strong>Create a private BioVault of your data</strong> — it stays on your machine and never leaves your control.
+                <strong>Create your own private BioVault</strong> — this is like setting up a secure folder that only you control. 
                 <div class="cli-mockup">
                     <div class="cli-line"><span class="cli-prompt">$</span> <span class="cli-command">bv init mybiobank</span></div>
                     <div class="cli-line"><span class="cli-output">✓ BioVault "mybiobank" created locally</span></div>
@@ -62,7 +62,16 @@ export function renderHtmlResearcher(message?: string) {
                 </li>
 
                 <li>
-                <strong>Receive analysis requests</strong> — collaborators submit arbitrary code or pipelines for you to review.
+                <strong>Add your data to the BioVault</strong> — place your sequencing files (FASTQ, BAM/CRAM, VCF, phenotype data, etc.) into the vault so they are ready for analysis. The files never leave your machine.  
+                <div class="cli-mockup">
+                    <div class="cli-line"><span class="cli-prompt">$</span> <span class="cli-command">bv add ./data/patient1.vcf --vault mybiobank</span></div>
+                    <div class="cli-line"><span class="cli-output">✓ Added 1 file to BioVault "mybiobank"</span></div>
+                </div>
+                </li>
+
+                <li>
+                <strong>Receive analysis requests from collaborators</strong> — instead of sending your data away, other researchers 
+                send you analysis pipelines (for example, a GWAS workflow). You can inspect what they are asking to run.
                 <div class="cli-mockup">
                     <div class="cli-line"><span class="cli-prompt">$</span> <span class="cli-command">bv inbox</span></div>
                     <div class="cli-line"><span class="cli-output">1 pending request: research@collab → pipeline: GWAS-analysis.nf</span></div>
@@ -70,7 +79,8 @@ export function renderHtmlResearcher(message?: string) {
                 </li>
 
                 <li>
-                <strong>Approve and run securely</strong> — the pipeline executes locally, and only results are shared back.
+                <strong>Approve and run the analysis locally</strong> — once you approve, the pipeline runs on your BioVault. 
+                The raw data never moves; only the analysis results are sent back to your collaborator.
                 <div class="cli-mockup">
                     <div class="cli-line"><span class="cli-prompt">$</span> <span class="cli-command">bv approve 1</span></div>
                     <div class="cli-line"><span class="cli-output">✓ Approved. Running in secure enclave...</span></div>
@@ -79,14 +89,21 @@ export function renderHtmlResearcher(message?: string) {
                 </li>
             </ol>
 
-            <p>
-            BioVault is powered by 
-            <a href="https://openmined.org/syftbox/" target="_blank" rel="noopener noreferrer">
-                <strong>SyftBox</strong>
-            </a>, an open-source protocol from OpenMined for privacy-preserving remote data science. 
-            Instead of centralizing sensitive datasets, SyftBox enables <em>data visitation</em>: code travels securely to where the data lives, runs locally, and only the results are shared back. 
-            This technology is already proven in industry for secure distributed computation, and BioVault applies it directly to genomics and biomedical research.
-            </p>
+            <div class="network-intro">
+                <div style="flex-shrink: 0; width: 50%;">
+                    <img src="${networkImage}" alt="BioVault Network" style="width: 100%; height: auto; border-radius: 8px;" />
+                </div>
+                <div style="flex: 1;">
+                    <p style="font-size: 1.125rem;">
+                    BioVault is powered by 
+                    <a href="https://openmined.org/syftbox/" target="_blank" rel="noopener noreferrer">
+                        <strong>SyftBox</strong>
+                    </a>, an open-source protocol from OpenMined for privacy-preserving remote data science. 
+                    Instead of moving sensitive datasets to outside servers, SyftBox enables <em>data visitation</em>: code travels securely to where the data lives, runs locally, and only the results are shared back. 
+                    This technology is already proven in industry for secure distributed computation, and BioVault applies it directly to genomics and biomedical research.
+                    </p>
+                </div>
+            </div>
             </div>
         </div>
         </div>
