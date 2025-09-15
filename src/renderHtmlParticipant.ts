@@ -2,7 +2,7 @@ import styles from './styles.css';
 import appImage from './images/app.png';
 import networkImage from './images/network.jpg';
 
-export function renderHtml(message?: string) {
+export function renderHtmlParticipant(message?: string) {
     return `
     <!DOCTYPE html>
     <html lang="en">

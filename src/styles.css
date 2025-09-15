@@ -13,7 +13,7 @@ body {
 }
 
 .container {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
 }
@@ -35,6 +35,77 @@ body {
   font-size: 1.25rem;
   color: #6b7280;
   font-weight: 300;
+}
+
+.story-intro {
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.story-intro h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #059669;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.story-intro p {
+  font-size: 1rem;
+  color: #4b5563;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.story-steps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.85rem;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+.story-steps li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.story-steps li:last-child {
+  margin-bottom: 0;
+}
+
+.story-steps li:before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: #10b981;
+  font-weight: bold;
+}
+
+.story-steps li strong {
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.story-intro a {
+  color: #059669;
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.story-intro a:hover {
+  color: #047857;
+  border-bottom-color: #059669;
+}
+
+.story-intro a:focus {
+  outline: 2px solid #059669;
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 .main-content {
@@ -527,7 +598,7 @@ body {
 }
 
 .faq {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto 4rem;
   padding: 2rem;
 }
