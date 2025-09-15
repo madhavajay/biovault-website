@@ -53,41 +53,70 @@ export function renderHtmlResearcher(message?: string) {
             </p>
 
             <ol class="story-steps">
-                <li>
-                <strong>Create your own private BioVault</strong> — this is like setting up a secure folder that only you control. 
+            <li>
+                <strong>Create your private BioVault</strong> — set up a secure workspace for your sensitive data (e.g., patient genomes or clinical records) that only you control.  
                 <div class="cli-mockup">
-                    <div class="cli-line"><span class="cli-prompt">$</span> <span class="cli-command">bv init mybiobank</span></div>
-                    <div class="cli-line"><span class="cli-output">✓ BioVault "mybiobank" created locally</span></div>
+                <div class="cli-line"><span class="cli-prompt">$</span> <span class="cli-command">bv init my_patient_data</span></div>
+                <div class="cli-line"><span class="cli-output">✓ BioVault "my_patient_data" created locally</span></div>
                 </div>
-                </li>
+            </li>
 
-                <li>
-                <strong>Add your data to the BioVault</strong> — place your sequencing files (FASTQ, BAM/CRAM, VCF, phenotype data, etc.) into the vault so they are ready for analysis. The files never leave your machine.  
+            <li>
+                <strong>Add your data</strong> — place sequencing files (FASTQ, BAM/CRAM, VCF, phenotype data, etc.) into the vault.  
+                The files stay on your machine and never leave your control.  
                 <div class="cli-mockup">
-                    <div class="cli-line"><span class="cli-prompt">$</span> <span class="cli-command">bv add ./data/patient1.vcf --vault mybiobank</span></div>
-                    <div class="cli-line"><span class="cli-output">✓ Added 1 file to BioVault "mybiobank"</span></div>
+                <div class="cli-line"><span class="cli-prompt">$</span> <span class="cli-command">bv add ./data/patient1.vcf --vault my_patient_data</span></div>
+                <div class="cli-line"><span class="cli-output">✓ Added 1 file to BioVault "my_patient_data"</span></div>
                 </div>
-                </li>
+            </li>
 
-                <li>
-                <strong>Receive analysis requests from collaborators</strong> — instead of sending your data away, other researchers 
-                send you analysis pipelines (for example, a GWAS workflow). You can inspect what they are asking to run.
+            <li>
+                <strong>Collaborator prepares code</strong> — another researcher builds and tests a workflow or <em>arbitrary code</em> against your vault (e.g., GWAS, splicing analysis, or custom scripts).  
                 <div class="cli-mockup">
-                    <div class="cli-line"><span class="cli-prompt">$</span> <span class="cli-command">bv inbox</span></div>
-                    <div class="cli-line"><span class="cli-output">1 pending request: research@collab → pipeline: GWAS-analysis.nf</span></div>
+                <div class="cli-line"><span class="cli-prompt">$</span> <span class="cli-command">bv vault list</span></div>
+                <div class="cli-line"><span class="cli-output">✓ Listing Vaults</span></div>
+                <div class="cli-line"><span class="cli-prompt">$</span> <span class="cli-command">bv run ./variant_discovery_analysis syft://research@my_patient_data#participants --test</span></div>
+                <div class="cli-line"><span class="cli-output">✓ Testing workflow on target vault</span></div>
                 </div>
-                </li>
+            </li>
 
-                <li>
-                <strong>Approve and run the analysis locally</strong> — once you approve, the pipeline runs on your BioVault. 
-                The raw data never moves; only the analysis results are sent back to your collaborator.
+            <li>
+                <strong>Workflow is submitted for your review</strong> — the collaborator sends their code to your inbox. You see exactly what will run before deciding whether to approve.  
                 <div class="cli-mockup">
-                    <div class="cli-line"><span class="cli-prompt">$</span> <span class="cli-command">bv approve 1</span></div>
-                    <div class="cli-line"><span class="cli-output">✓ Approved. Running in secure enclave...</span></div>
-                    <div class="cli-line"><span class="cli-output">⚡ Results ready: ./results/gwas_out.csv</span></div>
+                <div class="cli-line"><span class="cli-prompt">$</span> <span class="cli-command">bv submit ./variant_discovery_analysis syft://research@my_patient_data#participants</span></div>
+                <div class="cli-line"><span class="cli-output">⚡ Analysis Submitted</span></div>
+                <div class="cli-line"><span class="cli-prompt">$</span> <span class="cli-command">bv inbox</span></div>
+                <div class="cli-line"><span class="cli-output">1 pending request: Collaborator@University → pipeline: variant_discovery_analysis.nf</span></div>
                 </div>
-                </li>
+            </li>
+
+            <li>
+                <strong>Approve and run locally</strong> — once approved, the workflow or arbitrary code runs inside your BioVault.  
+                The raw data never leaves your machine; only results are shared back.  
+                <div class="cli-mockup">
+                <div class="cli-line"><span class="cli-prompt">$</span> <span class="cli-command">bv approve variant_discovery_analysis</span></div>
+                <div class="cli-line"><span class="cli-output">✓ Approved. Running NextFlow pipeline securely...</span></div>
+                <div class="cli-line"><span class="cli-prompt">$</span> <span class="cli-command">bv inbox</span></div>
+                <table class="cli-table">
+                    <thead>
+                        <tr>
+                            <th>Project</th>
+                            <th>Status</th>
+                            <th>Path</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>variant_discovery_analysis</td>
+                            <td><span>✅ Success</span></td>
+                            <td>./results/variant_discovery_out.csv</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+            </li>
             </ol>
+
 
             <div class="network-intro">
                 <div style="flex-shrink: 0; width: 50%;">
@@ -111,6 +140,7 @@ export function renderHtmlResearcher(message?: string) {
         <!-- Top Signup Strip -->
         <div class="signup-strip">
             <form id="waitlist-form-top" class="signup-form" method="POST" action="/api/waitlist">
+                <input type="hidden" name="origin" value="researcher">
                 <input type="email" name="email" id="email-top" class="email-input" placeholder="Enter your email for beta access" required>
                 <button type="submit" class="signup-btn">Join Beta</button>
             </form>
@@ -123,28 +153,12 @@ export function renderHtmlResearcher(message?: string) {
             
             <div class="feature">
             <div class="feature-icon">🧬</div>
-            <h3 class="feature-title">Collaborate Without Sharing Data</h3>
+            <h3 class="feature-title">You Stay in Control</h3>
             <p class="feature-desc">
                 Run pipelines on sensitive datasets without moving raw files—code travels to the data, not the other way around.
             </p>
             </div>
-            
-            <div class="feature">
-            <div class="feature-icon">📊</div>
-            <h3 class="feature-title">Reproducible Science</h3>
-            <p class="feature-desc">
-                Standardized workflows and versioned pipelines ensure results can be validated and reproduced across labs.
-            </p>
-            </div>
-            
-            <div class="feature">
-            <div class="feature-icon">🌍</div>
-            <h3 class="feature-title">Global Equity</h3>
-            <p class="feature-desc">
-                Enable participation from the Global South and under-resourced labs—data stays local while insights are shared globally.
-            </p>
-            </div>
-            
+
             <div class="feature">
             <div class="feature-icon">🔒</div>
             <h3 class="feature-title">Privacy First</h3>
@@ -152,7 +166,23 @@ export function renderHtmlResearcher(message?: string) {
                 Protect participants with end-to-end encryption and secure enclaves for joint analysis without centralizing data.
             </p>
             </div>
-            
+
+            <div class="feature">
+            <div class="feature-icon">🌍</div>
+            <h3 class="feature-title">Global Equity</h3>
+            <p class="feature-desc">
+                Empower researchers and patient groups everywhere—including the Global South and under-resourced labs—by keeping data under local control while still enabling insights to be shared worldwide.
+            </p>
+            </div>
+
+            <div class="feature">
+            <div class="feature-icon">📊</div>
+            <h3 class="feature-title">Reproducible Science</h3>
+            <p class="feature-desc">
+                Standardized workflows and versioned pipelines ensure results can be validated and reproduced across labs.
+            </p>
+            </div>
+
             <div class="feature">
             <div class="feature-icon">⚡</div>
             <h3 class="feature-title">Fast, Remote Data Science</h3>
@@ -188,7 +218,7 @@ export function renderHtmlResearcher(message?: string) {
             <p class="cta-desc">
                 BioVault is part of a pilot initiative to make data free and open access for research while 
                 <em>protecting the rights of individuals</em> whose samples power these datasets. 
-                Your participation helps prove that global collaboration in genomics is possible without 
+                Your participation helps prove that global collaboration in science and genomics is possible without 
                 ceding control of data to centralized institutions or big tech companies.
             </p>
             </div>
@@ -264,6 +294,7 @@ export function renderHtmlResearcher(message?: string) {
             <h2 class="signup-title">Join the Beta</h2>
             <p class="signup-subtitle">Get updates and early access to BioVault</p>
             <form id="waitlist-form" class="signup-form" method="POST" action="/api/waitlist">
+                <input type="hidden" name="origin" value="researcher">
                 <input type="email" id="email" name="email" class="email-input" placeholder="Enter your email address" required>
                 <button type="submit" class="signup-btn">Get Updates</button>
             </form>

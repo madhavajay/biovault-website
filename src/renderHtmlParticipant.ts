@@ -98,6 +98,7 @@ export function renderHtmlParticipant(message?: string) {
         <!-- Top Signup Strip -->
         <div class="signup-strip">
           <form id="waitlist-form-top" class="signup-form" method="POST" action="/api/waitlist">
+            <input type="hidden" name="origin" value="participant">
             <input type="email" name="email" id="email-top" class="email-input" placeholder="Enter your email for beta access" required>
             <button type="submit" class="signup-btn">Join Beta</button>
           </form>
@@ -148,6 +149,7 @@ export function renderHtmlParticipant(message?: string) {
           <h2 class="signup-title">Join the Beta</h2>
           <p class="signup-subtitle">Get updates and early access to BioVault</p>
           <form id="waitlist-form" class="signup-form" method="POST" action="/api/waitlist">
+            <input type="hidden" name="origin" value="participant">
             <input type="email" id="email" name="email" class="email-input" placeholder="Enter your email address" required>
             <button type="submit" class="signup-btn">Get Updates</button>
           </form>
