@@ -1,11 +1,29 @@
-import { renderHtml } from "./renderHtml";
+import { renderHtmlMain } from "./renderHtmlMain";
+import { renderHtmlResearcher } from "./renderHtmlResearcher";
+import { renderHtmlParticipant } from "./renderHtmlParticipant";
 
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
     if (request.method === "GET" && url.pathname === "/") {
-      return new Response(renderHtml(), {
+      return new Response(renderHtmlMain(), {
+        headers: {
+          "content-type": "text/html",
+        },
+      });
+    }
+
+    if (request.method === "GET" && url.pathname === "/researcher") {
+      return new Response(renderHtmlResearcher(), {
+        headers: {
+          "content-type": "text/html",
+        },
+      });
+    }
+
+    if (request.method === "GET" && url.pathname === "/participant") {
+      return new Response(renderHtmlParticipant(), {
         headers: {
           "content-type": "text/html",
         },
@@ -24,7 +42,7 @@ export default {
         const email = formData.get("email")?.toString();
 
         if (!email) {
-          return new Response(renderHtml("Email is required"), {
+          return new Response(renderHtmlMain("Email is required"), {
             headers: { "content-type": "text/html" },
           });
         }
@@ -32,7 +50,7 @@ export default {
         const trimmedEmail = email.trim().toLowerCase();
 
         if (!trimmedEmail.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
-          return new Response(renderHtml("Invalid email format"), {
+          return new Response(renderHtmlMain("Invalid email format"), {
             headers: { "content-type": "text/html" },
           });
         }
@@ -41,12 +59,12 @@ export default {
           const stmt = env.DB.prepare("INSERT INTO waitlist (email) VALUES (?)");
           await stmt.bind(trimmedEmail).run();
 
-          return new Response(renderHtml(`Success! You're on the waitlist.`), {
+          return new Response(renderHtmlMain(`Success! You're on the waitlist.`), {
             headers: { "content-type": "text/html" },
           });
         } catch (dbError: any) {
           if (dbError.message?.includes("UNIQUE")) {
-            return new Response(renderHtml("This email is already registered"), {
+            return new Response(renderHtmlMain("This email is already registered"), {
               headers: { "content-type": "text/html" },
             });
           }
@@ -54,7 +72,7 @@ export default {
         }
       } catch (error) {
         console.error("Error processing form:", error);
-        return new Response(renderHtml("An error occurred. Please try again."), {
+        return new Response(renderHtmlMain("An error occurred. Please try again."), {
           headers: { "content-type": "text/html" },
         });
       }
