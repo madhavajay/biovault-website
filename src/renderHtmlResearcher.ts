@@ -96,9 +96,9 @@ export function renderHtmlResearcher(message?: string) {
                 <div style="flex: 1;">
                     <p style="font-size: 1.125rem;">
                     BioVault is powered by 
-                    <a href="https://openmined.org/syftbox/" target="_blank" rel="noopener noreferrer">
+                    <a href="https://syftbox.net/" target="_blank" rel="noopener noreferrer">
                         <strong>SyftBox</strong>
-                    </a>, an open-source protocol from OpenMined for privacy-preserving remote data science. 
+                    </a>, an open-source protocol from <a href="https://openmined.org" target="_blank" rel="noopener noreferrer">OpenMined</a> for privacy-preserving remote data science. 
                     Instead of moving sensitive datasets to outside servers, SyftBox enables <em>data visitation</em>: code travels securely to where the data lives, runs locally, and only the results are shared back. 
                     This technology is already proven in industry for secure distributed computation, and BioVault applies it directly to genomics and biomedical research.
                     </p>
