@@ -135,6 +135,12 @@ body {
   text-align: center;
 }
 
+.network-intro {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
 .network-intro p {
   font-size: 1.125rem;
 }
