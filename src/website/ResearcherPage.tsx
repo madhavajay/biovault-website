@@ -1,5 +1,6 @@
 import type { FC } from 'hono/jsx'
-import { Layout, Message } from './Layout'
+import { Message } from './Layout'
+import { Icons } from './Icons'
 
 // Using string path for image since Wrangler doesn't bundle static assets
 const networkImage = '/images/network.jpg'
@@ -9,7 +10,7 @@ interface PageProps {
 }
 
 export const ResearcherPage: FC<PageProps> = ({ message }) => (
-	<Layout title="Join the Beta - BioVault is a free and open-source tool and permissionless network for collaborative genomics">
+	<>
 		<div className="container">
 			<header className="header">
 				<h1 className="logo">BioVault</h1>
@@ -159,35 +160,27 @@ export const ResearcherPage: FC<PageProps> = ({ message }) => (
 								</div>
 							</li>
 						</ol>
-
-						<div className="network-intro">
-							<div style={{ flexShrink: 0, width: '50%' }}>
-								<img
-									src={networkImage}
-									alt="BioVault Network"
-									style={{ width: '100%', height: 'auto', borderRadius: '8px' }}
-								/>
-							</div>
-							<div style={{ flex: 1 }}>
-								<p style={{ fontSize: '1.125rem' }}>
-									BioVault is powered by
-									<a href="https://syftbox.net/" target="_blank" rel="noopener noreferrer">
-										<strong>SyftBox</strong>
-									</a>
-									, an open-source protocol from{' '}
-									<a href="https://openmined.org" target="_blank" rel="noopener noreferrer">
-										OpenMined
-									</a>{' '}
-									for privacy-preserving remote data science. Instead of moving sensitive datasets
-									to outside servers, SyftBox enables <em>data visitation</em>: code travels
-									securely to where the data lives, runs locally, and only the results are shared
-									back. This technology is already proven in industry for secure distributed
-									computation, and BioVault applies it directly to genomics and biomedical research.
-								</p>
-							</div>
-						</div>
 					</div>
 				</div>
+			</div>
+
+			{/* Network/SyftBox Explanation */}
+			<div className="info-banner">
+				<p>
+					BioVault is powered by{' '}
+					<a href="https://syftbox.net/" target="_blank" rel="noopener noreferrer">
+						<strong>SyftBox</strong>
+					</a>
+					, an open-source protocol from{' '}
+					<a href="https://openmined.org" target="_blank" rel="noopener noreferrer">
+						OpenMined
+					</a>{' '}
+					for privacy-preserving remote data science. Instead of moving sensitive datasets to
+					outside servers, SyftBox enables <em>data visitation</em>: code travels securely to where
+					the data lives, runs locally, and only the results are shared back. This technology is
+					already proven in industry for secure distributed computation, and BioVault applies it
+					directly to genomics and biomedical research.
+				</p>
 			</div>
 
 			{/* Top Signup Strip */}
@@ -213,7 +206,9 @@ export const ResearcherPage: FC<PageProps> = ({ message }) => (
 				<h2 className="features-title">Collaboration Without Surrendering Control</h2>
 				<div className="features-grid">
 					<div className="feature">
-						<div className="feature-icon">🧬</div>
+						<div className="feature-icon">
+							<Icons.Dna />
+						</div>
 						<h3 className="feature-title">You Stay in Control</h3>
 						<p className="feature-desc">
 							Run pipelines on sensitive datasets without moving raw files—code travels to the data,
@@ -222,7 +217,9 @@ export const ResearcherPage: FC<PageProps> = ({ message }) => (
 					</div>
 
 					<div className="feature">
-						<div className="feature-icon">🔒</div>
+						<div className="feature-icon">
+							<Icons.Shield />
+						</div>
 						<h3 className="feature-title">Privacy First</h3>
 						<p className="feature-desc">
 							Protect participants with end-to-end encryption and secure enclaves for joint analysis
@@ -231,7 +228,9 @@ export const ResearcherPage: FC<PageProps> = ({ message }) => (
 					</div>
 
 					<div className="feature">
-						<div className="feature-icon">🌍</div>
+						<div className="feature-icon">
+							<Icons.Globe />
+						</div>
 						<h3 className="feature-title">Global Equity</h3>
 						<p className="feature-desc">
 							Empower researchers and patient groups everywhere—including the Global South and
@@ -241,7 +240,9 @@ export const ResearcherPage: FC<PageProps> = ({ message }) => (
 					</div>
 
 					<div className="feature">
-						<div className="feature-icon">📊</div>
+						<div className="feature-icon">
+							<Icons.BarChart />
+						</div>
 						<h3 className="feature-title">Reproducible Science</h3>
 						<p className="feature-desc">
 							Standardized workflows and versioned pipelines ensure results can be validated and
@@ -250,7 +251,9 @@ export const ResearcherPage: FC<PageProps> = ({ message }) => (
 					</div>
 
 					<div className="feature">
-						<div className="feature-icon">⚡</div>
+						<div className="feature-icon">
+							<Icons.Zap />
+						</div>
 						<h3 className="feature-title">Fast, Remote Data Science</h3>
 						<p className="feature-desc">
 							Perform remote data visitation at scale—submit pipelines across multiple vaults and
@@ -259,7 +262,9 @@ export const ResearcherPage: FC<PageProps> = ({ message }) => (
 					</div>
 
 					<div className="feature">
-						<div className="feature-icon">🔓</div>
+						<div className="feature-icon">
+							<Icons.LockOpen />
+						</div>
 						<h3 className="feature-title">Open and Transparent</h3>
 						<p className="feature-desc">
 							Open-source and free to use. No gatekeepers, no hidden costs—just science moving
@@ -408,31 +413,9 @@ export const ResearcherPage: FC<PageProps> = ({ message }) => (
 					// Apply tracking to both forms
 					trackFormSubmit('waitlist-form', 'email', 'bottom');
 					trackFormSubmit('waitlist-form-top', 'email-top', 'top');
-
-					// Add subtle animations on scroll
-					const observerOptions = {
-						threshold: 0.1,
-						rootMargin: '0px 0px -100px 0px'
-					};
-
-					const observer = new IntersectionObserver((entries) => {
-						entries.forEach(entry => {
-							if (entry.isIntersecting) {
-								entry.target.style.opacity = '1';
-								entry.target.style.transform = 'translateY(0)';
-							}
-						});
-					}, observerOptions);
-
-					document.querySelectorAll('.section, .features, .signup').forEach(el => {
-						el.style.opacity = '0';
-						el.style.transform = 'translateY(30px)';
-						el.style.transition = 'all 0.6s ease';
-						observer.observe(el);
-					});
 				});
 			`,
 			}}
 		/>
-	</Layout>
+	</>
 )

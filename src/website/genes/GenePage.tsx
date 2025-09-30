@@ -1,5 +1,4 @@
 import type { FC } from 'hono/jsx'
-import { Layout } from '../Layout'
 
 interface GenePageProps {
 	gene: string
@@ -7,8 +6,7 @@ interface GenePageProps {
 
 // Individual gene page component
 export const GenePage: FC<GenePageProps> = ({ gene }) => (
-	<Layout title={`${gene} - BioVault Genes`}>
-		<div className="container">
+	<div className="container">
 			<header className="header">
 				<h1 className="logo">Page for Gene {gene}</h1>
 				<p className="tagline">Clinical information and research for {gene}</p>
@@ -38,5 +36,4 @@ export const GenePage: FC<GenePageProps> = ({ gene }) => (
 				</div>
 			</div>
 		</div>
-	</Layout>
 )

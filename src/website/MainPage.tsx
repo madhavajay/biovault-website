@@ -1,5 +1,6 @@
 import type { FC } from 'hono/jsx'
-import { Layout, Message } from './Layout'
+import { Message } from './Layout'
+import { Icons } from './Icons'
 
 // Using string paths for images since Wrangler doesn't bundle static assets
 const appImage = '/images/app.png'
@@ -10,7 +11,7 @@ interface PageProps {
 }
 
 export const MainPage: FC<PageProps> = ({ message }) => (
-	<Layout title="Join the Beta - BioVault is a free and open-source tool and permissionless network for collaborative genomics">
+	<>
 		<div className="container">
 			<header className="header">
 				<h1 className="logo">BioVault</h1>
@@ -24,74 +25,79 @@ export const MainPage: FC<PageProps> = ({ message }) => (
 			</header>
 			{message && <Message message={message} />}
 
-			<div className="main-content">
-				{/* Researchers Section */}
-				<div className="section">
-					<h2 className="section-title">For Researchers</h2>
-					<div className="section-content">
-						<div className="cli-mockup">
-							<div className="cli-line">
-								<span className="cli-prompt">$</span>{' '}
-								<span className="cli-command">bv biobank list</span>
-							</div>
-							<div className="cli-line">
-								<span className="cli-output">✓ Listing BioBanks</span>
-							</div>
-							<div className="cli-line">
-								<span className="cli-prompt">$</span>{' '}
-								<span className="cli-command">
-									bv run ./myproject syft://research@mybiobank#participants --test
-								</span>
-							</div>
-							<div className="cli-line">
-								<span className="cli-output">✓ Testing NextFlow Pipeline</span>
-							</div>
-							<div className="cli-line">
-								<span className="cli-prompt">$</span>{' '}
-								<span className="cli-command">
-									bv submit ./myproject syft://research@mybiobank#participants
-								</span>
-							</div>
-							<div className="cli-line">
-								<span className="cli-output">⚡ Analysis Submitted</span>
-							</div>
-							<div className="cli-line">
-								<span className="cli-output">---------------------------------</span>
-							</div>
-							<div className="cli-line">
-								<span className="cli-prompt">$</span> <span className="cli-command">bv inbox</span>
-							</div>
-							<table className="cli-table">
-								<thead>
-									<tr>
-										<th>Project</th>
-										<th>Status</th>
-										<th>Path</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>myproject</td>
-										<td>
-											<span>✅ Success</span>
-										</td>
-										<td>./myproject/results</td>
-									</tr>
-								</tbody>
-							</table>
+			{/* Hero CTA Section */}
+			<div className="hero-cta">
+				<form id="waitlist-form-hero" className="hero-form" method="post" action="/api/waitlist">
+					<input
+						type="email"
+						name="email"
+						id="email-hero"
+						className="hero-input"
+						placeholder="Enter your email for beta access"
+						required
+					/>
+					<button type="submit" className="hero-btn">
+						Join Beta →
+					</button>
+				</form>
+			</div>
+
+			{/* Main Features Grid */}
+			<div className="bento-grid">
+				{/* Researchers */}
+				<div className="bento-wide">
+					<div className="bento-label">For Researchers</div>
+					<h2 className="bento-title">Run pipelines on distributed data</h2>
+					<div className="cli-mockup">
+						<div className="cli-line">
+							<span className="cli-prompt">$</span>{' '}
+							<span className="cli-command">bv biobank list</span>
 						</div>
-						<div className="how-it-works">
-							<h3 className="how-it-works-title">How it works:</h3>
-							<ul className="how-it-works-list">
-								<li>Find participants with variant and phenotype data for research</li>
-								<li>Submit nextflow pipelines to BioVault users or biobanks</li>
-								<li>Write nextflow pipelines with the help of AI</li>
-								<li>
-									Perform joins between participants in different biovaults using Secure Enclaves
-								</li>
-								<li>No need to safe guard sensitive data that is never shared</li>
-							</ul>
+						<div className="cli-line">
+							<span className="cli-output">✓ Listing BioBanks</span>
 						</div>
+						<div className="cli-line">
+							<span className="cli-prompt">$</span>{' '}
+							<span className="cli-command">
+								bv run ./myproject syft://research@mybiobank#participants --test
+							</span>
+						</div>
+						<div className="cli-line">
+							<span className="cli-output">✓ Testing NextFlow Pipeline</span>
+						</div>
+						<div className="cli-line">
+							<span className="cli-prompt">$</span>{' '}
+							<span className="cli-command">
+								bv submit ./myproject syft://research@mybiobank#participants
+							</span>
+						</div>
+						<div className="cli-line">
+							<span className="cli-output">⚡ Analysis Submitted</span>
+						</div>
+						<div className="cli-line">
+							<span className="cli-output">---------------------------------</span>
+						</div>
+						<div className="cli-line">
+							<span className="cli-prompt">$</span> <span className="cli-command">bv inbox</span>
+						</div>
+						<table className="cli-table">
+							<thead>
+								<tr>
+									<th>Project</th>
+									<th>Status</th>
+									<th>Path</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>myproject</td>
+									<td>
+										<span>✅ Success</span>
+									</td>
+									<td>./myproject/results</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 					<div className="badges">
 						<span className="badge">FASTQ</span>
@@ -104,61 +110,23 @@ export const MainPage: FC<PageProps> = ({ message }) => (
 					</div>
 				</div>
 
-				{/* Network Section */}
-				<div className="section">
-					<h2 className="section-title">Open Network</h2>
-					<div className="section-content">
-						<div style={{ textAlign: 'center', marginBottom: '1rem' }}>
-							<img
-								src={networkImage}
-								alt="BioVault Network"
-								style={{ maxWidth: '100%', height: 'auto', borderRadius: '8px' }}
-							/>
-						</div>
-						<div className="how-it-works">
-							<h3 className="how-it-works-title">How it works:</h3>
-							<ul className="how-it-works-list">
-								<li>Variants published to relay server with public keys for anonymity</li>
-								<li>Built on SyftBox, an open-source network for secure data science</li>
-								<li>Encrypted messages via relay servers, no open ports needed</li>
-								<li>Data stays on participants' devices, only insights are shared</li>
-								<li>Collaborate without requiring data uploads to the cloud</li>
-							</ul>
-						</div>
+				{/* Participants */}
+				<div className="bento-large">
+					<div className="bento-label">For Participants</div>
+					<h2 className="bento-title">Your data. Your control.</h2>
+					<div className="mobile-mockups">
+						<img
+							src={appImage}
+							alt="BioVault Mobile App"
+							style={{ filter: 'drop-shadow(0 10px 40px rgba(0, 0, 0, 0.15))' }}
+						/>
 					</div>
-					<div className="badges">
-						<span className="badge">Open Source</span>
-						<span className="badge">Open Network</span>
-						<span className="badge">End-to-end Encrypted</span>
-						<span className="badge">Secure Enclaves</span>
-					</div>
-				</div>
-
-				{/* Participants Section */}
-				<div className="section">
-					<h2 className="section-title">For Participants</h2>
-					<div className="section-content">
-						<div className="mobile-mockups">
-							<img
-								src={appImage}
-								alt="BioVault Mobile App"
-								style={{
-									maxWidth: '100%',
-									height: 'auto',
-									filter: 'drop-shadow(0 10px 40px rgba(0, 0, 0, 0.15))',
-								}}
-							/>
-						</div>
-						<div className="how-it-works">
-							<h3 className="how-it-works-title">How it works:</h3>
-							<ul className="how-it-works-list">
-								<li>Supports common variant and raw data formats from major providers</li>
-								<li>Get free ClinVar updates for your variants without sharing data</li>
-								<li>
-									Invite clinicians and experts to analyze your data on your computer securely
-								</li>
-							</ul>
-						</div>
+					<div className="how-it-works">
+						<ul className="how-it-works-list">
+							<li>Supports common variant and raw data formats from major providers</li>
+							<li>Get free ClinVar updates for your variants without sharing data</li>
+							<li>Invite clinicians and experts to analyze your data on your computer securely</li>
+						</ul>
 					</div>
 					<div className="badges">
 						<span className="badge">VCFs</span>
@@ -169,6 +137,30 @@ export const MainPage: FC<PageProps> = ({ message }) => (
 						<span className="badge">Sequencing.com</span>
 						<span className="badge">Dante Labs</span>
 						<span className="badge">Nebula</span>
+					</div>
+				</div>
+
+				{/* Network */}
+				<div className="bento-large">
+					<div className="bento-label">Open Network</div>
+					<h2 className="bento-title">Decentralized collaboration</h2>
+					<div className="mobile-mockups">
+						<img src={networkImage} alt="BioVault Network" />
+					</div>
+					<div className="how-it-works">
+						<ul className="how-it-works-list">
+							<li>Variants published to relay server with public keys for anonymity</li>
+							<li>Built on SyftBox, an open-source network for secure data science</li>
+							<li>Encrypted messages via relay servers, no open ports needed</li>
+							<li>Data stays on participants' devices, only insights are shared</li>
+							<li>Collaborate without requiring data uploads to the cloud</li>
+						</ul>
+					</div>
+					<div className="badges">
+						<span className="badge">Open Source</span>
+						<span className="badge">Open Network</span>
+						<span className="badge">End-to-end Encrypted</span>
+						<span className="badge">Secure Enclaves</span>
 					</div>
 				</div>
 			</div>
@@ -195,14 +187,18 @@ export const MainPage: FC<PageProps> = ({ message }) => (
 				<h2 className="features-title">Built for the Future of Research</h2>
 				<div className="features-grid">
 					<div className="feature">
-						<div className="feature-icon">🔓</div>
+						<div className="feature-icon">
+							<Icons.LockOpen />
+						</div>
 						<h3 className="feature-title">Open Source</h3>
 						<p className="feature-desc">
 							Transparent, community-driven development with full access to source code
 						</p>
 					</div>
 					<div className="feature">
-						<div className="feature-icon">💚</div>
+						<div className="feature-icon">
+							<Icons.Heart />
+						</div>
 						<h3 className="feature-title">Free</h3>
 						<p className="feature-desc">
 							Apache 2.0 Licensed. No fees or hidden costs. Research should be accessible to
@@ -210,26 +206,34 @@ export const MainPage: FC<PageProps> = ({ message }) => (
 						</p>
 					</div>
 					<div className="feature">
-						<div className="feature-icon">🚀</div>
+						<div className="feature-icon">
+							<Icons.Rocket />
+						</div>
 						<h3 className="feature-title">Permissionless</h3>
 						<p className="feature-desc">
 							Start collaborating immediately without any approval processes
 						</p>
 					</div>
 					<div className="feature">
-						<div className="feature-icon">🔒</div>
+						<div className="feature-icon">
+							<Icons.Shield />
+						</div>
 						<h3 className="feature-title">Privacy First</h3>
 						<p className="feature-desc">End-to-end encryption and user-controlled data sharing</p>
 					</div>
 					<div className="feature">
-						<div className="feature-icon">🌐</div>
+						<div className="feature-icon">
+							<Icons.Globe />
+						</div>
 						<h3 className="feature-title">Decentralized</h3>
 						<p className="feature-desc">
 							No single point of failure or control - true peer-to-peer research
 						</p>
 					</div>
 					<div className="feature">
-						<div className="feature-icon">⚡</div>
+						<div className="feature-icon">
+							<Icons.ShieldCheck />
+						</div>
 						<h3 className="feature-title">Secure Enclaves</h3>
 						<p className="feature-desc">
 							Leverage state of the art secure enclaves to perform joint analysis between data
@@ -361,34 +365,13 @@ export const MainPage: FC<PageProps> = ({ message }) => (
 						}
 					}
 					
-					// Apply tracking to both forms
+					// Apply tracking to all forms
 					trackFormSubmit('waitlist-form', 'email', 'bottom');
 					trackFormSubmit('waitlist-form-top', 'email-top', 'top');
-
-					// Add subtle animations on scroll
-					const observerOptions = {
-						threshold: 0.1,
-						rootMargin: '0px 0px -100px 0px'
-					};
-
-					const observer = new IntersectionObserver((entries) => {
-						entries.forEach(entry => {
-							if (entry.isIntersecting) {
-								entry.target.style.opacity = '1';
-								entry.target.style.transform = 'translateY(0)';
-							}
-						});
-					}, observerOptions);
-
-					document.querySelectorAll('.section, .features, .signup').forEach(el => {
-						el.style.opacity = '0';
-						el.style.transform = 'translateY(30px)';
-						el.style.transition = 'all 0.6s ease';
-						observer.observe(el);
-					});
+					trackFormSubmit('waitlist-form-hero', 'email-hero', 'hero');
 				});
 			`,
 			}}
 		/>
-	</Layout>
+	</>
 )
