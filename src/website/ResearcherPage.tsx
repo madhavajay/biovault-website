@@ -1,5 +1,5 @@
 import type { FC } from 'hono/jsx'
-import { Layout, Message } from './Layout'
+import { Message } from './Layout'
 
 // Using string path for image since Wrangler doesn't bundle static assets
 const networkImage = '/images/network.jpg'
@@ -9,7 +9,7 @@ interface PageProps {
 }
 
 export const ResearcherPage: FC<PageProps> = ({ message }) => (
-	<Layout title="Join the Beta - BioVault is a free and open-source tool and permissionless network for collaborative genomics">
+	<>
 		<div className="container">
 			<header className="header">
 				<h1 className="logo">BioVault</h1>
@@ -434,5 +434,5 @@ export const ResearcherPage: FC<PageProps> = ({ message }) => (
 			`,
 			}}
 		/>
-	</Layout>
+	</>
 )

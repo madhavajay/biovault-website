@@ -1,5 +1,5 @@
 import type { FC } from 'hono/jsx'
-import { Layout, Message } from './Layout'
+import { Message } from './Layout'
 
 // Using string paths for images since Wrangler doesn't bundle static assets
 const appImage = '/images/app.png'
@@ -9,8 +9,8 @@ interface PageProps {
 	message?: string
 }
 
-export const MainPage: FC<PageProps> = ({ message }) => (
-	<Layout title="Join the Beta - BioVault is a free and open-source tool and permissionless network for collaborative genomics">
+export const MainPage: FC<PageProps> = ({ message}) => (
+	<>
 		<div className="container">
 			<header className="header">
 				<h1 className="logo">BioVault</h1>
@@ -390,5 +390,5 @@ export const MainPage: FC<PageProps> = ({ message }) => (
 			`,
 			}}
 		/>
-	</Layout>
+	</>
 )
