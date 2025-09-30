@@ -1,5 +1,6 @@
 import type { FC } from 'hono/jsx'
 import { Message } from './Layout'
+import { Icons } from './Icons'
 
 // Using string path for image since Wrangler doesn't bundle static assets
 const networkImage = '/images/network.jpg'
@@ -159,31 +160,27 @@ export const ResearcherPage: FC<PageProps> = ({ message }) => (
 								</div>
 							</li>
 						</ol>
-
-						<div className="network-intro">
-							<div className="image-wrapper">
-								<img src={networkImage} alt="BioVault Network" />
-							</div>
-							<div>
-								<p>
-									BioVault is powered by
-									<a href="https://syftbox.net/" target="_blank" rel="noopener noreferrer">
-										<strong>SyftBox</strong>
-									</a>
-									, an open-source protocol from{' '}
-									<a href="https://openmined.org" target="_blank" rel="noopener noreferrer">
-										OpenMined
-									</a>{' '}
-									for privacy-preserving remote data science. Instead of moving sensitive datasets
-									to outside servers, SyftBox enables <em>data visitation</em>: code travels
-									securely to where the data lives, runs locally, and only the results are shared
-									back. This technology is already proven in industry for secure distributed
-									computation, and BioVault applies it directly to genomics and biomedical research.
-								</p>
-							</div>
-						</div>
 					</div>
 				</div>
+			</div>
+
+			{/* Network/SyftBox Explanation */}
+			<div className="info-banner">
+				<p>
+					BioVault is powered by{' '}
+					<a href="https://syftbox.net/" target="_blank" rel="noopener noreferrer">
+						<strong>SyftBox</strong>
+					</a>
+					, an open-source protocol from{' '}
+					<a href="https://openmined.org" target="_blank" rel="noopener noreferrer">
+						OpenMined
+					</a>{' '}
+					for privacy-preserving remote data science. Instead of moving sensitive datasets to
+					outside servers, SyftBox enables <em>data visitation</em>: code travels securely to where
+					the data lives, runs locally, and only the results are shared back. This technology is
+					already proven in industry for secure distributed computation, and BioVault applies it
+					directly to genomics and biomedical research.
+				</p>
 			</div>
 
 			{/* Top Signup Strip */}
@@ -209,7 +206,9 @@ export const ResearcherPage: FC<PageProps> = ({ message }) => (
 				<h2 className="features-title">Collaboration Without Surrendering Control</h2>
 				<div className="features-grid">
 					<div className="feature">
-						<div className="feature-icon">🧬</div>
+						<div className="feature-icon">
+							<Icons.Dna />
+						</div>
 						<h3 className="feature-title">You Stay in Control</h3>
 						<p className="feature-desc">
 							Run pipelines on sensitive datasets without moving raw files—code travels to the data,
@@ -218,7 +217,9 @@ export const ResearcherPage: FC<PageProps> = ({ message }) => (
 					</div>
 
 					<div className="feature">
-						<div className="feature-icon">🔒</div>
+						<div className="feature-icon">
+							<Icons.Shield />
+						</div>
 						<h3 className="feature-title">Privacy First</h3>
 						<p className="feature-desc">
 							Protect participants with end-to-end encryption and secure enclaves for joint analysis
@@ -227,7 +228,9 @@ export const ResearcherPage: FC<PageProps> = ({ message }) => (
 					</div>
 
 					<div className="feature">
-						<div className="feature-icon">🌍</div>
+						<div className="feature-icon">
+							<Icons.Globe />
+						</div>
 						<h3 className="feature-title">Global Equity</h3>
 						<p className="feature-desc">
 							Empower researchers and patient groups everywhere—including the Global South and
@@ -237,7 +240,9 @@ export const ResearcherPage: FC<PageProps> = ({ message }) => (
 					</div>
 
 					<div className="feature">
-						<div className="feature-icon">📊</div>
+						<div className="feature-icon">
+							<Icons.BarChart />
+						</div>
 						<h3 className="feature-title">Reproducible Science</h3>
 						<p className="feature-desc">
 							Standardized workflows and versioned pipelines ensure results can be validated and
@@ -246,7 +251,9 @@ export const ResearcherPage: FC<PageProps> = ({ message }) => (
 					</div>
 
 					<div className="feature">
-						<div className="feature-icon">⚡</div>
+						<div className="feature-icon">
+							<Icons.Zap />
+						</div>
 						<h3 className="feature-title">Fast, Remote Data Science</h3>
 						<p className="feature-desc">
 							Perform remote data visitation at scale—submit pipelines across multiple vaults and
@@ -255,7 +262,9 @@ export const ResearcherPage: FC<PageProps> = ({ message }) => (
 					</div>
 
 					<div className="feature">
-						<div className="feature-icon">🔓</div>
+						<div className="feature-icon">
+							<Icons.LockOpen />
+						</div>
 						<h3 className="feature-title">Open and Transparent</h3>
 						<p className="feature-desc">
 							Open-source and free to use. No gatekeepers, no hidden costs—just science moving

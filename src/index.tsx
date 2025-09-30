@@ -29,6 +29,7 @@ app.use(
 					<meta charset="UTF-8" />
 					<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 					<title>{title || 'Join the Beta - BioVault'}</title>
+					<link rel="icon" type="image/svg+xml" href="/images/logo.svg" />
 					<link rel="preconnect" href="https://fonts.googleapis.com" />
 					<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
 					<link
@@ -50,6 +51,12 @@ app.use(
 					<style dangerouslySetInnerHTML={{ __html: styles }} />
 				</head>
 				<body>
+					<div class="blobs-container">
+						<div class="blob blob-1"></div>
+						<div class="blob blob-2"></div>
+						<div class="blob blob-3"></div>
+						<div class="blob blob-4"></div>
+					</div>
 					<nav class="navbar">
 						<div class="navbar-container">
 							<a href="/" class="navbar-logo">

@@ -1,5 +1,6 @@
 import type { FC } from 'hono/jsx'
 import { Message } from './Layout'
+import { Icons } from './Icons'
 
 // Using string paths for images since Wrangler doesn't bundle static assets
 const appImage = '/images/app.png'
@@ -23,70 +24,60 @@ export const ParticipantPage: FC<PageProps> = ({ message }) => (
 		</header>
 		{message && <Message message={message} />}
 
-		{/* Participants Section */}
-		<div className="top-section">
-			<h2 className="top-section-title">For Participants</h2>
-			<div className="top-section-content">
-				<div className="network-intro">
-					{/* Left: App Image */}
-					<div className="image-wrapper">
-						<img
-							src={appImage}
-							alt="BioVault Mobile App"
-							style={{ filter: 'drop-shadow(0 10px 40px rgba(0, 0, 0, 0.15))' }}
-						/>
+		{/* Participants Features */}
+		<div className="features">
+			<div className="features-grid">
+				<div className="feature">
+					<div className="feature-icon">
+						<Icons.Lock />
 					</div>
-					{/* Right: Text */}
-					<div>
-						<p>With the BioVault app, you are always in control of your own genomic data:</p>
-						<ol className="story-steps">
-							<li>
-								<strong>Store your data securely</strong> — upload your raw data (VCF, BAM/CRAM,
-								FASTQ, or files from 23andMe, AncestryDNA, MyHeritage, Dante Labs, etc.) directly
-								into your BioVault on your phone or computer.
-								<em>Your files never leave your device.</em>
-							</li>
-							<li>
-								<strong>Approve requests from researchers</strong> — scientists can send you
-								analysis requests. You'll see exactly who is asking, what they want to run, and you
-								decide whether to allow it.
-							</li>
-							<li>
-								<strong>Track who accessed your data</strong> — the app gives you a clear history of
-								which researchers ran analyses, when they did it, and what results were shared.
-								<em>Transparency is built in.</em>
-							</li>
-						</ol>
+					<h3 className="feature-title">Store your data securely</h3>
+					<p className="feature-desc">
+						Upload your raw data (VCF, BAM/CRAM, FASTQ, or files from 23andMe, AncestryDNA,
+						MyHeritage, Dante Labs, etc.) directly into your BioVault. Your files never leave your
+						device.
+					</p>
+				</div>
+				<div className="feature">
+					<div className="feature-icon">
+						<Icons.CheckCircle />
 					</div>
+					<h3 className="feature-title">Approve requests from researchers</h3>
+					<p className="feature-desc">
+						Scientists can send you analysis requests. You'll see exactly who is asking, what they
+						want to run, and you decide whether to allow it.
+					</p>
+				</div>
+				<div className="feature">
+					<div className="feature-icon">
+						<Icons.BarChart />
+					</div>
+					<h3 className="feature-title">Track who accessed your data</h3>
+					<p className="feature-desc">
+						The app gives you a clear history of which researchers ran analyses, when they did it,
+						and what results were shared. Transparency is built in.
+					</p>
 				</div>
 			</div>
 		</div>
 
 		{/* Network Section */}
-		<div className="network">
-			<h2 className="network-title">How It Works</h2>
-			<div className="network-intro">
-				<div className="image-wrapper">
-					<img src={networkImage} alt="BioVault Network" />
-				</div>
-				<div>
-					<p>
-						BioVault is powered by
-						<a href="https://syftbox.net" target="_blank" rel="noopener noreferrer">
-							<strong>SyftBox</strong>
-						</a>
-						, an open-source protocol from{' '}
-						<a href="https://openmined.org" target="_blank" rel="noopener noreferrer">
-							OpenMined
-						</a>{' '}
-						for privacy-preserving remote data science. Instead of moving sensitive datasets to
-						outside servers, SyftBox enables <em>data visitation</em>: code travels securely to
-						where the data lives, runs locally, and only the results are shared back. This
-						technology is already proven in industry for secure distributed computation, and
-						BioVault applies it directly to genomics and biomedical research.
-					</p>
-				</div>
-			</div>
+		<div className="info-banner">
+			<p>
+				BioVault is powered by{' '}
+				<a href="https://syftbox.net" target="_blank" rel="noopener noreferrer">
+					<strong>SyftBox</strong>
+				</a>
+				, an open-source protocol from{' '}
+				<a href="https://openmined.org" target="_blank" rel="noopener noreferrer">
+					OpenMined
+				</a>{' '}
+				for privacy-preserving remote data science. Instead of moving sensitive datasets to outside
+				servers, SyftBox enables <em>data visitation</em>: code travels securely to where the data
+				lives, runs locally, and only the results are shared back. This technology is already proven
+				in industry for secure distributed computation, and BioVault applies it directly to genomics
+				and biomedical research.
+			</p>
 		</div>
 
 		{/* Top Signup Strip */}
@@ -112,7 +103,9 @@ export const ParticipantPage: FC<PageProps> = ({ message }) => (
 			<h2 className="features-title">Why Join as a Participant?</h2>
 			<div className="features-grid">
 				<div className="feature">
-					<div className="feature-icon">🔒</div>
+					<div className="feature-icon">
+						<Icons.Lock />
+					</div>
 					<h3 className="feature-title">Your Data, Your Control</h3>
 					<p className="feature-desc">
 						Your raw files never leave your device. You decide who can access your data and what
@@ -120,7 +113,9 @@ export const ParticipantPage: FC<PageProps> = ({ message }) => (
 					</p>
 				</div>
 				<div className="feature">
-					<div className="feature-icon">👀</div>
+					<div className="feature-icon">
+						<Icons.Eye />
+					</div>
 					<h3 className="feature-title">Full Transparency</h3>
 					<p className="feature-desc">
 						See a clear log of every researcher who has accessed your data, when they did it, and
@@ -128,7 +123,9 @@ export const ParticipantPage: FC<PageProps> = ({ message }) => (
 					</p>
 				</div>
 				<div className="feature">
-					<div className="feature-icon">⚡</div>
+					<div className="feature-icon">
+						<Icons.Zap />
+					</div>
 					<h3 className="feature-title">Privacy-Preserving Collaboration</h3>
 					<p className="feature-desc">
 						Researchers can gain insights without ever seeing or copying your sensitive genomic

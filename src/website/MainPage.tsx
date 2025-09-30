@@ -1,5 +1,6 @@
 import type { FC } from 'hono/jsx'
 import { Message } from './Layout'
+import { Icons } from './Icons'
 
 // Using string paths for images since Wrangler doesn't bundle static assets
 const appImage = '/images/app.png'
@@ -143,19 +144,17 @@ export const MainPage: FC<PageProps> = ({ message }) => (
 				<div className="bento-large">
 					<div className="bento-label">Open Network</div>
 					<h2 className="bento-title">Decentralized collaboration</h2>
-					<div className="bento-split">
-						<div className="image-wrapper">
-							<img src={networkImage} alt="BioVault Network" />
-						</div>
-						<div className="how-it-works">
-							<ul className="how-it-works-list">
-								<li>Variants published to relay server with public keys for anonymity</li>
-								<li>Built on SyftBox, an open-source network for secure data science</li>
-								<li>Encrypted messages via relay servers, no open ports needed</li>
-								<li>Data stays on participants' devices, only insights are shared</li>
-								<li>Collaborate without requiring data uploads to the cloud</li>
-							</ul>
-						</div>
+					<div className="mobile-mockups">
+						<img src={networkImage} alt="BioVault Network" />
+					</div>
+					<div className="how-it-works">
+						<ul className="how-it-works-list">
+							<li>Variants published to relay server with public keys for anonymity</li>
+							<li>Built on SyftBox, an open-source network for secure data science</li>
+							<li>Encrypted messages via relay servers, no open ports needed</li>
+							<li>Data stays on participants' devices, only insights are shared</li>
+							<li>Collaborate without requiring data uploads to the cloud</li>
+						</ul>
 					</div>
 					<div className="badges">
 						<span className="badge">Open Source</span>
@@ -188,14 +187,18 @@ export const MainPage: FC<PageProps> = ({ message }) => (
 				<h2 className="features-title">Built for the Future of Research</h2>
 				<div className="features-grid">
 					<div className="feature">
-						<div className="feature-icon">🔓</div>
+						<div className="feature-icon">
+							<Icons.LockOpen />
+						</div>
 						<h3 className="feature-title">Open Source</h3>
 						<p className="feature-desc">
 							Transparent, community-driven development with full access to source code
 						</p>
 					</div>
 					<div className="feature">
-						<div className="feature-icon">💚</div>
+						<div className="feature-icon">
+							<Icons.Heart />
+						</div>
 						<h3 className="feature-title">Free</h3>
 						<p className="feature-desc">
 							Apache 2.0 Licensed. No fees or hidden costs. Research should be accessible to
@@ -203,26 +206,34 @@ export const MainPage: FC<PageProps> = ({ message }) => (
 						</p>
 					</div>
 					<div className="feature">
-						<div className="feature-icon">🚀</div>
+						<div className="feature-icon">
+							<Icons.Rocket />
+						</div>
 						<h3 className="feature-title">Permissionless</h3>
 						<p className="feature-desc">
 							Start collaborating immediately without any approval processes
 						</p>
 					</div>
 					<div className="feature">
-						<div className="feature-icon">🔒</div>
+						<div className="feature-icon">
+							<Icons.Shield />
+						</div>
 						<h3 className="feature-title">Privacy First</h3>
 						<p className="feature-desc">End-to-end encryption and user-controlled data sharing</p>
 					</div>
 					<div className="feature">
-						<div className="feature-icon">🌐</div>
+						<div className="feature-icon">
+							<Icons.Globe />
+						</div>
 						<h3 className="feature-title">Decentralized</h3>
 						<p className="feature-desc">
 							No single point of failure or control - true peer-to-peer research
 						</p>
 					</div>
 					<div className="feature">
-						<div className="feature-icon">⚡</div>
+						<div className="feature-icon">
+							<Icons.ShieldCheck />
+						</div>
 						<h3 className="feature-title">Secure Enclaves</h3>
 						<p className="feature-desc">
 							Leverage state of the art secure enclaves to perform joint analysis between data
