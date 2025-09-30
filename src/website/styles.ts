@@ -1431,5 +1431,163 @@ body {
 		outline: 2px solid #059669;
 		outline-offset: 2px;
 	}
+
+/* Navbar Styles */
+.navbar {
+	background: white;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+	position: sticky;
+	top: 0;
+	z-index: 1000;
+	border-bottom: 2px solid #10b981;
+}
+
+.navbar-container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 1rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 64px;
+}
+
+.navbar-logo {
+	font-size: 1.5rem;
+	font-weight: 700;
+	color: #059669;
+	text-decoration: none;
+	letter-spacing: -0.02em;
+	transition: color 0.3s ease;
+}
+
+.navbar-logo:hover {
+	color: #047857;
+}
+
+/* Hamburger menu toggle button */
+.navbar-toggle {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	width: 28px;
+	height: 28px;
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	padding: 0;
+	z-index: 1001;
+}
+
+.navbar-toggle:focus {
+	outline: 2px solid #059669;
+	outline-offset: 2px;
+	border-radius: 4px;
+}
+
+.navbar-toggle-icon {
+	width: 28px;
+	height: 3px;
+	background: #059669;
+	border-radius: 2px;
+	transition: all 0.3s ease;
+	transform-origin: center;
+}
+
+.navbar-toggle.active .navbar-toggle-icon:nth-child(1) {
+	transform: rotate(45deg) translateY(9px);
+}
+
+.navbar-toggle.active .navbar-toggle-icon:nth-child(2) {
+	opacity: 0;
+}
+
+.navbar-toggle.active .navbar-toggle-icon:nth-child(3) {
+	transform: rotate(-45deg) translateY(-9px);
+}
+
+/* Mobile menu */
+.navbar-menu {
+	position: fixed;
+	top: 64px;
+	left: 0;
+	right: 0;
+	background: white;
+	display: flex;
+	flex-direction: column;
+	padding: 1rem;
+	gap: 0.5rem;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+	transform: translateY(-100%);
+	opacity: 0;
+	visibility: hidden;
+	transition: all 0.3s ease;
+	border-bottom: 2px solid #10b981;
+}
+
+.navbar-menu.active {
+	transform: translateY(0);
+	opacity: 1;
+	visibility: visible;
+}
+
+.navbar-link {
+	padding: 0.875rem 1rem;
+	color: #1f2937;
+	text-decoration: none;
+	font-weight: 500;
+	border-radius: 8px;
+	transition: all 0.3s ease;
+	text-align: center;
+	display: block;
+}
+
+.navbar-link:hover {
+	background: #f0fdf4;
+	color: #059669;
+}
+
+.navbar-link:focus {
+	outline: 2px solid #059669;
+	outline-offset: 2px;
+}
+
+/* Desktop navigation */
+@media (min-width: 768px) {
+	.navbar-toggle {
+		display: none;
+	}
+
+	.navbar-menu {
+		position: static;
+		flex-direction: row;
+		padding: 0;
+		gap: 0.5rem;
+		box-shadow: none;
+		transform: none;
+		opacity: 1;
+		visibility: visible;
+		border-bottom: none;
+	}
+
+	.navbar-link {
+		padding: 0.5rem 1rem;
+	}
+}
+
+@media (min-width: 1024px) {
+	.navbar-menu {
+		gap: 1rem;
+	}
+
+	.navbar-link {
+		padding: 0.5rem 1.5rem;
+	}
+}
+
+/* Adjust body to account for sticky navbar */
+body {
+	padding-top: 0;
+}
 }
 `

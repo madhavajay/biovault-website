@@ -42,7 +42,66 @@ app.use(
 					<script src="https://metrics.syftbox.net/api/script.js" data-site-id="3" defer></script>
 					<style dangerouslySetInnerHTML={{ __html: styles }} />
 				</head>
-				<body>{children}</body>
+				<body>
+					<nav class="navbar">
+						<div class="navbar-container">
+							<a href="/" class="navbar-logo">
+								BioVault
+							</a>
+							<button class="navbar-toggle" id="navbar-toggle" aria-label="Toggle navigation">
+								<span class="navbar-toggle-icon"></span>
+								<span class="navbar-toggle-icon"></span>
+								<span class="navbar-toggle-icon"></span>
+							</button>
+							<div class="navbar-menu" id="navbar-menu">
+								<a href="/" class="navbar-link">
+									Home
+								</a>
+								<a href="/researcher" class="navbar-link">
+									For Researchers
+								</a>
+								<a href="/participant" class="navbar-link">
+									For Participants
+								</a>
+							</div>
+						</div>
+					</nav>
+					{children}
+					<script
+						dangerouslySetInnerHTML={{
+							__html: `
+							document.getElementById('navbar-toggle')?.addEventListener('click', function() {
+								const menu = document.getElementById('navbar-menu');
+								const toggle = document.getElementById('navbar-toggle');
+								menu?.classList.toggle('active');
+								toggle?.classList.toggle('active');
+							});
+							
+							// Close menu when clicking outside
+							document.addEventListener('click', function(event) {
+								const navbar = document.querySelector('.navbar');
+								const toggle = document.getElementById('navbar-toggle');
+								const menu = document.getElementById('navbar-menu');
+								
+								if (navbar && !navbar.contains(event.target)) {
+									menu?.classList.remove('active');
+									toggle?.classList.remove('active');
+								}
+							});
+							
+							// Close menu when clicking a link
+							document.querySelectorAll('.navbar-link').forEach(link => {
+								link.addEventListener('click', function() {
+									const menu = document.getElementById('navbar-menu');
+									const toggle = document.getElementById('navbar-toggle');
+									menu?.classList.remove('active');
+									toggle?.classList.remove('active');
+								});
+							});
+						`,
+						}}
+					/>
+				</body>
 			</html>
 		)
 	})
