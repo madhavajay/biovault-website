@@ -3,6 +3,7 @@ import { jsxRenderer } from 'hono/jsx-renderer'
 import { MainPage } from './website/MainPage'
 import { ResearcherPage } from './website/ResearcherPage'
 import { ParticipantPage } from './website/ParticipantPage'
+import { AboutPage } from './website/AboutPage'
 import { GenesIndexPage } from './website/genes/index'
 import { GenePage } from './website/genes/GenePage'
 import { isValidGene, getProperGeneName } from './website/genes/geneList'
@@ -28,6 +29,12 @@ app.use(
 					<meta charset="UTF-8" />
 					<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 					<title>{title || 'Join the Beta - BioVault'}</title>
+					<link rel="preconnect" href="https://fonts.googleapis.com" />
+					<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+					<link
+						href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap"
+						rel="stylesheet"
+					/>
 					<script async src="https://www.googletagmanager.com/gtag/js?id=G-4D2KBBR5W5"></script>
 					<script
 						dangerouslySetInnerHTML={{
@@ -62,6 +69,9 @@ app.use(
 								</a>
 								<a href="/participant" class="navbar-link">
 									For Participants
+								</a>
+								<a href="/about" class="navbar-link">
+									About
 								</a>
 							</div>
 						</div>
@@ -129,6 +139,10 @@ app.get('/participant', (c) => {
 	return c.render(<ParticipantPage message={message} />, {
 		title: 'Join the Beta - BioVault gives patients full control of their genomic data',
 	})
+})
+
+app.get('/about', (c) => {
+	return c.render(<AboutPage />, { title: 'About - BioVault' })
 })
 
 // Gene routes
