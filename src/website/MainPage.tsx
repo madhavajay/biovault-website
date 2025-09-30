@@ -9,7 +9,7 @@ interface PageProps {
 	message?: string
 }
 
-export const MainPage: FC<PageProps> = ({ message}) => (
+export const MainPage: FC<PageProps> = ({ message }) => (
 	<>
 		<div className="container">
 			<header className="header">
@@ -108,12 +108,8 @@ export const MainPage: FC<PageProps> = ({ message}) => (
 				<div className="section">
 					<h2 className="section-title">Open Network</h2>
 					<div className="section-content">
-						<div style={{ textAlign: 'center', marginBottom: '1rem' }}>
-							<img
-								src={networkImage}
-								alt="BioVault Network"
-								style={{ maxWidth: '100%', height: 'auto', borderRadius: '8px' }}
-							/>
+						<div className="image-wrapper">
+							<img src={networkImage} alt="BioVault Network" />
 						</div>
 						<div className="how-it-works">
 							<h3 className="how-it-works-title">How it works:</h3>
@@ -142,11 +138,7 @@ export const MainPage: FC<PageProps> = ({ message}) => (
 							<img
 								src={appImage}
 								alt="BioVault Mobile App"
-								style={{
-									maxWidth: '100%',
-									height: 'auto',
-									filter: 'drop-shadow(0 10px 40px rgba(0, 0, 0, 0.15))',
-								}}
+								style={{ filter: 'drop-shadow(0 10px 40px rgba(0, 0, 0, 0.15))' }}
 							/>
 						</div>
 						<div className="how-it-works">

@@ -161,15 +161,11 @@ export const ResearcherPage: FC<PageProps> = ({ message }) => (
 						</ol>
 
 						<div className="network-intro">
-							<div style={{ flexShrink: 0, width: '50%' }}>
-								<img
-									src={networkImage}
-									alt="BioVault Network"
-									style={{ width: '100%', height: 'auto', borderRadius: '8px' }}
-								/>
+							<div className="image-wrapper">
+								<img src={networkImage} alt="BioVault Network" />
 							</div>
-							<div style={{ flex: 1 }}>
-								<p style={{ fontSize: '1.125rem' }}>
+							<div>
+								<p>
 									BioVault is powered by
 									<a href="https://syftbox.net/" target="_blank" rel="noopener noreferrer">
 										<strong>SyftBox</strong>

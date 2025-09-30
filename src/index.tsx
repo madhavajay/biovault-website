@@ -52,14 +52,16 @@ app.use(
 app.get('/', (c) => {
 	const message = c.req.query('message')
 	return c.render(<MainPage message={message} />, {
-		title: 'Join the Beta - BioVault is a free and open-source tool and permissionless network for collaborative genomics',
+		title:
+			'Join the Beta - BioVault is a free and open-source tool and permissionless network for collaborative genomics',
 	})
 })
 
 app.get('/researcher', (c) => {
 	const message = c.req.query('message')
 	return c.render(<ResearcherPage message={message} />, {
-		title: 'Join the Beta - BioVault is a free and open-source tool and permissionless network for collaborative genomics',
+		title:
+			'Join the Beta - BioVault is a free and open-source tool and permissionless network for collaborative genomics',
 	})
 })
 
@@ -83,7 +85,9 @@ app.get('/genes/:gene', (c) => {
 		return c.notFound()
 	}
 
-	return c.render(<GenePage gene={properGeneName} />, { title: `${properGeneName} - BioVault Genes` })
+	return c.render(<GenePage gene={properGeneName} />, {
+		title: `${properGeneName} - BioVault Genes`,
+	})
 })
 
 // API routes
