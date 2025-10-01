@@ -165,6 +165,32 @@ app.use(
 					<script
 						dangerouslySetInnerHTML={{
 							__html: `
+							// Analytics tracking function
+							window.trackAnalyticsEvent = async function(eventName, properties) {
+								try {
+									await fetch('https://metrics.syftbox.net/api/track', {
+										method: 'POST',
+										headers: { 'Content-Type': 'application/json' },
+										body: JSON.stringify({
+											type: 'custom_event',
+											site_id: '3',
+											hostname: 'biovault.net',
+											pathname: window.location.pathname,
+											querystring: window.location.search,
+											screenWidth: window.innerWidth,
+											screenHeight: window.innerHeight,
+											language: navigator.language || 'en-US',
+											page_title: document.title,
+											referrer: document.referrer,
+											event_name: eventName,
+											properties: JSON.stringify(properties || {})
+										})
+									});
+								} catch(e) {
+									console.error('Analytics error:', e);
+								}
+							};
+
 							document.getElementById('navbar-toggle')?.addEventListener('click', function() {
 								const menu = document.getElementById('navbar-menu');
 								const toggle = document.getElementById('navbar-toggle');

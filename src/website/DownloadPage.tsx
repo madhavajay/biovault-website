@@ -26,7 +26,7 @@ export const DownloadPage: FC = () => (
 							</code>
 						</div>
 						<button
-							onclick="copyToClipboard('install-code', this)"
+							onclick="copyToClipboard('install-code', this); window.trackAnalyticsEvent('copy_install_command', { source: 'download_page' });"
 							className="copy-button"
 							title="Copy to clipboard"
 						>
@@ -44,6 +44,7 @@ export const DownloadPage: FC = () => (
 						target="_blank"
 						rel="noopener noreferrer"
 						className="github-download-btn"
+						onclick="window.trackAnalyticsEvent('external_link_click', { destination: 'github_releases', source: 'download_page' });"
 					>
 						Download from GitHub
 					</a>
@@ -156,6 +157,7 @@ export const DownloadPage: FC = () => (
 							target="_blank"
 							rel="noopener noreferrer"
 							className="github-download-btn"
+							onclick="window.trackAnalyticsEvent('external_link_click', { destination: 'tutorials', source: 'download_page' });"
 						>
 							BioVault Tutorials
 						</a>
@@ -164,6 +166,7 @@ export const DownloadPage: FC = () => (
 							target="_blank"
 							rel="noopener noreferrer"
 							className="github-download-btn"
+							onclick="window.trackAnalyticsEvent('external_link_click', { destination: 'github_repo', source: 'download_page' });"
 						>
 							BioVault GitHub Repository
 						</a>
@@ -231,6 +234,7 @@ export const DownloadPage: FC = () => (
 						target="_blank"
 						rel="noopener noreferrer"
 						className="github-download-btn"
+						onclick="window.trackAnalyticsEvent('external_link_click', { destination: 'github_cli_repo', source: 'download_page' });"
 					>
 						BioVault CLI Repository
 					</a>
@@ -239,6 +243,7 @@ export const DownloadPage: FC = () => (
 						target="_blank"
 						rel="noopener noreferrer"
 						className="github-download-btn"
+						onclick="window.trackAnalyticsEvent('external_link_click', { destination: 'github_app_repo', source: 'download_page' });"
 					>
 						BioVault App Repository
 					</a>
@@ -256,6 +261,7 @@ export const DownloadPage: FC = () => (
 						target="_blank"
 						rel="noopener noreferrer"
 						className="github-download-btn"
+						onclick="window.trackAnalyticsEvent('external_link_click', { destination: 'slack', source: 'download_page' });"
 					>
 						Join Slack: #community-biovault
 					</a>
@@ -264,6 +270,7 @@ export const DownloadPage: FC = () => (
 						target="_blank"
 						rel="noopener noreferrer"
 						className="github-download-btn"
+						onclick="window.trackAnalyticsEvent('external_link_click', { destination: 'github_issues', source: 'download_page' });"
 					>
 						GitHub Issues
 					</a>
