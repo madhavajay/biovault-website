@@ -12,35 +12,51 @@ interface PageProps {
 
 export const MainPage: FC<PageProps> = ({ message }) => (
 	<>
-		<div className="container">
-			<header className="header">
-				<h1 className="logo">BioVault</h1>
-				<p className="tagline">
-					BioVault is a free, open-source, permissionless network for collaborative genomics.
-				</p>
-				<p>
-					Built with end-to-end encryption, secure enclaves, and data visitation, BioVault lets
-					researchers and participants share insights without ever sharing raw data.
-				</p>
-			</header>
-			{message && <Message message={message} />}
-
-			{/* Hero CTA Section */}
-			<div className="hero-cta">
-				<form id="waitlist-form-hero" className="hero-form" method="post" action="/api/waitlist">
-					<input
-						type="email"
-						name="email"
-						id="email-hero"
-						className="hero-input"
-						placeholder="Enter your email for beta access"
-						required
+		{/* Hero Section */}
+		<div className="hero-section">
+			<div className="hero-image">
+				<picture>
+					<source
+						srcset="/images/hero-320.avif 320w, /images/hero-640.avif 640w, /images/hero-1280.avif 1280w, /images/hero.avif 1920w"
+						sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1280px"
+						type="image/avif"
 					/>
-					<button type="submit" className="hero-btn">
-						Join Beta →
-					</button>
-				</form>
+					<img src="/images/hero.jpg" alt="Researcher in laboratory" />
+				</picture>
 			</div>
+			<div className="hero-content">
+				<h1 className="hero-headline">Share insights without ever sharing raw data</h1>
+				<p className="hero-description">
+					BioVault is a <strong>free</strong>, <strong>open-source</strong>, <strong>permissionless</strong> network for collaborative genomics.
+					Built with end-to-end encryption, secure enclaves, and data visitation, BioVault lets
+					researchers and participants collaborate securely.
+				</p>
+				<div className="hero-cta-box">
+					<h2 className="hero-cta-title">Join the Beta and get:</h2>
+					<ul className="hero-cta-benefits">
+						<li>Personal help setting up BioVault</li>
+						<li>Introductions to researchers and experts to collaborate with</li>
+						<li>Directly steer our development to solve your problems</li>
+					</ul>
+					<form id="waitlist-form-hero" className="hero-form" method="post" action="/api/waitlist">
+						<input
+							type="email"
+							name="email"
+							id="email-hero"
+							className="hero-input"
+							placeholder="Enter your email for beta access"
+							required
+						/>
+						<button type="submit" className="hero-btn">
+							Join Beta →
+						</button>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<div className="container">
+			{message && <Message message={message} />}
 
 			{/* Main Features Grid */}
 			<div className="bento-grid">
@@ -108,6 +124,42 @@ export const MainPage: FC<PageProps> = ({ message }) => (
 						<span className="badge">Phenotype Data</span>
 						<span className="badge">Wearable Data</span>
 					</div>
+					<div style="margin-top: 2rem; text-align: right;">
+						<a href="/researcher" className="bento-cta-btn">
+							Read more about how BioVault helps Researchers →
+						</a>
+					</div>
+				</div>
+
+				{/* Network */}
+				<div className="bento-large">
+					<div className="bento-label">Open Network</div>
+					<h2 className="bento-title">Decentralized collaboration</h2>
+					<div className="mobile-mockups">
+						<picture>
+							<source
+								srcset="/images/network-320.avif 320w, /images/network-640.avif 640w, /images/network-1280.avif 1280w, /images/network.avif 1920w"
+								sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1280px"
+								type="image/avif"
+							/>
+							<img src={networkImage} alt="BioVault Network" />
+						</picture>
+					</div>
+					<div className="how-it-works">
+						<ul className="how-it-works-list">
+							<li>Variants published to relay server with public keys for anonymity</li>
+							<li>Built on SyftBox, an open-source network for secure data science</li>
+							<li>Encrypted messages via relay servers, no open ports needed</li>
+							<li>Data stays on participants' devices, only insights are shared</li>
+							<li>Collaborate without requiring data uploads to the cloud</li>
+						</ul>
+					</div>
+					<div className="badges">
+						<span className="badge">Open Source</span>
+						<span className="badge">Open Network</span>
+						<span className="badge">End-to-end Encrypted</span>
+						<span className="badge">Secure Enclaves</span>
+					</div>
 				</div>
 
 				{/* Participants */}
@@ -115,11 +167,18 @@ export const MainPage: FC<PageProps> = ({ message }) => (
 					<div className="bento-label">For Participants</div>
 					<h2 className="bento-title">Your data. Your control.</h2>
 					<div className="mobile-mockups">
-						<img
-							src={appImage}
-							alt="BioVault Mobile App"
-							style={{ filter: 'drop-shadow(0 10px 40px rgba(0, 0, 0, 0.15))' }}
-						/>
+						<picture>
+							<source
+								srcset="/images/app-320.avif 320w, /images/app-640.avif 640w, /images/app-1280.avif 1280w, /images/app.avif 1920w"
+								sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1280px"
+								type="image/avif"
+							/>
+							<img
+								src={appImage}
+								alt="BioVault Mobile App"
+								style={{ filter: 'drop-shadow(0 10px 40px rgba(0, 0, 0, 0.15))' }}
+							/>
+						</picture>
 					</div>
 					<div className="how-it-works">
 						<ul className="how-it-works-list">
@@ -138,29 +197,10 @@ export const MainPage: FC<PageProps> = ({ message }) => (
 						<span className="badge">Dante Labs</span>
 						<span className="badge">Nebula</span>
 					</div>
-				</div>
-
-				{/* Network */}
-				<div className="bento-large">
-					<div className="bento-label">Open Network</div>
-					<h2 className="bento-title">Decentralized collaboration</h2>
-					<div className="mobile-mockups">
-						<img src={networkImage} alt="BioVault Network" />
-					</div>
-					<div className="how-it-works">
-						<ul className="how-it-works-list">
-							<li>Variants published to relay server with public keys for anonymity</li>
-							<li>Built on SyftBox, an open-source network for secure data science</li>
-							<li>Encrypted messages via relay servers, no open ports needed</li>
-							<li>Data stays on participants' devices, only insights are shared</li>
-							<li>Collaborate without requiring data uploads to the cloud</li>
-						</ul>
-					</div>
-					<div className="badges">
-						<span className="badge">Open Source</span>
-						<span className="badge">Open Network</span>
-						<span className="badge">End-to-end Encrypted</span>
-						<span className="badge">Secure Enclaves</span>
+					<div style="margin-top: 2rem; text-align: right;">
+						<a href="/participant" className="bento-cta-btn">
+							Read more about our Participant App →
+						</a>
 					</div>
 				</div>
 			</div>
@@ -216,10 +256,10 @@ export const MainPage: FC<PageProps> = ({ message }) => (
 					</div>
 					<div className="feature">
 						<div className="feature-icon">
-							<Icons.Shield />
+							<Icons.ShieldCheck />
 						</div>
 						<h3 className="feature-title">Privacy First</h3>
-						<p className="feature-desc">End-to-end encryption and user-controlled data sharing</p>
+						<p className="feature-desc">End-to-end encryption and user-controlled data sharing. Leverage state of the art secure enclaves to perform joint analysis between data without centralizing it</p>
 					</div>
 					<div className="feature">
 						<div className="feature-icon">
@@ -232,56 +272,33 @@ export const MainPage: FC<PageProps> = ({ message }) => (
 					</div>
 					<div className="feature">
 						<div className="feature-icon">
-							<Icons.ShieldCheck />
+							<Icons.Cpu />
 						</div>
-						<h3 className="feature-title">Secure Enclaves</h3>
+						<h3 className="feature-title">AI Enabled</h3>
 						<p className="feature-desc">
-							Leverage state of the art secure enclaves to perform joint analysis between data
-							without centralizing it
+							Built from the ground up to leverage the latest advancements in AI securely
 						</p>
 					</div>
 				</div>
 			</div>
 
 			<div className="call-to-action">
-				<h2 className="cta-title">Beta Testers</h2>
+				<h2 className="cta-title">Testers we are looking for</h2>
 				<ul className="cta-list">
 					<li className="cta-item">
-						Rare disease patients who already have access to their raw sequencing data.
+						Labs with Genomic Data who need outside expertise
 					</li>
 					<li className="cta-item">
-						Participants who have Variant data from services like 23andme, Ancestry, MyHeritage,
-						CariGenetics.com, Sequencing.com, Dante Labs, Nebula, etc.
+						Researchers who need to collaborate across borders
 					</li>
 					<li className="cta-item">
-						Researchers who want to help perform data visitation and remote data science with the
-						platform.
+						Rare disease patients and clinicians who need access to custom workups
 					</li>
-					<li className="cta-item">Organisations or Labs with access to .</li>
 					<li className="cta-item">
-						Tech enthusiasts who want to learn about Genomics and have some fun!
+						Participants with DTC genomic or variant data like 23andme, Ancestry, MyHeritage, CariGenetics.com, Sequencing.com, Dante Labs, Nebula, etc.
 					</li>
 				</ul>
 				<p className="cta-desc"></p>
-			</div>
-
-			{/* Signup Section */}
-			<div className="signup">
-				<h2 className="signup-title">Join the Beta</h2>
-				<p className="signup-subtitle">Get updates and early access to BioVault</p>
-				<form id="waitlist-form" className="signup-form" method="post" action="/api/waitlist">
-					<input
-						type="email"
-						id="email"
-						name="email"
-						className="email-input"
-						placeholder="Enter your email address"
-						required
-					/>
-					<button type="submit" className="signup-btn">
-						Get Updates
-					</button>
-				</form>
 			</div>
 
 			<div className="faq">
@@ -296,10 +313,10 @@ export const MainPage: FC<PageProps> = ({ message }) => (
 						</p>
 					</div>
 					<div className="faq-item">
-						<h3 className="faq-question">How can I join the Beta?</h3>
+						<h3 className="faq-question">Why join the Beta?</h3>
 						<p className="faq-answer">
-							You can join the Beta by signing up with your email address in the signup section
-							above. We will send you updates and early access information.
+							Get personal help setting up BioVault, introductions to researchers and experts to
+							solve your problems, and directly steer our development to solve your problems.
 						</p>
 					</div>
 					<div className="faq-item">
@@ -340,6 +357,29 @@ export const MainPage: FC<PageProps> = ({ message }) => (
 						</p>
 					</div>
 				</div>
+			</div>
+
+			{/* Signup Section */}
+			<div className="signup">
+				<h2 className="signup-title">Why Join the Beta?</h2>
+				<ul className="signup-benefits">
+					<li>Personal help setting up BioVault</li>
+					<li>Introductions to researchers and experts to collaborate with</li>
+					<li>Directly steer our development to solve your problems</li>
+				</ul>
+				<form id="waitlist-form" className="signup-form" method="post" action="/api/waitlist">
+					<input
+						type="email"
+						id="email"
+						name="email"
+						className="email-input"
+						placeholder="Enter your email for beta access"
+						required
+					/>
+					<button type="submit" className="signup-btn">
+						Join Now
+					</button>
+				</form>
 			</div>
 		</div>
 

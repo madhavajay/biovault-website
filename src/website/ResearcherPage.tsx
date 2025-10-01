@@ -11,17 +11,49 @@ interface PageProps {
 
 export const ResearcherPage: FC<PageProps> = ({ message }) => (
 	<>
-		<div className="container">
-			<header className="header">
-				<h1 className="logo">BioVault</h1>
-				<p className="tagline">Secure by design, shared by choice.</p>
-				<p>
-					BioVault is a free, open-source platform for secure genomic collaboration. Using
-					end-to-end encryption, trusted execution, and data visitation technologies, BioVault lets
-					researchers and patient groups unlock insights{' '}
-					<strong>without ever giving up raw data</strong>.
+		{/* Hero Section */}
+		<div className="hero-section">
+			<div className="hero-image">
+				<picture>
+					<source
+						srcset="/images/researcher-320.avif 320w, /images/researcher-640.avif 640w, /images/researcher-1280.avif 1280w, /images/researcher.avif 1920w"
+						sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1280px"
+						type="image/avif"
+					/>
+					<img src="/images/researcher.jpg" alt="Researcher in laboratory" />
+				</picture>
+			</div>
+			<div className="hero-content">
+				<h1 className="hero-headline">The hard part shouldn't be getting to the data.</h1>
+				<p className="hero-description">
+					Researchers lose months fighting through access requests, approvals, and IT hoops just to start an analysis. BioVault cuts through the red tape: a <strong>free</strong>, <strong>open-source</strong> platform that lets you run pipelines directly on <strong>distributed data</strong>, with <strong>end-to-end encryption</strong> and <strong>secure enclaves</strong>. No centralizing, no delays — just research moving at the speed of discovery.
 				</p>
-			</header>
+				<div className="hero-cta-box">
+					<h2 className="hero-cta-title">Join the Beta and get:</h2>
+					<ul className="hero-cta-benefits">
+						<li>Personal help setting up BioVault for your research</li>
+						<li>Introductions to collaborators and patient groups</li>
+						<li>Directly steer our development to solve your problems</li>
+					</ul>
+					<form id="waitlist-form-hero" className="hero-form" method="post" action="/api/waitlist">
+						<input type="hidden" name="origin" value="researcher" />
+						<input
+							type="email"
+							name="email"
+							id="email-hero"
+							className="hero-input"
+							placeholder="Enter your email for beta access"
+							required
+						/>
+						<button type="submit" className="hero-btn">
+							Join Beta →
+						</button>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<div className="container">
 			{message && <Message message={message} />}
 
 			{/* Researchers Section */}
@@ -346,8 +378,7 @@ export const ResearcherPage: FC<PageProps> = ({ message }) => (
 						<p className="faq-answer">
 							<a href="https://openmined.org/syftbox/" target="_blank" rel="noopener noreferrer">
 								SyftBox
-							</a>
-							is an open-source protocol from OpenMined that powers privacy-preserving remote data
+							</a> is an open-source protocol from OpenMined that powers privacy-preserving remote data
 							science. It enables distributed computations across datasets without centralizing
 							them—technology already trusted in industry and now applied to genomics through
 							BioVault.
@@ -410,9 +441,10 @@ export const ResearcherPage: FC<PageProps> = ({ message }) => (
 						}
 					}
 					
-					// Apply tracking to both forms
+					// Apply tracking to all forms
 					trackFormSubmit('waitlist-form', 'email', 'bottom');
 					trackFormSubmit('waitlist-form-top', 'email-top', 'top');
+					trackFormSubmit('waitlist-form-hero', 'email-hero', 'hero');
 				});
 			`,
 			}}
