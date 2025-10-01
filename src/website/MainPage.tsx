@@ -39,6 +39,9 @@ export const MainPage: FC<PageProps> = ({ message }) => (
 						<li>Directly steer our development to solve your problems</li>
 					</ul>
 					<form id="waitlist-form-hero" className="hero-form" method="post" action="/api/waitlist">
+						<input type="hidden" name="source" value="website" />
+						<input type="hidden" name="form_location" value="hero" />
+						<input type="hidden" name="follow_up_questions" value="home" />
 						<input
 							type="email"
 							name="email"
@@ -208,6 +211,9 @@ export const MainPage: FC<PageProps> = ({ message }) => (
 			{/* Top Signup Strip */}
 			<div className="signup-strip">
 				<form id="waitlist-form-top" className="signup-form" method="post" action="/api/waitlist">
+					<input type="hidden" name="source" value="website" />
+					<input type="hidden" name="form_location" value="top_strip" />
+					<input type="hidden" name="follow_up_questions" value="home" />
 					<input
 						type="email"
 						name="email"
@@ -368,6 +374,9 @@ export const MainPage: FC<PageProps> = ({ message }) => (
 					<li>Directly steer our development to solve your problems</li>
 				</ul>
 				<form id="waitlist-form" className="signup-form" method="post" action="/api/waitlist">
+					<input type="hidden" name="source" value="website" />
+					<input type="hidden" name="form_location" value="bottom" />
+					<input type="hidden" name="follow_up_questions" value="home" />
 					<input
 						type="email"
 						id="email"
@@ -404,11 +413,50 @@ export const MainPage: FC<PageProps> = ({ message }) => (
 							});
 						}
 					}
-					
+
 					// Apply tracking to all forms
 					trackFormSubmit('waitlist-form', 'email', 'bottom');
 					trackFormSubmit('waitlist-form-top', 'email-top', 'top');
 					trackFormSubmit('waitlist-form-hero', 'email-hero', 'hero');
+
+					// Metallic lighting effect for hero-cta-box
+					const ctaBox = document.querySelector('.hero-cta-box');
+					if (ctaBox) {
+						ctaBox.addEventListener('mousemove', (e) => {
+							const rect = ctaBox.getBoundingClientRect();
+							const x = e.clientX - rect.left;
+							const y = e.clientY - rect.top;
+							const percentX = (x / rect.width) * 100;
+							const percentY = (y / rect.height) * 100;
+
+							// Calculate tilt based on mouse position (max 1.5 degrees)
+							const tiltX = ((percentX - 50) / 50) * 1.5;
+							const tiltY = ((50 - percentY) / 50) * 1.5;
+
+							ctaBox.style.setProperty('--mouse-x', percentX + '%');
+							ctaBox.style.setProperty('--mouse-y', percentY + '%');
+							ctaBox.style.setProperty('--tilt-x', tiltX + 'deg');
+							ctaBox.style.setProperty('--tilt-y', tiltY + 'deg');
+						});
+
+						ctaBox.addEventListener('mouseleave', () => {
+							ctaBox.style.setProperty('--mouse-x', '50%');
+							ctaBox.style.setProperty('--mouse-y', '50%');
+							ctaBox.style.setProperty('--tilt-x', '0deg');
+							ctaBox.style.setProperty('--tilt-y', '0deg');
+						});
+					}
+
+					// Make follow-up checkboxes clickable anywhere
+					document.addEventListener('click', (e) => {
+						const checkboxDiv = e.target.closest('.follow-up-checkbox');
+						if (checkboxDiv && e.target.tagName !== 'INPUT' && e.target.tagName !== 'LABEL') {
+							const checkbox = checkboxDiv.querySelector('input[type="checkbox"]');
+							if (checkbox) {
+								checkbox.checked = !checkbox.checked;
+							}
+						}
+					});
 				});
 			`,
 			}}

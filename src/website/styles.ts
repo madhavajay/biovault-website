@@ -887,6 +887,42 @@ h1, h2, h3, h4, h5, h6,
 	border-radius: 8px;
 	padding: 2rem;
 	margin-top: auto;
+	transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease;
+	position: relative;
+	overflow: hidden;
+	--mouse-x: 50%;
+	--mouse-y: 50%;
+	--tilt-x: 0deg;
+	--tilt-y: 0deg;
+	transform-style: preserve-3d;
+}
+
+.hero-cta-box::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: radial-gradient(
+		ellipse 900px 800px at var(--mouse-x, 50%) var(--mouse-y, 50%),
+		rgba(255, 255, 255, 0.28) 0%,
+		rgba(255, 255, 255, 0.14) 30%,
+		rgba(255, 255, 255, 0.06) 50%,
+		transparent 70%
+	);
+	opacity: 0;
+	pointer-events: none;
+	mix-blend-mode: soft-light;
+}
+
+.hero-cta-box:hover {
+	transform: perspective(1000px) rotateX(var(--tilt-y)) rotateY(var(--tilt-x)) translateZ(10px);
+	box-shadow: 0 20px 50px rgba(34, 197, 94, 0.4), 0 0 80px rgba(34, 197, 94, 0.2);
+}
+
+.hero-cta-box:hover::before {
+	opacity: 1;
 }
 
 /* Hero CTA Section (legacy) */
@@ -2695,6 +2731,134 @@ body {
 	font-size: 0.75rem;
 	opacity: 0.9;
 	text-align: left;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 9999;
+	opacity: 0;
+	animation: fadeIn 0.3s ease-out forwards;
+	backdrop-filter: blur(4px);
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+.modal-content {
+	background: white;
+	padding: 2rem;
+	border-radius: 8px;
+	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+	max-width: 500px;
+	width: 90%;
+	text-align: center;
+	transform: scale(0.9);
+	animation: scaleIn 0.3s ease-out forwards;
+	position: relative;
+}
+
+@keyframes scaleIn {
+	from {
+		transform: scale(0.9);
+		opacity: 0;
+	}
+	to {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+.modal-close {
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+	background: none;
+	border: none;
+	font-size: 1.5rem;
+	cursor: pointer;
+	color: #666;
+	line-height: 1;
+	padding: 0.5rem;
+	transition: color 0.2s;
+}
+
+.modal-close:hover {
+	color: #000;
+}
+
+.modal-message {
+	font-size: 1.125rem;
+	margin: 1rem 0;
+	color: var(--color-text-primary);
+}
+
+.modal-message.success {
+	color: var(--color-success-dark);
+}
+
+.modal-message.error {
+	color: #dc2626;
+}
+
+.modal-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.modal-icon.success {
+	color: var(--color-success);
+}
+
+.modal-icon.error {
+	color: #dc2626;
+}
+
+.follow-up-checkbox {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.75rem;
+	padding: 1rem;
+	margin-bottom: 0.75rem;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: background 0.2s;
+}
+
+.follow-up-checkbox:hover {
+	background: #f9fafb;
+}
+
+.follow-up-checkbox input[type="checkbox"] {
+	width: 20px;
+	height: 20px;
+	min-width: 20px;
+	margin-top: 0.15rem;
+	cursor: pointer;
+	accent-color: var(--color-primary);
+}
+
+.follow-up-checkbox label {
+	cursor: pointer;
+	user-select: none;
+	color: var(--color-text-primary);
+	font-size: 1rem;
+	flex: 1;
+	line-height: 1.5;
 }
 
 .app-store-name {

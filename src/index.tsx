@@ -182,6 +182,219 @@ app.use(
 								});
 							}
 							window.copyToClipboard = copyToClipboard;
+
+							// Add page URL to all waitlist forms before submission
+							document.querySelectorAll('form[action="/api/waitlist"]').forEach(form => {
+								form.addEventListener('submit', function() {
+									let input = form.querySelector('input[name="page_url"]');
+									if (!input) {
+										input = document.createElement('input');
+										input.type = 'hidden';
+										input.name = 'page_url';
+										form.appendChild(input);
+									}
+									input.value = window.location.href;
+								});
+							});
+
+							// Handle follow-up questions in modal
+							window.addEventListener('load', function() {
+								const urlParams = new URLSearchParams(window.location.search);
+								const message = urlParams.get('message');
+								const followUpType = urlParams.get('follow_up');
+
+								if (message && message.startsWith('Success') && followUpType) {
+									setTimeout(() => {
+										const mainContent = document.getElementById('modal-main-content');
+										const followUpSection = document.getElementById('modal-follow-up');
+										const questionsDiv = document.getElementById('follow-up-questions');
+
+										if (followUpType === 'participant') {
+											questionsDiv.innerHTML = \`
+												<div class="follow-up-checkbox">
+													<input type="checkbox" id="has_iphone" name="has_iphone" />
+													<label for="has_iphone">I want to test iPhone</label>
+												</div>
+												<div class="follow-up-checkbox">
+													<input type="checkbox" id="has_android" name="has_android" />
+													<label for="has_android">I want to test Android</label>
+												</div>
+												<div class="follow-up-checkbox">
+													<input type="checkbox" id="has_data" name="has_data" />
+													<label for="has_data">I have genetic data (23andme etc)</label>
+												</div>
+											\`;
+										} else if (followUpType === 'researcher') {
+											questionsDiv.innerHTML = \`
+												<div class="follow-up-checkbox">
+													<input type="checkbox" id="has_data" name="has_data" />
+													<label for="has_data">I have data I want to make available on BioVault</label>
+												</div>
+												<div class="follow-up-checkbox">
+													<input type="checkbox" id="needs_data" name="needs_data" />
+													<label for="needs_data">I want access to data for my research</label>
+												</div>
+											\`;
+										} else if (followUpType === 'home') {
+											// Step 1: Ask user type
+											questionsDiv.innerHTML = \`
+												<div class="follow-up-checkbox">
+													<input type="checkbox" id="is_researcher" name="is_researcher" />
+													<label for="is_researcher">I am a researcher</label>
+												</div>
+												<div class="follow-up-checkbox">
+													<input type="checkbox" id="is_participant" name="is_participant" />
+													<label for="is_participant">I am an individual participant</label>
+												</div>
+											\`;
+											// Change button text to "Next" for step 1
+											const submitBtn = document.getElementById('follow-up-submit-btn');
+											if (submitBtn) submitBtn.textContent = 'Next';
+										}
+
+										if (mainContent && followUpSection && questionsDiv.innerHTML) {
+											mainContent.style.display = 'none';
+											followUpSection.style.display = 'block';
+
+											const followUpForm = document.getElementById('follow-up-form');
+											let homeStep = 1;
+											let isResearcher = false;
+											let isParticipant = false;
+
+											followUpForm.addEventListener('submit', async function(e) {
+												e.preventDefault();
+
+												// Handle home page two-step process
+												if (followUpType === 'home' && homeStep === 1) {
+													isResearcher = document.getElementById('is_researcher')?.checked || false;
+													isParticipant = document.getElementById('is_participant')?.checked || false;
+
+													if (!isResearcher && !isParticipant) {
+														// Skip if neither selected
+														document.getElementById('message-modal').style.display = 'none';
+														window.history.replaceState({}, '', window.location.pathname);
+														return;
+													}
+
+													// Step 2: Show relevant questions
+													homeStep = 2;
+													let questionsHTML = '';
+
+													if (isResearcher) {
+														questionsHTML += \`
+															<div style="margin-bottom: 1rem; font-weight: 600; color: var(--color-text-primary);">Researcher Questions:</div>
+															<div class="follow-up-checkbox">
+																<input type="checkbox" id="researcher_has_data" name="researcher_has_data" />
+																<label for="researcher_has_data">I have data I want to make available on BioVault</label>
+															</div>
+															<div class="follow-up-checkbox">
+																<input type="checkbox" id="researcher_needs_data" name="researcher_needs_data" />
+																<label for="researcher_needs_data">I want access to data for my research</label>
+															</div>
+														\`;
+													}
+
+													if (isParticipant) {
+														if (isResearcher) questionsHTML += \`<div style="margin-top: 1.5rem;"></div>\`;
+														questionsHTML += \`
+															<div style="margin-bottom: 1rem; font-weight: 600; color: var(--color-text-primary);">Participant Questions:</div>
+															<div class="follow-up-checkbox">
+																<input type="checkbox" id="participant_has_iphone" name="participant_has_iphone" />
+																<label for="participant_has_iphone">I want to test iPhone</label>
+															</div>
+															<div class="follow-up-checkbox">
+																<input type="checkbox" id="participant_has_android" name="participant_has_android" />
+																<label for="participant_has_android">I want to test Android</label>
+															</div>
+															<div class="follow-up-checkbox">
+																<input type="checkbox" id="participant_has_data" name="participant_has_data" />
+																<label for="participant_has_data">I have genetic data (23andme etc)</label>
+															</div>
+														\`;
+													}
+
+													questionsDiv.innerHTML = questionsHTML;
+													// Change button text to "Submit" for step 2
+													const submitBtn = document.getElementById('follow-up-submit-btn');
+													if (submitBtn) submitBtn.textContent = 'Submit';
+													// Change Skip button to Back for step 2
+													const skipBtn = document.querySelector('#follow-up-form button[type="button"]');
+													if (skipBtn) {
+														skipBtn.textContent = 'Back';
+														skipBtn.onclick = function(e) {
+															e.preventDefault();
+															homeStep = 1;
+															questionsDiv.innerHTML = \`
+																<div class="follow-up-checkbox">
+																	<input type="checkbox" id="is_researcher" name="is_researcher" \${isResearcher ? 'checked' : ''} />
+																	<label for="is_researcher">I am a researcher</label>
+																</div>
+																<div class="follow-up-checkbox">
+																	<input type="checkbox" id="is_participant" name="is_participant" \${isParticipant ? 'checked' : ''} />
+																	<label for="is_participant">I am an individual participant</label>
+																</div>
+															\`;
+															const submitBtn = document.getElementById('follow-up-submit-btn');
+															if (submitBtn) submitBtn.textContent = 'Next';
+															skipBtn.textContent = 'Skip';
+															skipBtn.onclick = function() {
+																document.getElementById('message-modal').style.display = 'none';
+															};
+														};
+													}
+													return;
+												}
+
+												// Collect answers
+												let extra = {};
+												if (followUpType === 'participant') {
+													extra = {
+														has_iphone: document.getElementById('has_iphone')?.checked || false,
+														has_android: document.getElementById('has_android')?.checked || false,
+														has_data: document.getElementById('has_data')?.checked || false
+													};
+												} else if (followUpType === 'researcher') {
+													extra = {
+														has_data: document.getElementById('has_data')?.checked || false,
+														needs_data: document.getElementById('needs_data')?.checked || false
+													};
+												} else if (followUpType === 'home') {
+													extra = {};
+													if (isResearcher) {
+														extra.researcher = {
+															has_data: document.getElementById('researcher_has_data')?.checked || false,
+															needs_data: document.getElementById('researcher_needs_data')?.checked || false
+														};
+													}
+													if (isParticipant) {
+														extra.participant = {
+															has_iphone: document.getElementById('participant_has_iphone')?.checked || false,
+															has_android: document.getElementById('participant_has_android')?.checked || false,
+															has_data: document.getElementById('participant_has_data')?.checked || false
+														};
+													}
+												}
+
+												try {
+													await fetch('/api/waitlist/followup', {
+														method: 'POST',
+														headers: { 'Content-Type': 'application/json' },
+														body: JSON.stringify({
+															extra,
+															page: followUpType
+														})
+													});
+												} catch (err) {
+													console.error('Follow-up submission failed:', err);
+												}
+
+												document.getElementById('message-modal').style.display = 'none';
+												window.history.replaceState({}, '', window.location.pathname);
+											});
+										}
+									}, 500);
+								}
+							});
 						`,
 						}}
 					/>
