@@ -55,7 +55,7 @@ a:hover {
 a:focus {
 	outline: 2px solid var(--color-primary);
 	outline-offset: 2px;
-	border-radius: 4px;
+	border-radius: 8px;
 }
 
 /* Animated Blob Background */
@@ -140,7 +140,7 @@ a:focus {
 
 ::-webkit-scrollbar-thumb {
 	background: var(--color-primary);
-	border-radius: 6px;
+	border-radius: 8px;
 	border: 2px solid #f1f1f1;
 }
 
@@ -358,7 +358,7 @@ h1, h2, h3, h4, h5, h6,
 .story-intro a:focus {
 	outline: 2px solid var(--color-primary);
   outline-offset: 2px;
-  border-radius: 4px;
+  border-radius: 8px;
 }
 
 .network {
@@ -469,7 +469,7 @@ h1, h2, h3, h4, h5, h6,
 
 .cli-mockup {
 	background: #2d3748;
-  border-radius: 12px;
+  border-radius: 8px;
 	padding: 1rem;
   margin-top: 0.5rem;
   margin-bottom: 1rem;
@@ -487,7 +487,7 @@ h1, h2, h3, h4, h5, h6,
 	.cli-mockup {
 		font-size: 0.8125rem;
 		padding: 1.25rem;
-		border-radius: 12px;
+		border-radius: 8px;
 	}
 }
 
@@ -709,7 +709,7 @@ h1, h2, h3, h4, h5, h6,
 	.phone {
 		width: 80px;
 		height: 150px;
-		border-radius: 16px;
+		border-radius: 8px;
 		border: 3px solid #e5e7eb;
 		background: white;
 		position: relative;
@@ -720,7 +720,7 @@ h1, h2, h3, h4, h5, h6,
 		.phone {
 			width: 100px;
 			height: 180px;
-			border-radius: 20px;
+			border-radius: 8px;
 		}
 	}
 
@@ -759,7 +759,7 @@ h1, h2, h3, h4, h5, h6,
 		width: 25px;
 		height: 3px;
 		background: #d1d5db;
-		border-radius: 2px;
+		border-radius: 8px;
 	}
 
 	@media (min-width: 640px) {
@@ -884,7 +884,7 @@ h1, h2, h3, h4, h5, h6,
 
 .hero-cta-box {
 	background: var(--color-primary);
-	border-radius: 16px;
+	border-radius: 8px;
 	padding: 2rem;
 	margin-top: auto;
 }
@@ -892,7 +892,7 @@ h1, h2, h3, h4, h5, h6,
 /* Hero CTA Section (legacy) */
 .hero-cta {
 	background: var(--color-primary);
-	border-radius: 16px;
+	border-radius: 8px;
 	padding: 2rem 1.5rem;
 	margin-bottom: 3rem;
 	text-align: center;
@@ -977,7 +977,7 @@ h1, h2, h3, h4, h5, h6,
 	flex: 1;
 	padding: 1rem 1.5rem;
 	border: 2px solid rgba(255, 255, 255, 0.3);
-	border-radius: 50px;
+	border-radius: 8px;
 	font-size: 1rem;
 	outline: none;
 	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -1003,7 +1003,7 @@ h1, h2, h3, h4, h5, h6,
 	color: var(--color-primary);
 	padding: 1rem 2.5rem;
 	border: none;
-	border-radius: 50px;
+	border-radius: 8px;
 	font-size: 1rem;
 	font-weight: 700;
 	cursor: pointer;
@@ -1055,7 +1055,7 @@ h1, h2, h3, h4, h5, h6,
 	background: rgba(255, 255, 255, 0.9);
 	backdrop-filter: blur(12px);
 	-webkit-backdrop-filter: blur(12px);
-	border-radius: 16px;
+	border-radius: 8px;
 	padding: 2rem 1.75rem;
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 	border: 1px solid rgba(255, 255, 255, 0.8);
@@ -1092,7 +1092,7 @@ h1, h2, h3, h4, h5, h6,
 	background: #f3f4f6;
 	color: var(--color-accent);
 	padding: 0.35rem 0.75rem;
-	border-radius: 12px;
+	border-radius: 8px;
 	font-size: 0.7rem;
 	font-weight: 700;
 	letter-spacing: 0.05em;
@@ -1250,7 +1250,7 @@ h1, h2, h3, h4, h5, h6,
 		background: var(--color-bg-light);
 		color: var(--color-primary);
 		padding: 0.35rem 0.75rem;
-		border-radius: 16px;
+		border-radius: 8px;
 		font-size: 0.7rem;
 		font-weight: 600;
 		border: 1px solid #d1f4eb;
@@ -1318,7 +1318,7 @@ h1, h2, h3, h4, h5, h6,
 		background: rgba(255, 255, 255, 0.85);
 		backdrop-filter: blur(8px);
 		-webkit-backdrop-filter: blur(8px);
-		border-radius: 12px;
+		border-radius: 8px;
 		border: 1px solid rgba(255, 255, 255, 0.8);
 		transition: all 0.3s ease;
 	}
@@ -1394,7 +1394,7 @@ h1, h2, h3, h4, h5, h6,
 
 .message {
 		padding: 1.5rem;
-  border-radius: 12px;
+  border-radius: 8px;
 		margin: 1.5rem auto;
   max-width: 600px;
   text-align: center;
@@ -1441,7 +1441,7 @@ h1, h2, h3, h4, h5, h6,
   text-align: center;
   color: white;
   margin: 2rem 0;
-		border-radius: 16px;
+		border-radius: 8px;
 		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 	}
 
@@ -1449,7 +1449,7 @@ h1, h2, h3, h4, h5, h6,
 		.signup-strip {
 			padding: 2rem 2rem;
 			margin: 3rem 0;
-			border-radius: 20px;
+			border-radius: 8px;
 		}
 }
 
@@ -1472,7 +1472,7 @@ h1, h2, h3, h4, h5, h6,
   flex: 1;
 		padding: 1rem 1.5rem;
 		border: 2px solid rgba(255, 255, 255, 0.3);
-  border-radius: 50px;
+  border-radius: 8px;
   font-size: 1rem;
   outline: none;
 		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -1488,7 +1488,7 @@ h1, h2, h3, h4, h5, h6,
 		color: var(--color-primary);
 		padding: 1rem 2.5rem;
   border: none;
-  border-radius: 50px;
+  border-radius: 8px;
 		font-size: 1rem;
 		font-weight: 700;
   cursor: pointer;
@@ -1514,7 +1514,7 @@ h1, h2, h3, h4, h5, h6,
 
 .signup {
 		background: var(--color-primary);
-		border-radius: 16px;
+		border-radius: 8px;
 		padding: 3rem 1.5rem;
   text-align: center;
   color: white;
@@ -1524,7 +1524,7 @@ h1, h2, h3, h4, h5, h6,
 	@media (min-width: 768px) {
 		.signup {
 			padding: 4rem 2rem;
-			border-radius: 16px;
+			border-radius: 8px;
 		}
 	}
 
@@ -1622,7 +1622,7 @@ h1, h2, h3, h4, h5, h6,
 		width: 100%;
   padding: 1rem 1.5rem;
 		border: 2px solid rgba(255, 255, 255, 0.3);
-  border-radius: 50px;
+  border-radius: 8px;
 		font-size: 0.95rem;
   outline: none;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -1658,7 +1658,7 @@ h1, h2, h3, h4, h5, h6,
 		color: var(--color-primary);
 		padding: 1rem 2.5rem;
   border: none;
-  border-radius: 50px;
+  border-radius: 8px;
   font-size: 1rem;
 		font-weight: 700;
   cursor: pointer;
@@ -1689,7 +1689,7 @@ h1, h2, h3, h4, h5, h6,
 
 .call-to-action {
 		background: white;
-		border-radius: 16px;
+		border-radius: 8px;
 		padding: 2rem 1.5rem;
 		margin-bottom: 2rem;
 		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -1798,7 +1798,7 @@ h1, h2, h3, h4, h5, h6,
 		background: rgba(255, 255, 255, 0.9);
 		backdrop-filter: blur(8px);
 		-webkit-backdrop-filter: blur(8px);
-  border-radius: 12px;
+  border-radius: 8px;
 		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 		border: 1px solid rgba(255, 255, 255, 0.8);
   transition: all 0.3s ease;
@@ -1857,7 +1857,7 @@ h1, h2, h3, h4, h5, h6,
 .faq-answer a:focus {
 	outline: 2px solid var(--color-primary);
 	outline-offset: 2px;
-	border-radius: 4px;
+	border-radius: 8px;
 }
 
 	/* Better touch targets for mobile */
@@ -2013,7 +2013,7 @@ h1, h2, h3, h4, h5, h6,
 	width: 28px;
 	height: 2px;
 	background: var(--color-text-primary);
-	border-radius: 2px;
+	border-radius: 8px;
 	transition: all 0.25s ease;
 }
 
@@ -2275,7 +2275,7 @@ body {
 	backdrop-filter: blur(8px);
 	-webkit-backdrop-filter: blur(8px);
 	border: 1px solid rgba(255, 255, 255, 0.8);
-	border-radius: 12px;
+	border-radius: 8px;
 	padding: 1.5rem;
 	text-decoration: none;
 	display: flex;
@@ -2343,7 +2343,7 @@ body {
 .info-banner {
 	background: var(--color-bg-light);
 	border-left: 4px solid var(--color-primary);
-	border-radius: 12px;
+	border-radius: 8px;
 	padding: 1.5rem;
 	margin: 2rem 0;
 }
@@ -2508,7 +2508,7 @@ body {
 
 .install-box {
 	background: #2d3748;
-	border-radius: 12px;
+	border-radius: 8px;
 	padding: 1.5rem;
 	margin: 1.5rem 0;
 	border: 1px solid #1a202c;
@@ -2534,7 +2534,7 @@ body {
 	border: none;
 	color: rgba(255, 255, 255, 0.7);
 	padding: 0.5rem;
-	border-radius: 6px;
+	border-radius: 8px;
 	cursor: pointer;
 	transition: all 0.2s;
 }
@@ -2546,7 +2546,7 @@ body {
 
 .cli-output-box {
 	background: #2d3748;
-	border-radius: 12px;
+	border-radius: 8px;
 	padding: 1.5rem;
 	margin: 1.5rem 0;
 	border: 1px solid #1a202c;
@@ -2577,7 +2577,7 @@ body {
 .download-card-modern {
 	background: white;
 	padding: 2rem;
-	border-radius: 12px;
+	border-radius: 8px;
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 	text-align: center;
 	transition: transform 0.3s, box-shadow 0.3s;
@@ -2591,7 +2591,7 @@ body {
 .download-icon-container {
 	width: 64px;
 	height: 64px;
-	border-radius: 16px;
+	border-radius: 8px;
 	background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
 	display: flex;
 	align-items: center;
@@ -2660,7 +2660,7 @@ body {
 	align-items: center;
 	gap: 0.75rem;
 	padding: 0.875rem 1.5rem;
-	border-radius: 12px;
+	border-radius: 8px;
 	text-decoration: none;
 	font-weight: 500;
 	transition: transform 0.2s, box-shadow 0.2s;
@@ -2678,7 +2678,7 @@ body {
 .app-store-button:focus {
 	outline: 2px solid rgba(255, 255, 255, 0.5);
 	outline-offset: 2px;
-	border-radius: 12px;
+	border-radius: 8px;
 }
 
 .testflight-button {
