@@ -346,8 +346,7 @@ export const ResearcherPage: FC<PageProps> = ({ message }) => (
 						<p className="faq-answer">
 							<a href="https://openmined.org/syftbox/" target="_blank" rel="noopener noreferrer">
 								SyftBox
-							</a>
-							is an open-source protocol from OpenMined that powers privacy-preserving remote data
+							</a> is an open-source protocol from OpenMined that powers privacy-preserving remote data
 							science. It enables distributed computations across datasets without centralizing
 							them—technology already trusted in industry and now applied to genomics through
 							BioVault.

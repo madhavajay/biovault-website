@@ -20,7 +20,7 @@ export const AboutPage: FC = () => (
 			</section>
 
 			<section className="about-section">
-				<h2 className="about-title">Built on OpenMined Technology</h2>
+				<h2 className="about-title">Built on Open Technology</h2>
 				<p className="about-text">
 					BioVault is powered by{' '}
 					<a href="https://syftbox.net" target="_blank" rel="noopener noreferrer">
@@ -33,6 +33,8 @@ export const AboutPage: FC = () => (
 					for privacy-preserving remote data science. OpenMined is a global community of engineers,
 					researchers, and privacy advocates working to make the world more privacy-preserving by
 					lowering the barrier to entry for privacy-enhancing technologies (PETs).
+
+					For the Genomics we are using standard open source tools such as <a href="https://www.nextflow.io" target="_blank" rel="noopener noreferrer">NextFlow</a>, Docker Containers to remain compatible with other systems.
 				</p>
 			</section>
 
@@ -47,6 +49,7 @@ export const AboutPage: FC = () => (
 					<li>Participants maintain complete control over their genomic data</li>
 					<li>Researchers can collaborate across institutions and borders</li>
 					<li>Data never leaves its secure location</li>
+					<li>Servers don't need to be always-online or in the cloud to participate</li>
 					<li>End-to-end encryption protects all communications</li>
 					<li>Secure enclaves enable joint analysis without centralizing data</li>
 				</ul>
@@ -57,7 +60,7 @@ export const AboutPage: FC = () => (
 				<p className="about-text">
 					BioVault is completely open source under the Apache 2.0 License. We believe that the tools
 					for genomic research should be accessible to everyone, from rare disease groups to
-					population genomics researchers in the Global South. No gatekeepers, no fees, just science
+					population genomics researchers in the Global South. No gatekeepers, no approval to use, no fees, just science
 					moving forward.
 				</p>
 			</section>
@@ -102,7 +105,7 @@ export const AboutPage: FC = () => (
 					</svg>
 					<div className="link-content">
 						<h3 className="link-title">Slack</h3>
-						<p className="link-desc">Chat with the community</p>
+						<p className="link-desc">Join us in #community-biovault</p>
 					</div>
 				</a>
 			</div>
