@@ -15,7 +15,10 @@ import { styles } from './website/styles'
 // Extend ContextRenderer to support passing additional props to the renderer
 declare module 'hono' {
 	interface ContextRenderer {
-		(content: string | Promise<string>, props?: { title?: string }): Response | Promise<Response>
+		(
+			content: string | Promise<string>,
+			props?: { title?: string; description?: string; url?: string }
+		): Response | Promise<Response>
 	}
 }
 
@@ -24,14 +27,34 @@ const app = new Hono<{ Bindings: Env }>()
 // Set up JSX renderer middleware with Layout
 app.use(
 	'*',
-	jsxRenderer(({ children, title }) => {
+	jsxRenderer(({ children, title, description, url }) => {
+		const defaultTitle = 'Join the Beta - BioVault'
+		const defaultDescription =
+			'BioVault is a free, open-source, permissionless network for collaborative genomics. Share insights without ever sharing raw data.'
+		const defaultUrl = 'https://biovault.net'
+		const ogImage = 'https://biovault.net/images/og-share.jpg'
+
+		const pageTitle = title || defaultTitle
+		const pageDescription = description || defaultDescription
+		const pageUrl = url || defaultUrl
+
 		return (
 			<html lang="en">
 				<head>
 					<meta charset="UTF-8" />
 					<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-					<title>{title || 'Join the Beta - BioVault'}</title>
+					<title>{pageTitle}</title>
+					<meta name="description" content={pageDescription} />
+					<link rel="canonical" href={pageUrl} />
 					<link rel="icon" type="image/svg+xml" href="/images/logo.svg" />
+
+					{/* Open Graph Meta Tags */}
+					<meta property="og:type" content="website" />
+					<meta property="og:url" content={pageUrl} />
+					<meta property="og:title" content={pageTitle} />
+					<meta property="og:description" content={pageDescription} />
+					<meta property="og:image" content={ogImage} />
+
 					<link rel="preconnect" href="https://fonts.googleapis.com" />
 					<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
 					<link
@@ -157,36 +180,56 @@ app.use(
 app.get('/', (c) => {
 	const message = c.req.query('message')
 	return c.render(<MainPage message={message} />, {
-		title:
-			'Join the Beta - BioVault is a free and open-source tool and permissionless network for collaborative genomics',
+		title: 'BioVault - Share insights without ever sharing raw data',
+		description:
+			'BioVault is a free, open-source, permissionless network for collaborative genomics. Share insights without ever sharing raw data.',
+		url: 'https://biovault.net/',
 	})
 })
 
 app.get('/researcher', (c) => {
 	const message = c.req.query('message')
 	return c.render(<ResearcherPage message={message} />, {
-		title:
-			'Join the Beta - BioVault is a free and open-source tool and permissionless network for collaborative genomics',
+		title: 'For Researchers - BioVault',
+		description:
+			'Run genomic analysis pipelines on distributed data without centralizing it. Share insights without ever sharing raw data.',
+		url: 'https://biovault.net/researcher',
 	})
 })
 
 app.get('/participant', (c) => {
 	const message = c.req.query('message')
 	return c.render(<ParticipantPage message={message} />, {
-		title: 'Join the Beta - BioVault gives patients full control of their genomic data',
+		title: 'For Participants - BioVault',
+		description:
+			'Your genomic data, your control. Share insights without ever sharing raw data.',
+		url: 'https://biovault.net/participant',
 	})
 })
 
 app.get('/about', (c) => {
-	return c.render(<AboutPage />, { title: 'About - BioVault' })
+	return c.render(<AboutPage />, {
+		title: 'About - BioVault',
+		description:
+			'Learn about BioVault, the open-source platform for privacy-preserving genomic collaboration. Share insights without ever sharing raw data.',
+		url: 'https://biovault.net/about',
+	})
 })
 
 app.get('/privacy', (c) => {
-	return c.render(<PrivacyPage />, { title: 'Privacy Policy - BioVault' })
+	return c.render(<PrivacyPage />, {
+		title: 'Privacy Policy - BioVault',
+		description: 'BioVault privacy policy and data handling practices. Share insights without ever sharing raw data.',
+		url: 'https://biovault.net/privacy',
+	})
 })
 
 app.get('/download', (c) => {
-	return c.render(<DownloadPage />, { title: 'Download - BioVault' })
+	return c.render(<DownloadPage />, {
+		title: 'Download - BioVault',
+		description: 'Download BioVault CLI and desktop apps for secure genomic collaboration. Share insights without ever sharing raw data.',
+		url: 'https://biovault.net/download',
+	})
 })
 
 // Gene routes

@@ -15,7 +15,14 @@ export const MainPage: FC<PageProps> = ({ message }) => (
 		{/* Hero Section */}
 		<div className="hero-section">
 			<div className="hero-image">
-				<img src="/images/hero.jpg" alt="Researcher in laboratory" />
+				<picture>
+					<source
+						srcset="/images/hero-320.avif 320w, /images/hero-640.avif 640w, /images/hero-1280.avif 1280w, /images/hero.avif 1920w"
+						sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1280px"
+						type="image/avif"
+					/>
+					<img src="/images/hero.jpg" alt="Researcher in laboratory" />
+				</picture>
 			</div>
 			<div className="hero-content">
 				<h1 className="hero-headline">Share insights without ever sharing raw data</h1>
@@ -129,7 +136,14 @@ export const MainPage: FC<PageProps> = ({ message }) => (
 					<div className="bento-label">Open Network</div>
 					<h2 className="bento-title">Decentralized collaboration</h2>
 					<div className="mobile-mockups">
-						<img src={networkImage} alt="BioVault Network" />
+						<picture>
+							<source
+								srcset="/images/network-320.avif 320w, /images/network-640.avif 640w, /images/network-1280.avif 1280w, /images/network.avif 1920w"
+								sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1280px"
+								type="image/avif"
+							/>
+							<img src={networkImage} alt="BioVault Network" />
+						</picture>
 					</div>
 					<div className="how-it-works">
 						<ul className="how-it-works-list">
@@ -153,11 +167,18 @@ export const MainPage: FC<PageProps> = ({ message }) => (
 					<div className="bento-label">For Participants</div>
 					<h2 className="bento-title">Your data. Your control.</h2>
 					<div className="mobile-mockups">
-						<img
-							src={appImage}
-							alt="BioVault Mobile App"
-							style={{ filter: 'drop-shadow(0 10px 40px rgba(0, 0, 0, 0.15))' }}
-						/>
+						<picture>
+							<source
+								srcset="/images/app-320.avif 320w, /images/app-640.avif 640w, /images/app-1280.avif 1280w, /images/app.avif 1920w"
+								sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1280px"
+								type="image/avif"
+							/>
+							<img
+								src={appImage}
+								alt="BioVault Mobile App"
+								style={{ filter: 'drop-shadow(0 10px 40px rgba(0, 0, 0, 0.15))' }}
+							/>
+						</picture>
 					</div>
 					<div className="how-it-works">
 						<ul className="how-it-works-list">

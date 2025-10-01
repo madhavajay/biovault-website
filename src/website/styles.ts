@@ -806,7 +806,7 @@ h1, h2, h3, h4, h5, h6,
 	display: grid;
 	grid-template-columns: 1fr;
 	min-height: 600px;
-	margin-bottom: 4rem;
+	margin-bottom: 0;
 	background: white;
 	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 	overflow: hidden;
@@ -2461,7 +2461,7 @@ body {
 .footer-content {
 	max-width: 1200px;
 	margin: 0 auto;
-	padding: 0 2rem;
+	padding: 10px 2rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -2651,7 +2651,8 @@ body {
 	gap: 1rem;
 	justify-content: center;
 	flex-wrap: wrap;
-	margin-top: 2rem;
+	margin-top: 0;
+	margin-bottom: 2rem;
 }
 
 .app-store-button {
@@ -2664,11 +2665,20 @@ body {
 	font-weight: 500;
 	transition: transform 0.2s, box-shadow 0.2s;
 	min-width: 200px;
+	border-bottom: none;
 }
 
 .app-store-button:hover {
 	transform: translateY(-2px);
 	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+	color: white;
+	border-bottom: none;
+}
+
+.app-store-button:focus {
+	outline: 2px solid rgba(255, 255, 255, 0.5);
+	outline-offset: 2px;
+	border-radius: 12px;
 }
 
 .testflight-button {
