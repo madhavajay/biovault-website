@@ -136,6 +136,32 @@ app.use(
 							<a href="/privacy" class="footer-link">Privacy Policy</a>
 						</div>
 					</footer>
+					<div class="modal-overlay" id="message-modal" style="display: none;" onclick="if(event.target === this && !document.getElementById('follow-up-form')) this.style.display='none'">
+						<div class="modal-content" onclick="event.stopPropagation()">
+							<button class="modal-close" onclick="document.getElementById('message-modal').style.display='none'">×</button>
+							<div id="modal-main-content">
+								<div id="modal-icon" class="modal-icon success">
+									✓
+								</div>
+								<div id="modal-message" class="modal-message success">
+								</div>
+							</div>
+							<div id="modal-follow-up" style="display: none;">
+								<h3 style="margin-bottom: 1rem; color: var(--color-text-primary);">Optional: Help us prepare</h3>
+								<form id="follow-up-form" style="text-align: left;">
+									<div id="follow-up-questions"></div>
+									<div style="margin-top: 1.5rem; display: flex; gap: 1rem; justify-content: center;">
+										<button type="button" onclick="document.getElementById('message-modal').style.display='none'" style="padding: 0.75rem 1.5rem; background: #e5e7eb; border: none; border-radius: 8px; cursor: pointer; font-weight: 500;">
+											Skip
+										</button>
+										<button type="submit" id="follow-up-submit-btn" style="padding: 0.75rem 1.5rem; background: var(--color-primary); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 500;">
+											Submit
+										</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
 					<script
 						dangerouslySetInnerHTML={{
 							__html: `
