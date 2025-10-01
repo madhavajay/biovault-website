@@ -115,7 +115,9 @@ export const AboutPage: FC = () => (
 			<h2 className="signup-title">Get Involved</h2>
 			<p className="signup-subtitle">Join our beta program and help shape the future of genomics</p>
 			<form id="waitlist-form" className="signup-form" method="post" action="/api/waitlist">
+				<input type="hidden" name="source" value="website" />
 				<input type="hidden" name="origin" value="about" />
+				<input type="hidden" name="form_location" value="bottom" />
 				<input
 					type="email"
 					id="email"
