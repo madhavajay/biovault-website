@@ -53,7 +53,22 @@ app.use(
 					<meta property="og:url" content={pageUrl} />
 					<meta property="og:title" content={pageTitle} />
 					<meta property="og:description" content={pageDescription} />
-					<meta property="og:image" content={ogImage} />
+
+					{/* WhatsApp prefers the first image (square) */}
+					<meta property="og:image" content="https://biovault.net/images/og-share-square.jpg" />
+					<meta property="og:image:width" content="800" />
+					<meta property="og:image:height" content="800" />
+
+					{/* Wide image for Facebook, LinkedIn, Telegram, Slack */}
+					<meta property="og:image" content="https://biovault.net/images/og-share.jpg" />
+					<meta property="og:image:width" content="1200" />
+					<meta property="og:image:height" content="630" />
+
+					{/* Twitter (use same og-share.jpg, must be 1200x600 for wide preview) */}
+					<meta name="twitter:card" content="summary_large_image" />
+					<meta name="twitter:image" content="https://biovault.net/images/og-share.jpg" />
+					<meta name="twitter:image:width" content="1200" />
+					<meta name="twitter:image:height" content="600" />
 
 					<link rel="preconnect" href="https://fonts.googleapis.com" />
 					<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
