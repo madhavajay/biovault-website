@@ -34,7 +34,7 @@ export const AboutPage: FC = () => (
 					researchers, and privacy advocates working to make the world more privacy-preserving by
 					lowering the barrier to entry for privacy-enhancing technologies (PETs).
 
-					For the Genomics we are using standard open source tools such as <a href="https://www.nextflow.io" target="_blank" rel="noopener noreferrer">NextFlow</a>, Docker Containers to remain compatible with other systems.
+					For genomic analysis we utilize standard open source tools such as <a href="https://www.nextflow.io" target="_blank" rel="noopener noreferrer">NextFlow</a> and Docker Containers, so we can run any code or tool safely and securely.
 				</p>
 			</section>
 

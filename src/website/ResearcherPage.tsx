@@ -26,7 +26,7 @@ export const ResearcherPage: FC<PageProps> = ({ message }) => (
 			<div className="hero-content">
 				<h1 className="hero-headline">The hard part shouldn't be getting to the data</h1>
 				<p className="hero-description">
-					Researchers lose months fighting through access requests, approvals, and IT hoops just to start an analysis. BioVault cuts through the red tape: a <strong>free</strong>, <strong>open-source</strong> platform that lets you run pipelines directly on <strong>distributed data</strong>, with <strong>end-to-end encryption</strong> and <strong>secure enclaves</strong>. No centralizing, no delays — just research moving at the speed of discovery.
+					Researchers lose months fighting through access requests, approvals, and IT hoops just to start an analysis. BioVault cuts through the red tape: a <strong>free</strong>, <strong>open-source</strong> platform that lets you run pipelines directly on distributed data with <strong>end-to-end encryption</strong> and <strong>secure enclaves</strong>. Using <strong>data visitation</strong> and optional <strong>human-in-the-loop approvals</strong>, data owners can rest easy knowing they never give up ownership — raw data is never uploaded or exposed via open ports. No centralizing, no delays — just research projects starting in days, not months.
 				</p>
 				<div className="hero-cta-box">
 					<h2 className="hero-cta-title">Join the Beta and get:</h2>
