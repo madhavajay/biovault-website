@@ -2479,15 +2479,115 @@ body {
 		font-size: 1.05rem;
 		margin-bottom: 1.75rem;
 	}
-  }
+}
+
+/* Team Profiles */
+.team-profiles {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2rem;
+	margin: 0 auto 4rem;
+	width: min(100%, 760px);
+}
+
+@media (min-width: 768px) {
+	.team-profiles {
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+}
+
+.profile-card {
+	background: rgba(255, 255, 255, 0.9);
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+	border-radius: 8px;
+	padding: 2rem;
+	text-align: center;
+	border: 1px solid rgba(255, 255, 255, 0.8);
+	transition: all 0.3s ease;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+	width: min(100%, 340px);
+	margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+	.profile-card {
+		flex: 0 0 auto;
+		width: 320px;
+	}
+}
+
+.profile-card:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+	background: rgba(255, 255, 255, 0.95);
+}
+
+.profile-image {
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
+	object-fit: cover;
+	margin: 0 auto 1.5rem;
+	border: 3px solid var(--color-primary);
+}
+
+.profile-name {
+	font-family: var(--font-heading);
+	font-size: 1.25rem;
+	font-weight: 600;
+	color: var(--color-text-primary);
+	margin-bottom: 0.75rem;
+	letter-spacing: -0.01em;
+}
+
+.profile-description {
+	color: var(--color-text-secondary);
+	font-size: 0.95rem;
+	line-height: 1.6;
+	margin-bottom: 1.5rem;
+}
+
+.profile-links {
+	display: flex;
+	gap: 1rem;
+	justify-content: center;
+}
+
+.profile-link {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background: var(--color-bg-light);
+	color: var(--color-primary);
+	transition: all 0.3s ease;
+	border-bottom: none;
+}
+
+.profile-link:hover {
+	background: var(--color-primary);
+	color: white;
+	transform: translateY(-2px);
+	border-bottom: none;
+}
+
+.profile-icon {
+	width: 20px;
+	height: 20px;
 }
 
 /* Footer */
 .footer {
 	background: transparent;
 	color: var(--color-text-primary);
-	padding: 3rem 0 10rem 0;
-	margin-top: 6rem;
+	padding: 1rem 0 1rem 0;
+	margin-top: 2rem;
 	position: relative;
 	z-index: 1;
 	border-top: 1px solid var(--color-border);
