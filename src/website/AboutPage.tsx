@@ -31,7 +31,7 @@ export const AboutPage: FC = () => (
 
 			<div className="profile-card">
 				<img src="https://media.licdn.com/dms/image/v2/D5603AQHW2MJFgjULUg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1704422968045?e=1762387200&v=beta&t=ujF0mL7QwXWtZS06GdzyJ32LpTwteu0cU-Vzb9SnxKQ" alt="Madhava Jay" className="profile-image" />
-				<h3 className="profile-name">Madhava Jay</h3>
+				<h3 className="profile-name"><a href="https://madhavajay.com/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Madhava Jay</a></h3>
 				<p className="profile-description">Rare Disease Patient and Software Engineer @ OpenMined.org</p>
 				<div className="profile-links">
 					<a href="https://www.linkedin.com/in/madhavajay/" target="_blank" rel="noopener noreferrer" className="profile-link">
