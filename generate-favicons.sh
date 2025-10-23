@@ -60,9 +60,17 @@ generate_png 180 "$OUTPUT_DIR/apple-touch-icon.png"
 generate_png 192 "$OUTPUT_DIR/android-chrome-192x192.png"
 generate_png 512 "$OUTPUT_DIR/android-chrome-512x512.png"
 
-# Copy original as bv-icon.png for use on website
-cp "$SOURCE_IMAGE" "$OUTPUT_DIR/bv-icon.png"
-echo "  ✓ Copied original as bv-icon.png"
+# Compress and copy icon for website use (256 colors for better compression)
+if command -v magick &> /dev/null; then
+    magick "$SOURCE_IMAGE" -colors 256 -strip -define png:compression-level=9 "$OUTPUT_DIR/bv-icon.png"
+    echo "  ✓ Generated compressed bv-icon.png (256 colors)"
+elif command -v convert &> /dev/null; then
+    convert "$SOURCE_IMAGE" -colors 256 -strip -define png:compression-level=9 "$OUTPUT_DIR/bv-icon.png"
+    echo "  ✓ Generated compressed bv-icon.png (256 colors)"
+else
+    cp "$SOURCE_IMAGE" "$OUTPUT_DIR/bv-icon.png"
+    echo "  ✓ Copied bv-icon.png (uncompressed)"
+fi
 
 echo ""
 echo "✨ All favicons generated successfully!"
