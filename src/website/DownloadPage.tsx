@@ -3,7 +3,14 @@ import type { FC } from 'hono/jsx'
 export const DownloadPage: FC = () => (
 	<div className="container">
 		<header className="header">
-			<img src="/images/bv-icon.png" alt="BioVault Logo" style="width: 120px; height: 120px; margin-bottom: 1.5rem;" />
+			<picture>
+				<source
+					srcset="/images/bv-icon-320.avif 320w, /images/bv-icon-640.avif 640w, /images/bv-icon-1280.avif 1280w, /images/bv-icon.avif 1920w"
+					sizes="120px"
+					type="image/avif"
+				/>
+				<img src="/images/bv-icon.png" alt="BioVault Logo" style="width: 120px; height: 120px; margin-bottom: 1.5rem;" />
+			</picture>
 			<h1 className="logo">Download BioVault</h1>
 			<p className="tagline">Get started with privacy-preserving genomic collaboration</p>
 		</header>
@@ -129,11 +136,18 @@ export const DownloadPage: FC = () => (
 					<h3 className="about-title" style="font-size: 1.3rem; margin-bottom: 1.5rem;">
 						Install Dependencies with our Setup Wizard, or manually yourself.
 					</h3>
-					<img
-						src="/images/desktop-setup.png"
-						alt="BioVault Desktop Setup Wizard"
-						style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);"
-					/>
+					<picture>
+						<source
+							srcset="/images/desktop-setup-320.avif 320w, /images/desktop-setup-640.avif 640w, /images/desktop-setup-1280.avif 1280w, /images/desktop-setup.avif 1920w"
+							sizes="(max-width: 640px) 320px, (max-width: 1024px) 640px, 1280px"
+							type="image/avif"
+						/>
+						<img
+							src="/images/desktop-setup.png"
+							alt="BioVault Desktop Setup Wizard"
+							style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);"
+						/>
+					</picture>
 				</div>
 			</section>
 
