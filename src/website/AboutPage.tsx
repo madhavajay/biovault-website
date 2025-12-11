@@ -11,7 +11,7 @@ export const AboutPage: FC = () => (
 
 		<div className="team-profiles">
 			<div className="profile-card">
-				<img src="https://media.licdn.com/dms/image/v2/C5603AQHgs7paj0XRNg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1516864859941?e=1762387200&v=beta&t=kEDcQ6_bXcMRQOHtuUZ8-Ri2MdIsEHNViBKvoXwM6x4" alt="Dawn Chen" className="profile-image" />
+				<img src="/images/dawn.jpg" alt="Dawn Chen" className="profile-image" />
 				<h3 className="profile-name">Dawn Chen</h3>
 				<p className="profile-description">PhD Candidate @ Harvard University | ex-Googler | Synthetic Biology, RNA</p>
 				<div className="profile-links">
@@ -30,7 +30,7 @@ export const AboutPage: FC = () => (
 			</div>
 
 			<div className="profile-card">
-				<img src="https://media.licdn.com/dms/image/v2/D5603AQHW2MJFgjULUg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1704422968045?e=1762387200&v=beta&t=ujF0mL7QwXWtZS06GdzyJ32LpTwteu0cU-Vzb9SnxKQ" alt="Madhava Jay" className="profile-image" />
+				<img src="/images/madhava.jpg" alt="Madhava Jay" className="profile-image" />
 				<h3 className="profile-name"><a href="https://madhavajay.com/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Madhava Jay</a></h3>
 				<p className="profile-description">Rare Disease Patient and Software Engineer @ OpenMined.org</p>
 				<div className="profile-links">
