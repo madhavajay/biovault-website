@@ -23,7 +23,9 @@
 	},
 	"assets": {
 		"directory": "./src/",
-		"binding": "ASSETS"
+		"binding": "ASSETS",
+		"html_handling": "none",
+		"not_found_handling": "none"
 	}
 	/**
 	 * Service Bindings (communicate between multiple Workers)

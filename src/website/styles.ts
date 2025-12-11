@@ -2978,4 +2978,170 @@ body {
 		max-width: 300px;
 	}
 }
+
+/* Invite Page Styles */
+.invite-type-badge {
+	display: inline-block;
+	background: linear-gradient(135deg, #f59e0b, #d97706);
+	color: white;
+	padding: 0.5rem 1rem;
+	border-radius: 20px;
+	font-size: 0.75rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	margin-bottom: 1rem;
+}
+
+.invite-from {
+	color: var(--color-primary);
+	font-weight: 600;
+	font-size: 1.125rem;
+	margin-bottom: 0.5rem;
+	display: none;
+}
+
+.fingerprint-section {
+	background: rgba(255, 255, 255, 0.9);
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+	border: 1px solid var(--color-border);
+	border-radius: 8px;
+	padding: 1.5rem;
+	margin: 2rem auto;
+	max-width: 500px;
+	text-align: center;
+}
+
+.fingerprint-label {
+	font-size: 0.7rem;
+	color: var(--color-text-secondary);
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	margin-bottom: 1rem;
+	font-weight: 600;
+}
+
+.fingerprint-visual {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+	flex-wrap: wrap;
+}
+
+.identicon {
+	width: 48px;
+	height: 48px;
+	border-radius: 8px;
+	overflow: hidden;
+	flex-shrink: 0;
+}
+
+.fingerprint-text {
+	font-family: var(--font-mono);
+	font-size: 0.7rem;
+	color: #6366f1;
+	background: #eef2ff;
+	padding: 0.5rem 0.75rem;
+	border-radius: 8px;
+	word-break: break-all;
+	max-width: 280px;
+}
+
+.download-section {
+	max-width: 500px;
+	margin: 2rem auto;
+	text-align: center;
+}
+
+.download-btn-primary {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	width: 100%;
+	background: var(--color-primary);
+	color: white;
+	padding: 1rem 1.5rem;
+	border-radius: 8px;
+	text-decoration: none;
+	font-weight: 600;
+	font-size: 1.125rem;
+	transition: all 0.3s ease;
+	margin-bottom: 1.5rem;
+	border-bottom: none;
+}
+
+.download-btn-primary:hover {
+	background: var(--color-primary-dark);
+	transform: translateY(-2px);
+	box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
+	color: white;
+	border-bottom: none;
+}
+
+.download-arch {
+	font-size: 0.875rem;
+	opacity: 0.9;
+	font-weight: 400;
+}
+
+.platform-icon {
+	font-size: 1.25rem;
+}
+
+.other-platforms {
+	margin-top: 1.5rem;
+}
+
+.other-platforms-title {
+	font-size: 0.8rem;
+	color: var(--color-text-secondary);
+	text-align: center;
+	margin-bottom: 1rem;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+
+.platform-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+	.platform-grid {
+		grid-template-columns: repeat(4, 1fr);
+	}
+}
+
+.platform-btn {
+	padding: 0.75rem 1rem;
+	background: rgba(255, 255, 255, 0.9);
+	backdrop-filter: blur(8px);
+	border: 1px solid var(--color-border);
+	border-radius: 8px;
+	color: var(--color-text-primary);
+	text-decoration: none;
+	font-size: 0.875rem;
+	text-align: center;
+	transition: all 0.2s ease;
+}
+
+.platform-btn:hover {
+	background: var(--color-bg-light);
+	border-color: var(--color-primary);
+	transform: translateY(-2px);
+}
+
+.platform-os {
+	font-weight: 600;
+	display: block;
+}
+
+.platform-arch {
+	font-size: 0.75rem;
+	color: var(--color-text-secondary);
+}
 `

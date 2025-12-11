@@ -8,6 +8,7 @@ import { PrivacyPage } from './website/PrivacyPage'
 import { DownloadPage } from './website/DownloadPage'
 import { GenesIndexPage } from './website/genes/index'
 import { GenePage } from './website/genes/GenePage'
+import { InvitePage } from './website/InvitePage'
 import { isValidGene, getProperGeneName } from './website/genes/geneList'
 import waitlist from './api/waitlist'
 import { styles } from './website/styles'
@@ -17,7 +18,7 @@ declare module 'hono' {
 	interface ContextRenderer {
 		(
 			content: string | Promise<string>,
-			props?: { title?: string; description?: string; url?: string }
+			props?: { title?: string; description?: string; url?: string; ogImage?: string; ogImageSquare?: string }
 		): Response | Promise<Response>
 	}
 }
@@ -27,16 +28,19 @@ const app = new Hono<{ Bindings: Env }>()
 // Set up JSX renderer middleware with Layout
 app.use(
 	'*',
-	jsxRenderer(({ children, title, description, url }) => {
+	jsxRenderer(({ children, title, description, url, ogImage, ogImageSquare }) => {
 		const defaultTitle = 'Join the Beta - BioVault'
 		const defaultDescription =
 			'BioVault is a free, open-source, permissionless network for collaborative genomics. Share insights without ever sharing raw data.'
 		const defaultUrl = 'https://biovault.net'
-		const ogImage = 'https://biovault.net/images/og-share.jpg'
+		const defaultOgImage = 'https://biovault.net/images/og-share.jpg'
+		const defaultOgImageSquare = 'https://biovault.net/images/og-share-square.jpg'
 
 		const pageTitle = title || defaultTitle
 		const pageDescription = description || defaultDescription
 		const pageUrl = url || defaultUrl
+		const pageOgImage = ogImage || defaultOgImage
+		const pageOgImageSquare = ogImageSquare || defaultOgImageSquare
 
 		return (
 			<html lang="en">
@@ -57,18 +61,18 @@ app.use(
 					<meta property="og:description" content={pageDescription} />
 
 					{/* WhatsApp prefers the first image (square) */}
-					<meta property="og:image" content="https://biovault.net/images/og-share-square.jpg" />
+					<meta property="og:image" content={pageOgImageSquare} />
 					<meta property="og:image:width" content="800" />
 					<meta property="og:image:height" content="800" />
 
 					{/* Wide image for Facebook, LinkedIn, Telegram, Slack */}
-					<meta property="og:image" content="https://biovault.net/images/og-share.jpg" />
+					<meta property="og:image" content={pageOgImage} />
 					<meta property="og:image:width" content="1200" />
 					<meta property="og:image:height" content="630" />
 
 					{/* Twitter (use same og-share.jpg, must be 1200x600 for wide preview) */}
 					<meta name="twitter:card" content="summary_large_image" />
-					<meta name="twitter:image" content="https://biovault.net/images/og-share.jpg" />
+					<meta name="twitter:image" content={pageOgImage} />
 					<meta name="twitter:image:width" content="1200" />
 					<meta name="twitter:image:height" content="600" />
 
@@ -457,6 +461,40 @@ app.use(
 		)
 	})
 )
+
+// App subdomain routes (must be before main website routes)
+const isAppSubdomain = (host: string) =>
+	host.startsWith('app.') ||
+	host.startsWith('app.local.') ||
+	host.startsWith('0.0.0.0') // local dev with --host 0.0.0.0
+
+app.get('/.well-known/apple-app-site-association', (c) => {
+	const host = c.req.header('host') || ''
+	if (!isAppSubdomain(host)) {
+		return c.notFound()
+	}
+	return c.json({
+		applinks: {
+			apps: [],
+			details: [{
+				appID: '28PJ5N8D9X.org.openmined.biovault-desktop',
+				paths: ['/invite', '/invite/*']
+			}]
+		}
+	})
+})
+
+app.get('/invite', (c) => {
+	const host = c.req.header('host') || ''
+	if (!isAppSubdomain(host)) {
+		return c.notFound()
+	}
+	return c.render(<InvitePage />, {
+		title: 'Join BioVault - Invitation',
+		description: 'You have been invited to join BioVault for secure, privacy-preserving collaboration.',
+		url: 'https://app.biovault.net/invite',
+	})
+})
 
 // Website routes - handle query parameters for Post-Redirect-Get messages
 app.get('/', (c) => {
