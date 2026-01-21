@@ -9,7 +9,7 @@ upload_source_maps = true
 [[d1_databases]]
 binding = "DB"
 database_name = "d1-biovault-website"
-database_id = "YOUR_DATABASE_ID"
+database_id = "35b334f1-0b99-43ad-bd1a-c5d497549618"
 
 [observability]
 enabled = true
@@ -23,6 +23,5 @@ binding = "ASSETS"
 html_handling = "none"
 not_found_handling = "none"
 
-[vars]
-RESEND_API_KEY = "your_resend_api_key"
-EMAILS = "your@email.com"
+# Secrets are set in Cloudflare dashboard (Settings > Variables)
+# Required: RESEND_API_KEY, EMAILS
