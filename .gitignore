@@ -231,4 +231,5 @@ dist/**
 !.env.example
 wrangler.toml
 !wrangler.toml.example
+package-lock.json
 .node-cache/
