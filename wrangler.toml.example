@@ -1,0 +1,28 @@
+# For more details on how to configure Wrangler, refer to:
+# https://developers.cloudflare.com/workers/wrangler/configuration/
+
+name = "biovault-website"
+main = "src/index.tsx"
+compatibility_date = "2025-04-01"
+upload_source_maps = true
+
+[[d1_databases]]
+binding = "DB"
+database_name = "d1-biovault-website"
+database_id = "YOUR_DATABASE_ID"
+
+[observability]
+enabled = true
+
+[dev]
+port = 8787
+
+[assets]
+directory = "./src/"
+binding = "ASSETS"
+html_handling = "none"
+not_found_handling = "none"
+
+[vars]
+RESEND_API_KEY = "your_resend_api_key"
+EMAILS = "your@email.com"

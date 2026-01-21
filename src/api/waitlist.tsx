@@ -1,4 +1,6 @@
 import { Hono } from 'hono'
+import { Resend } from 'resend'
+import { NewSignupEmail } from '../emails/new-signup'
 
 const waitlist = new Hono<{ Bindings: Env }>()
 
@@ -67,6 +69,21 @@ waitlist.post('/', async (c) => {
 					.run()
 
 				followUpType = formData.get('follow_up_questions')?.toString()
+
+				console.log('RESEND_API_KEY:', c.env.RESEND_API_KEY)
+				const resend = new Resend(c.env.RESEND_API_KEY);
+
+				await resend.emails.send({
+					from: 'BioVault <waitlist@biovault.net>',
+					to: c.env.EMAILS.split(','),
+					subject: `New waitlist signup: ${email}`,
+					html: NewSignupEmail({
+						email: email,
+						source: metadata.source,
+						page: metadata.page,
+						country: metadata.cfCountry,
+					}).toString(),
+				})
 			}
 
 			// Check if follow-up questions should be shown
