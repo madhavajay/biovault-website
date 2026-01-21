@@ -45,7 +45,7 @@ const inlineImagePlugin = {
 };
 
 await esbuild.build({
-  entryPoints: ['src/index.ts'],
+  entryPoints: ['src/index.tsx'],
   bundle: true,
   format: 'esm',
   outfile: 'dist/index.js',
