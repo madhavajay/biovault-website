@@ -94,6 +94,15 @@ app.use(
 						}}
 					/>
 					<script src="https://metrics.syftbox.net/api/script.js" data-site-id="3" defer></script>
+					<script async src="https://plausible.io/js/pa-V_dIu_hjvnC2JnO74aMlw.js"></script>
+					<script
+						dangerouslySetInnerHTML={{
+							__html: `
+							window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+							plausible.init()
+						`,
+						}}
+					/>
 					<style dangerouslySetInnerHTML={{ __html: styles }} />
 				</head>
 				<body>
