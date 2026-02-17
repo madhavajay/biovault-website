@@ -648,35 +648,13 @@
 						>BioVault</span
 					>
 				</div>
-				<div class="hidden md:flex items-center gap-6">
-					<a
-						href="#how-it-works"
-						class="text-sm text-white/70 hover:text-white transition-colors"
-						>Docs</a
-					>
-					<a
-						href="#demos"
-						class="text-sm text-white/70 hover:text-white transition-colors"
-						>Examples</a
-					>
-					<a
-						href="#features"
-						class="text-sm text-white/70 hover:text-white transition-colors"
-						>Features</a
-					>
-				</div>
 				<div class="flex items-center gap-3">
-					<a
-						href="#contact"
-						class="text-sm text-white/70 hover:text-white transition-colors"
-					>
-						Contact
-					</a>
 					<Button
 						size="sm"
 						class="bg-bv-green text-white hover:bg-bv-green/90 h-7 text-xs"
+						href="#contact"
 					>
-						Download
+						Get in Touch
 					</Button>
 				</div>
 			</div>
@@ -739,7 +717,7 @@
 							size="lg"
 							variant="outline"
 							class="h-12 px-5 text-base border-white/30 text-white hover:bg-white/10 hover:text-white"
-							href="https://arxiv.org/abs/0000.00000"
+							href="https://www.biorxiv.org/content/10.64898/2026.02.12.705603v1"
 							target="_blank"
 							rel="noopener noreferrer"
 						>
@@ -838,6 +816,7 @@
 	</section>
 
 	<!-- Testimonials Section -->
+	{#if false}
 	<section class="py-16 relative z-10">
 		<div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
 			<div class="text-center mb-12">
@@ -879,8 +858,10 @@
 			</div>
 		</div>
 	</section>
+	{/if}
 
 	<!-- Demo Apps Section -->
+	{#if false}
 	<section id="demos" class="py-16 relative z-10">
 		<div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
 			<div class="text-center mb-12">
@@ -919,8 +900,10 @@
 			</div>
 		</div>
 	</section>
+	{/if}
 
 	<!-- CTA Section -->
+	{#if false}
 	<section class="py-16 relative z-10">
 		<div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
 			<div class="max-w-xl mx-auto text-center">
@@ -995,11 +978,6 @@
 				</p>
 				<div class="flex items-center gap-4">
 					<a
-						href="/docs"
-						class="text-sm text-foreground/60 hover:text-foreground"
-						>Docs</a
-					>
-					<a
 						href="https://github.com/biovault"
 						target="_blank"
 						rel="noopener"
@@ -1010,4 +988,5 @@
 			</div>
 		</div>
 	</footer>
+	{/if}
 </div>
