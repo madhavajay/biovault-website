@@ -94,10 +94,10 @@
 			<div class="animate-on-scroll">
 				<div class="space-y-4 text-muted-foreground leading-relaxed max-w-3xl">
 					<p>
-						Biomedical datasets representing diverse populations are essential for advancing precision medicine, yet remain siloed due to regulatory, sovereignty, and privacy constraints. Existing solutions — centralized repositories, trusted research environments, and secure computation frameworks — each carry barriers that disproportionately impact under-resourced institutions.
+						Biomedical datasets representing diverse populations are essential for advancing precision medicine, yet remain siloed due to regulatory, sovereignty, and privacy constraints. Existing solutions (centralized repositories, trusted research environments, and secure computation frameworks) each carry barriers that disproportionately impact under-resourced institutions.
 					</p>
 					<p>
-						BioVault exists to change this. We believe that every institution, regardless of resources, should be able to participate as an equal partner in global biomedical discovery — while retaining full control over their data.
+						BioVault exists to change this. We believe that every institution, regardless of resources, should be able to participate as an equal partner in global biomedical discovery, while retaining full control over their data.
 					</p>
 				</div>
 			</div>
@@ -175,7 +175,7 @@
 					Join the movement
 				</h2>
 				<p class="text-muted-foreground mb-8 text-pretty">
-					We're building a global network of researchers, participants, and organizations who believe that privacy and collaboration aren't mutually exclusive. Whether you're a rare disease patient, a genomics researcher, or a biobank — BioVault provides the infrastructure for secure, equitable collaboration.
+					We're building a global network of researchers, participants, and organizations who believe that privacy and collaboration aren't mutually exclusive. Whether you're a rare disease patient, a genomics researcher, or a biobank, BioVault provides the infrastructure for secure, equitable collaboration.
 				</p>
 			</div>
 

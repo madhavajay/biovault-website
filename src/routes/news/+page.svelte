@@ -24,7 +24,7 @@
 			title: "Bermuda Principles 2026 (BP30)",
 			date: "25–28 February 2026",
 			location: "Hamilton Princess, Bermuda",
-			description: "BioVault is attending BP30, the 30th anniversary of the Bermuda Principles — revisiting the legacy of open genomic data sharing in the context of today's evolving scientific, ethical, and geopolitical landscape.",
+			description: "BioVault is attending BP30, the 30th anniversary of the Bermuda Principles, revisiting the legacy of open genomic data sharing in the context of today's evolving scientific, ethical, and geopolitical landscape.",
 			url: "https://bermudaprinciples.org/",
 			image: "/BP30.png",
 			imagePosition: "center bottom",

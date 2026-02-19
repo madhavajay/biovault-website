@@ -103,7 +103,7 @@
 		<section class="mb-10">
 			<h2 class="text-xl font-semibold text-foreground mb-3">Open Source Transparency</h2>
 			<p class="text-foreground/80 mb-3">
-				As an open-source project under the Apache 2.0 License, our code is publicly available for review. This transparency extends to our privacy practices — you can verify how we handle data by examining our codebases:
+				As an open-source project under the Apache 2.0 License, our code is publicly available for review. This transparency extends to our privacy practices. You can verify how we handle data by examining our codebases:
 			</p>
 			<ul class="list-disc list-inside text-foreground/80 space-y-1.5 ml-2">
 				<li>
