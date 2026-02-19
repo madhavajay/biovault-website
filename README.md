@@ -8,14 +8,14 @@ If you're seeing this, you've probably already done this step. Congrats!
 
 ```sh
 # create a new project
-npx sv create my-app
+npx sv create bv-website
 ```
 
 To recreate this project with the same configuration:
 
 ```sh
 # recreate this project
-bun x sv create --template minimal --types ts --add tailwindcss="plugins:none" --install bun my-app
+bun x sv create --template minimal --types ts --add tailwindcss="plugins:none" --install bun bv-website
 ```
 
 ## Developing

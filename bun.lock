@@ -3,7 +3,7 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "my-app",
+      "name": "bv-website",
       "dependencies": {
         "@types/three": "^0.182.0",
         "mode-watcher": "^1.1.0",
