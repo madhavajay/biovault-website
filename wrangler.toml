@@ -1,6 +1,3 @@
-# SvelteKit + Cloudflare Pages configuration
-# For more details: https://developers.cloudflare.com/pages/framework-guides/deploy-a-svelte-kit-site/
-
 name = "bv-website"
 compatibility_date = "2025-04-01"
 pages_build_output_dir = ".svelte-kit/cloudflare"
