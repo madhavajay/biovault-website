@@ -688,7 +688,7 @@
 			<div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 max-w-3xl mx-auto">
 				<!-- Dr. Carika Weldon -->
 				<div class="flex flex-col items-center text-center pb-8 border-b border-border/50 md:pb-0 md:border-b-0">
-					<img src="/carika.png" alt="Dr. Carika Weldon" class="w-28 h-28 sm:w-32 sm:h-32 rounded-full object-cover ring-4 ring-bv-green/20 shadow-lg mb-5" />
+					<img src="/carika.jpg" alt="Dr. Carika Weldon" class="w-28 h-28 sm:w-32 sm:h-32 rounded-full object-cover ring-4 ring-bv-green/20 shadow-lg mb-5" />
 					<p class="text-sm text-foreground/80 leading-relaxed italic flex-1">
 						"BioVault has been transformational for us. It enabled us to bring advanced genomic analysis in-house that previously had to be done outside Bermuda. They co-developed custom workflows with us that reduced analysis time from an hour to a minute while eliminating nearly 10% human error. We now have faster, more accurate results and can securely collaborate across countries while maintaining full control of our data."
 					</p>
