@@ -1,0 +1,12 @@
+# 301 redirects from old site routes to new site
+/researcher /how-it-works 301
+/participant / 301
+/docs / 301
+/genes / 301
+/genes/* / 301
+/invite / 301
+/api/waitlist / 301
+
+# Blog renamed to News
+/blog /news 301
+/blog/* /news 301
