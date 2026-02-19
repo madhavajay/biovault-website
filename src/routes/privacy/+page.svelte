@@ -1,11 +1,3 @@
-<svelte:head>
-	<title>Privacy Policy - BioVault</title>
-	<meta
-		name="description"
-		content="How BioVault handles your information. Privacy-first by design."
-	/>
-</svelte:head>
-
 <div class="pt-24 pb-16">
 	<div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
 		<h1 class="text-xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-2">Privacy Policy</h1>

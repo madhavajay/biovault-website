@@ -600,14 +600,6 @@
 	</div>
 {/snippet}
 
-<svelte:head>
-	<title>BioVault - Privacy-First Biomedical Collaboration</title>
-	<meta
-		name="description"
-		content="Open-source infrastructure for privacy-preserving biomedical collaboration. Your data stays with you, only insights travel."
-	/>
-</svelte:head>
-
 <div class="min-h-screen bg-background relative">
 	<!-- Background Globe (commented out) -->
 	<!-- <div

@@ -61,14 +61,6 @@
 	}
 </script>
 
-<svelte:head>
-	<title>How It Works - BioVault</title>
-	<meta
-		name="description"
-		content="Learn how BioVault enables privacy-preserving biomedical collaboration through data visitation. Your data stays with you, only insights travel."
-	/>
-</svelte:head>
-
 <div class="min-h-screen bg-background pt-16">
 	<!-- Mobile: horizontal scrollable nav -->
 	<div class="lg:hidden sticky top-16 z-20 bg-background/95 backdrop-blur-sm border-b border-border">
