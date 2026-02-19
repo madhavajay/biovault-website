@@ -96,10 +96,15 @@ title: "India AI Impact Summit 2026",
 							href={event.url}
 							target="_blank"
 							rel="noopener noreferrer"
-							class="group flex rounded-lg border border-bv-teal/20 bg-bv-teal/5 overflow-hidden hover:border-bv-teal/40 transition-colors"
+							class="group flex flex-col md:flex-row rounded-lg border border-bv-teal/20 bg-bv-teal/5 overflow-hidden hover:border-bv-teal/40 transition-colors"
 						>
-							<div class="flex-1 p-5">
-								<div class="flex items-center gap-3 mb-2">
+							{#if event.image}
+								<div class="md:hidden flex items-center justify-center pt-4 px-4">
+									<img src={event.image} alt={event.title} class="h-28 w-auto object-contain" />
+								</div>
+							{/if}
+							<div class="flex-1 p-4 md:p-5">
+								<div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 mb-2">
 									<span class="inline-flex items-center gap-1.5 text-xs font-medium text-bv-teal">
 										<Calendar class="h-3 w-3" />
 										{event.date}
@@ -120,7 +125,7 @@ title: "India AI Impact Summit 2026",
 								</span>
 							</div>
 							{#if event.image}
-								<div class="w-36 flex-shrink-0 flex items-center justify-center p-4">
+								<div class="hidden md:flex w-36 flex-shrink-0 items-center justify-center p-4">
 									<img src={event.image} alt={event.title} class="w-full h-auto object-contain" />
 								</div>
 							{/if}
