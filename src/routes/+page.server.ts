@@ -2,8 +2,8 @@ import { fail } from '@sveltejs/kit';
 import { Resend } from 'resend';
 import type { Actions } from './$types';
 
-function contactEmailHtml(fields: { name: string; email: string; affiliation: string; country: string }) {
-	const { name, email, affiliation, country } = fields;
+function contactEmailHtml(fields: { name: string; email: string; affiliation: string; country: string; message: string }) {
+	const { name, email, affiliation, country, message } = fields;
 	const timestamp = new Date().toLocaleString('en-US', {
 		dateStyle: 'medium',
 		timeStyle: 'short',
@@ -25,7 +25,7 @@ function contactEmailHtml(fields: { name: string; email: string; affiliation: st
           <!-- Header -->
           <tr>
             <td style="background:linear-gradient(135deg,#0d9668,#10b981);padding:32px 40px;">
-              <h1 style="margin:0;color:#ffffff;font-size:20px;font-weight:600;letter-spacing:-0.02em;">New Contact Submission</h1>
+              <h1 style="margin:0;color:#ffffff;font-size:20px;font-weight:600;letter-spacing:-0.02em;">New Website Submission</h1>
               <p style="margin:6px 0 0;color:rgba(255,255,255,0.8);font-size:13px;">${timestamp} UTC</p>
             </td>
           </tr>
@@ -66,7 +66,7 @@ function contactEmailHtml(fields: { name: string; email: string; affiliation: st
               </table>
 
               <!-- Country -->
-              <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:24px;">
+              <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:${message ? '20px' : '24px'};">
                 <tr>
                   <td style="padding:0 0 4px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:#a1a1aa;">Country</td>
                 </tr>
@@ -74,6 +74,16 @@ function contactEmailHtml(fields: { name: string; email: string; affiliation: st
                   <td style="font-size:16px;color:#18181b;font-weight:500;">${escapeHtml(country)}</td>
                 </tr>
               </table>
+
+              ${message ? `<!-- Message -->
+              <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:24px;">
+                <tr>
+                  <td style="padding:0 0 4px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:#a1a1aa;">Message</td>
+                </tr>
+                <tr>
+                  <td style="font-size:14px;color:#18181b;line-height:1.6;background:#f9fafb;padding:12px 16px;border-radius:8px;border:1px solid #e4e4e7;">${escapeHtml(message).replace(/\n/g, '<br>')}</td>
+                </tr>
+              </table>` : ''}
 
               <!-- CTA -->
               <table width="100%" cellpadding="0" cellspacing="0">
@@ -115,6 +125,7 @@ export const actions = {
 		const affiliation = data.get('affiliation')?.toString().trim() ?? '';
 		const country = data.get('country')?.toString().trim() ?? '';
 		const email = data.get('email')?.toString().trim() ?? '';
+		const message = data.get('message')?.toString().trim() ?? '';
 
 		const errors: Record<string, string> = {};
 
@@ -133,9 +144,9 @@ export const actions = {
 
 		try {
 			await platform!.env.DB.prepare(
-				'INSERT INTO contact_submissions (name, affiliation, country, email) VALUES (?, ?, ?, ?)'
+				'INSERT INTO contact_submissions (name, affiliation, country, email, message) VALUES (?, ?, ?, ?, ?)'
 			)
-				.bind(name, affiliation, country, email)
+				.bind(name, affiliation, country, email, message)
 				.run();
 		} catch (err) {
 			console.error('D1 insert error:', err);
@@ -151,7 +162,7 @@ export const actions = {
 				from: 'BioVault <waitlist@biovault.net>',
 				to: platform!.env.EMAILS.split(','),
 				subject: `New contact: ${name} (${affiliation})`,
-				html: contactEmailHtml({ name, email, affiliation, country })
+				html: contactEmailHtml({ name, email, affiliation, country, message })
 			});
 		} catch (err) {
 			console.error('Resend email error:', err);

@@ -628,10 +628,10 @@
 				<!-- Top: Text content -->
 				<div class="w-full max-w-3xl space-y-4 sm:space-y-6">
 					<h1
-						class="text-2xl sm:text-4xl lg:text-5xl tracking-tight leading-tight text-foreground"
+						class="text-4xl max-[340px]:text-[1.9rem] sm:text-4xl lg:text-5xl tracking-tight leading-tight text-foreground"
 					>
 						<span
-							class="relative font-bold pl-[0.25em]"
+							class="relative font-bold pl-[0.1em] sm:pl-[0.25em] block min-h-[2.5em] sm:min-h-0"
 							>{#if isSelecting}<span
 									>{displayedText.slice(
 										0,
@@ -648,9 +648,8 @@
 								>|</span
 							></span
 						>
-						<br />
 						<span
-							class="text-lg sm:text-2xl lg:text-3xl text-foreground/80"
+							class="block mt-2 sm:mt-1 text-xl sm:text-2xl lg:text-3xl text-foreground/80 -mx-2 sm:mx-0"
 							>Without sharing your raw data</span
 						>
 					</h1>
@@ -688,7 +687,7 @@
 			<p class="text-center text-sm font-medium tracking-widest uppercase text-bv-green mb-10 sm:mb-12">Hear from our partners around the world</p>
 			<div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 max-w-3xl mx-auto">
 				<!-- Dr. Carika Weldon -->
-				<div class="flex flex-col items-center text-center">
+				<div class="flex flex-col items-center text-center pb-8 border-b border-border/50 md:pb-0 md:border-b-0">
 					<img src="/carika.png" alt="Dr. Carika Weldon" class="w-28 h-28 sm:w-32 sm:h-32 rounded-full object-cover ring-4 ring-bv-green/20 shadow-lg mb-5" />
 					<p class="text-sm text-foreground/80 leading-relaxed italic flex-1">
 						"BioVault has been transformational for us. It enabled us to bring advanced genomic analysis in-house that previously had to be done outside Bermuda. They co-developed custom workflows with us that reduced analysis time from an hour to a minute while eliminating nearly 10% human error. We now have faster, more accurate results and can securely collaborate across countries while maintaining full control of our data."
@@ -712,7 +711,7 @@
 				</div>
 
 				<!-- Dr. Binay Panda (temporarily commented out) -->
-				<!-- <div class="flex flex-col items-center text-center">
+				<!-- <div class="flex flex-col items-center text-center pb-8 border-b border-border/50 md:pb-0 md:border-b-0">
 					<img src="/binay.jpg" alt="Dr. Binay Panda" class="w-28 h-28 sm:w-32 sm:h-32 rounded-full object-cover ring-4 ring-bv-green/20 shadow-lg mb-5" />
 					<p class="text-sm text-foreground/80 leading-relaxed italic flex-1">
 						"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."

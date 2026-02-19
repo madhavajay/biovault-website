@@ -22,6 +22,7 @@
 	let affiliation = $state("");
 	let country = $state("");
 	let email = $state("");
+	let message = $state("");
 
 	function reset() {
 		formState = "idle";
@@ -31,6 +32,7 @@
 		affiliation = "";
 		country = "";
 		email = "";
+		message = "";
 	}
 
 	function close() {
@@ -91,7 +93,7 @@
 {#if $contactOpen}
 	<!-- svelte-ignore a11y_no_static_element_interactions -->
 	<div
-		class="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm"
+		class="fixed inset-0 z-[100] flex items-end sm:items-center justify-center bg-black/60 backdrop-blur-sm"
 		onkeydown={handleKeydown}
 		onclick={(e) => e.target === e.currentTarget && close()}
 		role="dialog"
@@ -99,7 +101,7 @@
 		aria-label="Get in Touch"
 	>
 		<div
-			class="bg-background border border-border rounded-xl p-8 max-w-md w-full mx-4 relative shadow-2xl"
+			class="bg-background border border-border rounded-t-xl sm:rounded-xl p-6 sm:p-8 max-w-md w-full sm:mx-4 relative shadow-2xl max-h-[90dvh] overflow-y-auto"
 			style="animation: scale-in 0.2s ease-out"
 		>
 			<button
@@ -165,10 +167,10 @@
 							}
 						};
 					}}
-					class="space-y-1"
+					class="space-y-0"
 				>
-					<div class="relative pb-5">
-						<label for="contact-name" class="block text-sm font-medium text-foreground mb-1.5">
+					<div class="relative pb-4 sm:pb-5">
+						<label for="contact-name" class="block text-xs sm:text-sm font-medium text-foreground mb-1">
 							Name <span class="text-bv-green">*</span>
 						</label>
 						<Input
@@ -180,55 +182,15 @@
 							onblur={() => handleBlur("name", name)}
 							oninput={() => handleInput("name")}
 							aria-invalid={errors.name ? "true" : undefined}
-							class="h-10"
+							class="h-9 sm:h-10"
 						/>
 						{#if errors.name && touched.name}
 							<p class="absolute bottom-0 left-0 text-xs text-red-400">{errors.name}</p>
 						{/if}
 					</div>
 
-					<div class="relative pb-5">
-						<label for="contact-affiliation" class="block text-sm font-medium text-foreground mb-1.5">
-							Affiliation <span class="text-bv-green">*</span>
-						</label>
-						<Input
-							id="contact-affiliation"
-							name="affiliation"
-							type="text"
-							placeholder="University, company, or organization"
-							bind:value={affiliation}
-							onblur={() => handleBlur("affiliation", affiliation)}
-							oninput={() => handleInput("affiliation")}
-							aria-invalid={errors.affiliation ? "true" : undefined}
-							class="h-10"
-						/>
-						{#if errors.affiliation && touched.affiliation}
-							<p class="absolute bottom-0 left-0 text-xs text-red-400">{errors.affiliation}</p>
-						{/if}
-					</div>
-
-					<div class="relative pb-5">
-						<label for="contact-country" class="block text-sm font-medium text-foreground mb-1.5">
-							Country <span class="text-bv-green">*</span>
-						</label>
-						<Input
-							id="contact-country"
-							name="country"
-							type="text"
-							placeholder="Your country"
-							bind:value={country}
-							onblur={() => handleBlur("country", country)}
-							oninput={() => handleInput("country")}
-							aria-invalid={errors.country ? "true" : undefined}
-							class="h-10"
-						/>
-						{#if errors.country && touched.country}
-							<p class="absolute bottom-0 left-0 text-xs text-red-400">{errors.country}</p>
-						{/if}
-					</div>
-
-					<div class="relative pb-5">
-						<label for="contact-email" class="block text-sm font-medium text-foreground mb-1.5">
+					<div class="relative pb-4 sm:pb-5">
+						<label for="contact-email" class="block text-xs sm:text-sm font-medium text-foreground mb-1">
 							Email <span class="text-bv-green">*</span>
 						</label>
 						<Input
@@ -240,22 +202,76 @@
 							onblur={() => handleBlur("email", email)}
 							oninput={() => handleInput("email")}
 							aria-invalid={errors.email ? "true" : undefined}
-							class="h-10"
+							class="h-9 sm:h-10"
 						/>
 						{#if errors.email && touched.email}
 							<p class="absolute bottom-0 left-0 text-xs text-red-400">{errors.email}</p>
 						{/if}
 					</div>
 
+					<div class="relative pb-4 sm:pb-5">
+						<label for="contact-affiliation" class="block text-xs sm:text-sm font-medium text-foreground mb-1">
+							Affiliation <span class="text-bv-green">*</span>
+						</label>
+						<Input
+							id="contact-affiliation"
+							name="affiliation"
+							type="text"
+							placeholder="University, company, or organization"
+							bind:value={affiliation}
+							onblur={() => handleBlur("affiliation", affiliation)}
+							oninput={() => handleInput("affiliation")}
+							aria-invalid={errors.affiliation ? "true" : undefined}
+							class="h-9 sm:h-10"
+						/>
+						{#if errors.affiliation && touched.affiliation}
+							<p class="absolute bottom-0 left-0 text-xs text-red-400">{errors.affiliation}</p>
+						{/if}
+					</div>
+
+					<div class="relative pb-4 sm:pb-5">
+						<label for="contact-country" class="block text-xs sm:text-sm font-medium text-foreground mb-1">
+							Country <span class="text-bv-green">*</span>
+						</label>
+						<Input
+							id="contact-country"
+							name="country"
+							type="text"
+							placeholder="Your country"
+							bind:value={country}
+							onblur={() => handleBlur("country", country)}
+							oninput={() => handleInput("country")}
+							aria-invalid={errors.country ? "true" : undefined}
+							class="h-9 sm:h-10"
+						/>
+						{#if errors.country && touched.country}
+							<p class="absolute bottom-0 left-0 text-xs text-red-400">{errors.country}</p>
+						{/if}
+					</div>
+
+					<div>
+						<label for="contact-message" class="block text-xs sm:text-sm font-medium text-foreground mb-1">
+							Message
+						</label>
+						<textarea
+							id="contact-message"
+							name="message"
+							placeholder="Questions, ideas, or how you'd like to get involved..."
+							bind:value={message}
+							rows="4"
+							class="border-input bg-background selection:bg-primary dark:bg-input/30 selection:text-primary-foreground ring-offset-background placeholder:text-muted-foreground flex w-full min-w-0 rounded-md border px-3 py-2 text-base shadow-xs transition-[color,box-shadow] outline-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] resize-none"
+						></textarea>
+					</div>
+
 					{#if errors.form}
-						<div class="rounded-lg bg-red-500/10 border border-red-500/20 p-3">
+						<div class="rounded-lg bg-red-500/10 border border-red-500/20 p-3 mt-3">
 							<p class="text-sm text-red-400">{errors.form}</p>
 						</div>
 					{/if}
 
 					<Button
 						type="submit"
-						class="w-full h-10 bg-bv-green text-white hover:bg-bv-green-light font-semibold"
+						class="w-full h-10 bg-bv-green text-white hover:bg-bv-green-light font-semibold mt-4"
 						disabled={formState === "submitting" || !isValid}
 					>
 						{#if formState === "submitting"}
