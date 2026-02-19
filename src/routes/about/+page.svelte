@@ -62,14 +62,6 @@
 
 </script>
 
-<svelte:head>
-	<title>About - BioVault</title>
-	<meta
-		name="description"
-		content="Learn about BioVault's mission, team, and community. Open-source, privacy-first biomedical collaboration."
-	/>
-</svelte:head>
-
 <div class="min-h-screen bg-background">
 	<!-- Hero -->
 	<section class="relative pt-24 pb-12 sm:pb-16 overflow-hidden">

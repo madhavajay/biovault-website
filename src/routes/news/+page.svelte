@@ -73,14 +73,6 @@ title: "India AI Impact Summit 2026",
 	const displayEvents = [...events].reverse();
 </script>
 
-<svelte:head>
-	<title>Updates - BioVault</title>
-	<meta
-		name="description"
-		content="Events, conferences, and updates from the BioVault team."
-	/>
-</svelte:head>
-
 <div class="min-h-screen bg-background pt-16">
 	<div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
 		<main class="py-8 lg:py-12">

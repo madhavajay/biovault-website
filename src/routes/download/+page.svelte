@@ -43,14 +43,6 @@
 	});
 </script>
 
-<svelte:head>
-	<title>Download - BioVault</title>
-	<meta
-		name="description"
-		content="Download BioVault desktop app and CLI for macOS, Windows, or Linux."
-	/>
-</svelte:head>
-
 <div class="min-h-screen bg-background">
 	<!-- Hero -->
 	<section class="relative pt-24 pb-12 sm:pb-16 overflow-hidden">

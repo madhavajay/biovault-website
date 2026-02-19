@@ -18,9 +18,88 @@
 		{ href: "/about", label: "About" },
 		{ href: "/download", label: "Download" },
 	];
+
+	type PageMeta = {
+		title: string;
+		description: string;
+		ogImage: string;
+		ogImageSquare: string;
+	};
+
+	const defaultMeta: PageMeta = {
+		title: "Join the Beta - BioVault",
+		description:
+			"BioVault is a free, open-source, permissionless network for collaborative genomics. Share insights without ever sharing raw data.",
+		ogImage: "https://biovault.net/images/og-share.jpg",
+		ogImageSquare: "https://biovault.net/images/og-share-square.jpg",
+	};
+
+	const pathMeta: Record<string, Partial<PageMeta>> = {
+		"/about": {
+			title: "About - BioVault",
+			description:
+				"Learn about BioVault's mission, team, and community. Open-source, privacy-first biomedical collaboration.",
+		},
+		"/how-it-works": {
+			title: "How It Works - BioVault",
+			description:
+				"Learn how BioVault enables privacy-preserving biomedical collaboration through data visitation. Your data stays with you, only insights travel.",
+		},
+		"/news": {
+			title: "Updates - BioVault",
+			description: "Events, conferences, and updates from the BioVault team.",
+		},
+		"/download": {
+			title: "Download - BioVault",
+			description:
+				"Download BioVault desktop app and CLI for macOS, Windows, or Linux.",
+		},
+		"/privacy": {
+			title: "Privacy Policy - BioVault",
+			description:
+				"How BioVault handles your information. Privacy-first by design.",
+		},
+	};
+
+	function getMeta(pathname: string): PageMeta {
+		return { ...defaultMeta, ...(pathMeta[pathname] ?? {}) };
+	}
+
+	function getCanonicalUrl(pathname: string, search: string): string {
+		const baseUrl = "https://biovault.net";
+		const normalizedPath = pathname === "/" ? "" : pathname;
+		return `${baseUrl}${normalizedPath}${search}`;
+	}
 </script>
 
 <svelte:head>
+	<title>{getMeta($page.url.pathname).title}</title>
+	<meta name="description" content={getMeta($page.url.pathname).description} />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<link rel="canonical" href={getCanonicalUrl($page.url.pathname, $page.url.search)} />
+	<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
+	<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
+	<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
+
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content={getCanonicalUrl($page.url.pathname, $page.url.search)} />
+	<meta property="og:title" content={getMeta($page.url.pathname).title} />
+	<meta property="og:description" content={getMeta($page.url.pathname).description} />
+
+	<meta property="og:image" content={getMeta($page.url.pathname).ogImageSquare} />
+	<meta property="og:image:width" content="800" />
+	<meta property="og:image:height" content="800" />
+
+	<meta property="og:image" content={getMeta($page.url.pathname).ogImage} />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:image" content={getMeta($page.url.pathname).ogImage} />
+	<meta name="twitter:image:width" content="1200" />
+	<meta name="twitter:image:height" content="600" />
+
 	<!-- Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-4D2KBBR5W5"></script>
 	<script>
@@ -30,11 +109,21 @@
 		gtag('config', 'G-4D2KBBR5W5');
 	</script>
 
+	<!-- Plausible Analytics -->
+	<script async src="https://plausible.io/js/pa-V_dIu_hjvnC2JnO74aMlw.js"></script>
+	<script>
+		window.plausible = window.plausible || function () {
+			(plausible.q = plausible.q || []).push(arguments);
+		};
+		window.plausible.init = window.plausible.init || function (i) {
+			plausible.o = i || {};
+		};
+		window.plausible.init();
+	</script>
+
 	<!-- Rybbit Analytics -->
 	<script src="https://metrics.syftbox.net/api/script.js" data-site-id="3" defer></script>
 
-	<link rel="icon" type="image/png" href="/logo.png" />
-	<link rel="apple-touch-icon" href="/logo.png" />
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link
 		rel="preconnect"
