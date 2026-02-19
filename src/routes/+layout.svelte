@@ -65,10 +65,10 @@
 		return { ...defaultMeta, ...(pathMeta[pathname] ?? {}) };
 	}
 
-	function getCanonicalUrl(pathname: string, search: string): string {
+	function getCanonicalUrl(pathname: string): string {
 		const baseUrl = "https://biovault.net";
 		const normalizedPath = pathname === "/" ? "" : pathname;
-		return `${baseUrl}${normalizedPath}${search}`;
+		return `${baseUrl}${normalizedPath}`;
 	}
 </script>
 
@@ -77,13 +77,13 @@
 	<meta name="description" content={getMeta($page.url.pathname).description} />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-	<link rel="canonical" href={getCanonicalUrl($page.url.pathname, $page.url.search)} />
+	<link rel="canonical" href={getCanonicalUrl($page.url.pathname)} />
 	<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
 	<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
 	<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
 
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content={getCanonicalUrl($page.url.pathname, $page.url.search)} />
+	<meta property="og:url" content={getCanonicalUrl($page.url.pathname)} />
 	<meta property="og:title" content={getMeta($page.url.pathname).title} />
 	<meta property="og:description" content={getMeta($page.url.pathname).description} />
 
