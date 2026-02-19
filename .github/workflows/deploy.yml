@@ -1,4 +1,4 @@
-name: Deploy to Cloudflare Worker
+name: Deploy to Cloudflare Pages
 
 on:
   push:
@@ -8,10 +8,9 @@ on:
 
 jobs:
   deploy:
-    if: (github.event_name == 'push' && github.ref == 'refs/heads/main') || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout main branch
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Setup Bun
@@ -25,10 +24,9 @@ jobs:
       - name: Build project
         run: bun run build
 
-      - name: Deploy with Wrangler
+      - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          wranglerVersion: '4.28.1'
-          command: deploy
+          command: pages deploy .svelte-kit/cloudflare --project-name=biovault-website

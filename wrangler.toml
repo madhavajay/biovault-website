@@ -1,27 +1,14 @@
-# For more details on how to configure Wrangler, refer to:
-# https://developers.cloudflare.com/workers/wrangler/configuration/
+# SvelteKit + Cloudflare Pages configuration
+# For more details: https://developers.cloudflare.com/pages/framework-guides/deploy-a-svelte-kit-site/
 
 name = "biovault-website"
-main = "src/index.tsx"
 compatibility_date = "2025-04-01"
-upload_source_maps = true
+pages_build_output_dir = ".svelte-kit/cloudflare"
+
+[observability]
+enabled = true
 
 [[d1_databases]]
 binding = "DB"
 database_name = "d1-biovault-website"
 database_id = "35b334f1-0b99-43ad-bd1a-c5d497549618"
-
-[observability]
-enabled = true
-
-[dev]
-port = 8787
-
-[assets]
-directory = "./src/"
-binding = "ASSETS"
-html_handling = "none"
-not_found_handling = "none"
-
-# Secrets are set in Cloudflare dashboard (Settings > Variables)
-# Required: RESEND_API_KEY, EMAILS

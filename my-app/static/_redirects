@@ -1,9 +1,0 @@
-# 301 redirects from old site pages to home
-/researcher / 301
-/participant / 301
-/about / 301
-/privacy / 301
-/download / 301
-/docs / 301
-/genes / 301
-/genes/* / 301
