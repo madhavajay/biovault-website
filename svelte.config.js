@@ -5,7 +5,7 @@ const config = {
 	kit: {
 		adapter: adapter({
 			platformProxy: {
-				configPath: './wrangler.toml',
+				configPath: './wrangler.jsonc',
 				persist: { path: '.wrangler/state/v3' }
 			}
 		})
