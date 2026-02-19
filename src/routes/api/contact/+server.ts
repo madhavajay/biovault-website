@@ -1,6 +1,8 @@
-import { fail } from '@sveltejs/kit';
+import { json } from '@sveltejs/kit';
 import { Resend } from 'resend';
-import type { Actions } from './$types';
+import type { RequestHandler } from './$types';
+
+export const prerender = false;
 
 function contactEmailHtml(fields: { name: string; email: string; affiliation: string; country: string; message: string }) {
 	const { name, email, affiliation, country, message } = fields;
@@ -118,57 +120,46 @@ function escapeHtml(str: string): string {
 		.replace(/"/g, '&quot;');
 }
 
-export const actions = {
-	contact: async ({ request, platform }) => {
-		const data = await request.formData();
-		const name = data.get('name')?.toString().trim() ?? '';
-		const affiliation = data.get('affiliation')?.toString().trim() ?? '';
-		const country = data.get('country')?.toString().trim() ?? '';
-		const email = data.get('email')?.toString().trim() ?? '';
-		const message = data.get('message')?.toString().trim() ?? '';
+export const POST: RequestHandler = async ({ request, platform }) => {
+	const { name, affiliation, country, email, message } = await request.json();
 
-		const errors: Record<string, string> = {};
+	const errors: Record<string, string> = {};
 
-		if (!name) errors.name = 'Name is required';
-		if (!affiliation) errors.affiliation = 'Affiliation is required';
-		if (!country) errors.country = 'Country is required';
-		if (!email) {
-			errors.email = 'Email is required';
-		} else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-			errors.email = 'Please enter a valid email address';
-		}
-
-		if (Object.keys(errors).length > 0) {
-			return fail(400, { errors, values: { name, affiliation, country, email } });
-		}
-
-		try {
-			await platform!.env.DB.prepare(
-				'INSERT INTO contact_submissions (name, affiliation, country, email, message) VALUES (?, ?, ?, ?, ?)'
-			)
-				.bind(name, affiliation, country, email, message)
-				.run();
-		} catch (err) {
-			console.error('D1 insert error:', err);
-			return fail(500, {
-				errors: { form: 'Something went wrong. Please try again.' },
-				values: { name, affiliation, country, email }
-			});
-		}
-
-		try {
-			const resend = new Resend(platform!.env.RESEND_API_KEY);
-			await resend.emails.send({
-				from: 'BioVault <waitlist@biovault.net>',
-				to: platform!.env.EMAILS.split(','),
-				subject: `New contact: ${name} (${affiliation})`,
-				html: contactEmailHtml({ name, email, affiliation, country, message })
-			});
-		} catch (err) {
-			console.error('Resend email error:', err);
-			// Don't fail the submission if email fails — data is already in D1
-		}
-
-		return { success: true };
+	if (!name?.trim()) errors.name = 'Name is required';
+	if (!affiliation?.trim()) errors.affiliation = 'Affiliation is required';
+	if (!country?.trim()) errors.country = 'Country is required';
+	if (!email?.trim()) {
+		errors.email = 'Email is required';
+	} else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+		errors.email = 'Please enter a valid email address';
 	}
-} satisfies Actions;
+
+	if (Object.keys(errors).length > 0) {
+		return json({ errors }, { status: 400 });
+	}
+
+	try {
+		await platform!.env.DB.prepare(
+			'INSERT INTO contact_submissions (name, affiliation, country, email, message) VALUES (?, ?, ?, ?, ?)'
+		)
+			.bind(name.trim(), affiliation.trim(), country.trim(), email.trim(), message?.trim() ?? '')
+			.run();
+	} catch (err) {
+		console.error('D1 insert error:', err);
+		return json({ errors: { form: 'Something went wrong. Please try again.' } }, { status: 500 });
+	}
+
+	try {
+		const resend = new Resend(platform!.env.RESEND_API_KEY);
+		await resend.emails.send({
+			from: 'BioVault <waitlist@biovault.net>',
+			to: platform!.env.EMAILS.split(','),
+			subject: `New contact: ${name.trim()} (${affiliation.trim()})`,
+			html: contactEmailHtml({ name: name.trim(), email: email.trim(), affiliation: affiliation.trim(), country: country.trim(), message: message?.trim() ?? '' })
+		});
+	} catch (err) {
+		console.error('Resend email error:', err);
+	}
+
+	return json({ success: true });
+};

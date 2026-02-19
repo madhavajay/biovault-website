@@ -649,7 +649,7 @@
 							></span
 						>
 						<span
-							class="block mt-2 sm:mt-1 text-xl sm:text-2xl lg:text-3xl text-foreground/80 -mx-2 sm:mx-0"
+							class="block mt-4 sm:mt-6 text-xl sm:text-2xl lg:text-3xl text-foreground/80 -mx-2 sm:mx-0"
 							>Without sharing your raw data</span
 						>
 					</h1>

@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { enhance } from "$app/forms";
 	import { Button } from "$lib/components/ui/button";
 	import { Input } from "$lib/components/ui/input";
 	import { X, Check, Loader2, Send } from "@lucide/svelte";
@@ -141,31 +140,33 @@
 				</p>
 
 				<form
-					method="POST"
-					action="/?/contact"
-					use:enhance={() => {
+					onsubmit={async (e) => {
+						e.preventDefault();
 						formState = "submitting";
 						errors = {};
 
-						return async ({ result }) => {
-							if (result.type === "success") {
+						try {
+							const res = await fetch("/api/contact", {
+								method: "POST",
+								headers: { "Content-Type": "application/json" },
+								body: JSON.stringify({ name, email, affiliation, country, message }),
+							});
+							const data = await res.json();
+
+							if (res.ok && data.success) {
 								formState = "success";
-							} else if (result.type === "failure" && result.data) {
-								const data = result.data as { errors?: FieldErrors; values?: Record<string, string> };
-								errors = data.errors ?? {};
+							} else if (data.errors) {
+								errors = data.errors;
 								touched = { name: true, affiliation: true, country: true, email: true };
-								if (data.values) {
-									name = data.values.name ?? name;
-									affiliation = data.values.affiliation ?? affiliation;
-									country = data.values.country ?? country;
-									email = data.values.email ?? email;
-								}
 								formState = errors.form ? "error" : "idle";
 							} else {
 								errors = { form: "Something went wrong. Please try again." };
 								formState = "error";
 							}
-						};
+						} catch {
+							errors = { form: "Something went wrong. Please try again." };
+							formState = "error";
+						}
 					}}
 					class="space-y-0"
 				>

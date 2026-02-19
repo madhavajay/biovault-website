@@ -174,7 +174,7 @@
 				<h2 class="text-xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-3">
 					Join the movement
 				</h2>
-				<p class="text-muted-foreground mb-8 max-w-2xl">
+				<p class="text-muted-foreground mb-8 text-pretty">
 					We're building a global network of researchers, participants, and organizations who believe that privacy and collaboration aren't mutually exclusive. Whether you're a rare disease patient, a genomics researcher, or a biobank — BioVault provides the infrastructure for secure, equitable collaboration.
 				</p>
 			</div>
