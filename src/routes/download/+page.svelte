@@ -122,7 +122,7 @@
 						</div>
 						<h3 class="font-semibold text-foreground">Linux</h3>
 					</div>
-					<p class="text-xs text-muted-foreground mb-4">Portable AppImage for all distributions</p>
+					<p class="text-xs text-muted-foreground mb-4">Portable AppImage</p>
 					<div class="flex flex-col gap-2">
 						<Button
 							class="w-full bg-bv-green text-white hover:bg-bv-green-light text-xs h-9"
