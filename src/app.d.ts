@@ -11,6 +11,7 @@ declare global {
 				DB: D1Database;
 				RESEND_API_KEY: string;
 				EMAILS: string;
+				HUBSPOT_ACCESS_TOKEN: string;
 			};
 		}
 	}
