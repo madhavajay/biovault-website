@@ -1,9 +1,12 @@
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"name": "bv-website",
-	"main": ".svelte-kit/cloudflare/_worker.js",
+	"main": "worker.ts",
 	"compatibility_date": "2026-02-19",
 	"compatibility_flags": ["nodejs_compat", "nodejs_als"],
+	"triggers": {
+		"crons": ["0 22 * * *", "0 23 * * *"]
+	},
 	"assets": {
 		"binding": "ASSETS",
 		"directory": ".svelte-kit/cloudflare"
@@ -16,6 +19,11 @@
 			"binding": "DB",
 			"database_name": "d1-biovault-website",
 			"database_id": "35b334f1-0b99-43ad-bd1a-c5d497549618"
+		},
+		{
+			"binding": "BIOVAULT_APP_DB",
+			"database_name": "biovault-app",
+			"database_id": "7972c87e-672b-48c2-8015-3e6cec98202b"
 		}
 	]
 }

@@ -1,0 +1,10 @@
+CREATE TABLE IF NOT EXISTS user (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  push_token TEXT NOT NULL UNIQUE
+);
+
+CREATE TABLE IF NOT EXISTS cron_notification_log (
+  job_key TEXT PRIMARY KEY,
+  job_name TEXT NOT NULL,
+  sent_at TEXT NOT NULL
+);

@@ -9,6 +9,7 @@ declare global {
 		interface Platform {
 			env: {
 				DB: D1Database;
+				BIOVAULT_APP_DB: D1Database;
 				RESEND_API_KEY: string;
 				EMAILS: string;
 			};
