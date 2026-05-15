@@ -617,6 +617,30 @@
 	<section class="relative pt-24 overflow-hidden z-10">
 		<div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pb-6 lg:pb-8">
 			<div class="flex flex-col items-center text-center gap-5 lg:gap-8">
+				<a
+					href="https://app.biovault.net"
+					target="_blank"
+					rel="noopener"
+					class="group relative flex w-full max-w-3xl items-center gap-4 overflow-hidden rounded-[10px] border border-bv-green/50 bg-bv-green/10 py-[18px] pl-[58px] pr-[22px] text-left text-foreground no-underline transition-colors hover:border-bv-green/70 hover:bg-bv-green/[0.16]"
+				>
+					<span
+						class="absolute top-[13px] -left-9 -rotate-45 bg-[#e5484d] px-[42px] py-1 text-[11px] font-extrabold uppercase tracking-[0.15em] text-white shadow-[0_4px_12px_rgba(229,72,77,0.35)]"
+						>New</span
+					>
+					<span class="grid gap-[3px]">
+						<strong class="text-[17px] sm:text-[19px] font-bold leading-tight"
+							>Analyze DNA offline in your browser in seconds</strong
+						>
+						<span class="text-[13px] text-muted-foreground"
+							>No upload, no account — runs in WASM fully on your device</span
+						>
+					</span>
+					<span
+						aria-hidden="true"
+						class="ml-auto text-[22px] font-extrabold text-bv-green transition-transform group-hover:translate-x-1"
+						>→</span
+					>
+				</a>
 				<!-- Top: Text content -->
 				<div class="w-full max-w-3xl space-y-4 sm:space-y-6">
 					<h1
@@ -651,6 +675,16 @@
 					<div class="pt-4 sm:pt-8 flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-center w-full max-w-xs sm:max-w-none mx-auto">
 						<Button
 							size="lg"
+							class="h-9 px-4 text-sm sm:h-11 sm:px-6 sm:text-base bg-bv-green text-white hover:bg-bv-green-light font-medium transition-all"
+							href="https://app.biovault.net"
+							target="_blank"
+							rel="noopener"
+						>
+							<Dna class="h-4 w-4 mr-1.5" />
+							Try in Browser
+						</Button>
+						<Button
+							size="lg"
 							class="h-9 px-4 text-sm sm:h-11 sm:px-6 sm:text-base bg-foreground/5 text-foreground hover:bg-foreground/10 border border-border font-medium transition-all"
 							href="https://www.biorxiv.org/content/10.64898/2026.02.12.705603v1"
 							target="_blank"
@@ -661,7 +695,7 @@
 						</Button>
 						<Button
 							size="lg"
-							class="h-9 px-4 text-sm sm:h-11 sm:px-6 sm:text-base bg-bv-green text-white hover:bg-bv-green-light font-medium transition-all"
+							class="h-9 px-4 text-sm sm:h-11 sm:px-6 sm:text-base bg-foreground/5 text-foreground hover:bg-foreground/10 border border-border font-medium transition-all"
 							onclick={() => $contactOpen = true}
 						>
 							<Mail class="h-4 w-4 mr-1.5" />
