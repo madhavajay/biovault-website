@@ -49,7 +49,7 @@
 		<div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
 			<img src="/logo.png" alt="BioVault" class="h-20 w-20 rounded-2xl mx-auto mb-6" />
 			<h1 class="text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground mb-3 sm:mb-4">
-				Download BioVault
+				Download BioVault for Research
 			</h1>
 			<p class="text-lg text-muted-foreground max-w-xl mx-auto">
 				Get started with privacy-preserving biomedical collaboration

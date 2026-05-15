@@ -12,11 +12,12 @@
 	let { children } = $props();
 	let menuOpen = $state(false);
 
-	const navLinks = [
+	const navLinks: { href: string; label: string; external?: boolean }[] = [
 		{ href: "/how-it-works", label: "How It Works" },
 		{ href: "/news", label: "News" },
 		{ href: "/about", label: "About" },
 		{ href: "/download", label: "Download" },
+		{ href: "https://app.biovault.net", label: "Try in Browser", external: true },
 	];
 
 	type PageMeta = {
@@ -162,7 +163,9 @@
 					{#each navLinks as link}
 						<a
 							href={link.href}
-							class="text-sm transition-colors {$page.url.pathname === link.href || $page.url.pathname.startsWith(link.href + '/') ? 'text-foreground' : 'text-foreground/60 hover:text-foreground'}"
+							target={link.external ? "_blank" : undefined}
+							rel={link.external ? "noopener" : undefined}
+							class="text-sm transition-colors {!link.external && ($page.url.pathname === link.href || $page.url.pathname.startsWith(link.href + '/')) ? 'text-foreground' : 'text-foreground/60 hover:text-foreground'}"
 						>{link.label}</a>
 					{/each}
 					<ThemeToggle />
@@ -200,7 +203,9 @@
 				{#each navLinks as link}
 					<a
 						href={link.href}
-						class="text-sm py-1.5 transition-colors {$page.url.pathname === link.href || $page.url.pathname.startsWith(link.href + '/') ? 'text-foreground' : 'text-foreground/60 hover:text-foreground'}"
+						target={link.external ? "_blank" : undefined}
+						rel={link.external ? "noopener" : undefined}
+						class="text-sm py-1.5 transition-colors {!link.external && ($page.url.pathname === link.href || $page.url.pathname.startsWith(link.href + '/')) ? 'text-foreground' : 'text-foreground/60 hover:text-foreground'}"
 						onclick={() => menuOpen = false}
 					>{link.label}</a>
 				{/each}
