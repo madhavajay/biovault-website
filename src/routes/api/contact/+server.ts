@@ -161,5 +161,33 @@ export const POST: RequestHandler = async ({ request, platform }) => {
 		console.error('Resend email error:', err);
 	}
 
+	try {
+		const nameParts = name.trim().split(/\s+/);
+		const firstName = nameParts[0] || '';
+		const lastName = nameParts.slice(1).join(' ') || '';
+		const res = await fetch('https://api.hubapi.com/crm/v3/objects/contacts', {
+			method: 'POST',
+			headers: {
+				'Authorization': `Bearer ${platform!.env.HUBSPOT_ACCESS_TOKEN}`,
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				properties: {
+					firstname: firstName,
+					lastname: lastName,
+					email: email.trim(),
+					company: affiliation.trim(),
+					country: country.trim(),
+					...(message?.trim() ? { freeform_problem_statement: message.trim() } : {})
+				}
+			})
+		});
+		if (!res.ok) {
+			console.error('HubSpot API error:', res.status, await res.text());
+		}
+	} catch (err) {
+		console.error('HubSpot create contact error:', err);
+	}
+
 	return json({ success: true });
 };
