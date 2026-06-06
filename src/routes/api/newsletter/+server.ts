@@ -7,6 +7,7 @@ export const prerender = false;
 const ALLOWED_ORIGINS = new Set([
 	'https://biovault.net',
 	'https://www.biovault.net',
+	'https://dev-app.biovault.net',
 	'https://app.biovault.net'
 ]);
 
